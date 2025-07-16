@@ -1,18 +1,18 @@
-import { Category } from '../modules/books.schema.js'
+import { Author } from '../modules/authors.schema.js'
 import { isValidObjectId } from 'mongoose'
 
-export class CategoryController {
-    async createCategory(req, res) {
+export class AuthorController {
+    async createAuthor(req, res) {
         try {
-            const nameCategory = req.body.name
-            const existCategory = await Category.findOne({ name: nameCategory });
-            if (existCategory) {
+            const nameAuthor = req.body.name
+            const existAuthor = await Author.findOne({ name: nameAuthor });
+            if (existAuthor) {
                 return res.status(409).json({
                     statusCode: 409,
-                    message: `this ${nameCategory} already added Category`
+                    message: `this ${nameAuthor} already added Author`
                 })
             }
-            const result = await Category.create(req.body);
+            const result = await Author.create(req.body);
             return res.status(201).json({
                 statusCode: 201,
                 message: 'success',
@@ -25,9 +25,9 @@ export class CategoryController {
             })
         }
     }
-    async getAllCategory(_, res) {
+    async getAllAuthor(_, res) {
         try {
-            const result = await Category.find().populate({ path: 'allCategory', populate: { path: 'allProducts' } });
+            const result = await Author.find();
             return res.status(200).json({
                 statusCode: 200,
                 message: 'success',
@@ -40,7 +40,7 @@ export class CategoryController {
             })
         }
     }
-    async getCategoryById(req, res) {
+    async getAuthorById(req, res) {
         try {
             const id = req.params.id
             if (!isValidObjectId(id)) {
@@ -49,7 +49,7 @@ export class CategoryController {
                     message: 'invalid ObjectID'
                 })
             }
-            const findId = await Category.findById(id).populate({ path: 'allCategory', populate: { path: 'allProducts' } });
+            const findId = await Author.findById(id);
             if (!findId) {
                 return res.status(404).json({
                     statusCode: 404,
@@ -68,14 +68,14 @@ export class CategoryController {
             })
         }
     }
-    async updateCategory(req, res) {
+    async updateAuthor(req, res) {
         try {
-            const nameCategory = req.body.name
-            const existCategory = await Category.findOne({ name: nameCategory });
-            if (existCategory) {
+            const nameAuthor = req.body.name
+            const existAuthor = await Author.findOne({ name: nameAuthor });
+            if (existAuthor) {
                 return res.status(409).json({
                     statusCode: 409,
-                    message: `this ${nameCategory} already added Category`
+                    message: `this ${nameAuthor} already added Author`
                 })
             }
             const id = req.params.id
@@ -85,14 +85,14 @@ export class CategoryController {
                     message: 'invalid ObjectID'
                 })
             }
-            const findId = await Category.findById(id);
+            const findId = await Author.findById(id);
             if (!findId) {
                 return res.status(404).json({
                     statusCode: 404,
                     message: `not found this user :( ID:${id}`
                 })
             }
-            const result = await Category.findByIdAndUpdate(id, req.body)
+            const result = await Author.findByIdAndUpdate(id, req.body)
             return res.status(200).json({
                 statusCode: 200,
                 message: 'success',
@@ -105,7 +105,7 @@ export class CategoryController {
             })
         }
     }
-    async deleteCategory(req, res) {
+    async deleteAuthor(req, res) {
         try {
             const id = req.params.id
             if (!isValidObjectId(id)) {
@@ -114,14 +114,14 @@ export class CategoryController {
                     message: 'invalid ObjectID'
                 })
             }
-            const findId = await Category.findById(id);
+            const findId = await Author.findById(id);
             if (!findId) {
                 return res.status(404).json({
                     statusCode: 404,
                     message: `not found this user :( ID:${id}`
                 })
             }
-            await Category.findByIdAndDelete(id)
+            await Author.findByIdAndDelete(id)
             return res.status(200).json({
                 statusCode: 200,
                 message: 'success',

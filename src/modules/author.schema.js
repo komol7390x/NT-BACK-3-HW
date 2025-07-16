@@ -7,4 +7,3 @@ const AuthorSchema = new Schema({
 }, { timestamps: true, versionKey: false })
 
 export const Author = model('Author', AuthorSchema);
-

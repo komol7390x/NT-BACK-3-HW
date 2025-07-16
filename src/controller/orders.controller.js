@@ -1,18 +1,10 @@
-import { Review } from '../modules/orders.schema.js'
+import { Orders } from '../modules/orders.schema.js'
 import { isValidObjectId } from 'mongoose'
 
-export class ReviewController {
-    async createReview(req, res) {
+export class OrdersController {
+    async createOrders(req, res) {
         try {
-            const nameReview = req.body.name
-            const existReview = await Review.findOne({ name: nameReview });
-            if (existReview) {
-                return res.status(409).json({
-                    statusCode: 409,
-                    message: `this ${nameReview} already added Review`
-                })
-            }
-            const result = await Review.create(req.body);
+            const result = await Orders.create(req.body);
             return res.status(201).json({
                 statusCode: 201,
                 message: 'success',
@@ -25,9 +17,9 @@ export class ReviewController {
             })
         }
     }
-    async getAllReview(_, res) {
+    async getAllOrders(_, res) {
         try {
-            const result = await Review.find().populate({ path: 'productID', populate: { path: 'categoryID' } });
+            const result = await Orders.find();
             return res.status(200).json({
                 statusCode: 200,
                 message: 'success',
@@ -40,7 +32,7 @@ export class ReviewController {
             })
         }
     }
-    async getReviewById(req, res) {
+    async getOrdersById(req, res) {
         try {
             const id = req.params.id
             if (!isValidObjectId(id)) {
@@ -49,7 +41,7 @@ export class ReviewController {
                     message: 'invalid ObjectID'
                 })
             }
-            const findId = await Review.findById(id).populate({ path: 'productID', populate: { path: 'categoryID' } });
+            const findId = await Orders.findById(id);
             if (!findId) {
                 return res.status(404).json({
                     statusCode: 404,
@@ -68,16 +60,8 @@ export class ReviewController {
             })
         }
     }
-    async updateReview(req, res) {
+    async updateOrders(req, res) {
         try {
-            const nameReview = req.body.name
-            const existReview = await Review.findOne({ name: nameReview });
-            if (existReview) {
-                return res.status(409).json({
-                    statusCode: 409,
-                    message: `this ${nameReview} already added Review`
-                })
-            }
             const id = req.params.id
             if (!isValidObjectId(id)) {
                 return res.status(400).json({
@@ -85,14 +69,14 @@ export class ReviewController {
                     message: 'invalid ObjectID'
                 })
             }
-            const findId = await Review.findById(id);
+            const findId = await Orders.findById(id);
             if (!findId) {
                 return res.status(404).json({
                     statusCode: 404,
                     message: `not found this user :( ID:${id}`
                 })
             }
-            const result = await Review.findByIdAndUpdate(id, req.body)
+            const result = await Orders.findByIdAndUpdate(id, req.body)
             return res.status(200).json({
                 statusCode: 200,
                 message: 'success',
@@ -105,7 +89,7 @@ export class ReviewController {
             })
         }
     }
-    async deleteReview(req, res) {
+    async deleteOrders(req, res) {
         try {
             const id = req.params.id
             if (!isValidObjectId(id)) {
@@ -114,14 +98,14 @@ export class ReviewController {
                     message: 'invalid ObjectID'
                 })
             }
-            const findId = await Review.findById(id);
+            const findId = await Orders.findById(id);
             if (!findId) {
                 return res.status(404).json({
                     statusCode: 404,
                     message: `not found this user :( ID:${id}`
                 })
             }
-            await Review.findByIdAndDelete(id)
+            await Orders.findByIdAndDelete(id)
             return res.status(200).json({
                 statusCode: 200,
                 message: 'success',
