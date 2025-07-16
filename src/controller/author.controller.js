@@ -1,4 +1,4 @@
-import { Author } from '../modules/authors.schema.js'
+import { Author } from '../modules/author.schema.js'
 import { isValidObjectId } from 'mongoose'
 
 export class AuthorController {

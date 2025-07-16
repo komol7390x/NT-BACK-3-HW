@@ -1,13 +1,13 @@
-import {Router} from 'express'
-import {ReviewController} from '../controller/review.controller.js'
-const router=Router()
+import { Router } from 'express'
+import { OrdersController } from '../controller/orders.controller.js'
+const router = Router()
 
-const review=new ReviewController()
+const orders = new OrdersController()
 router
-    .post('/',review.createReview)
-    .get('/',review.getAllReview)
-    .get('/:id',review.getReviewById)
-    .patch('/:id',review.updateReview)
-    .delete('/:id',review.deleteReview)
+    .post('/', orders.createOrders)
+    .get('/', orders.getAllOrders)
+    .get('/:id', orders.getOrdersById)
+    .patch('/:id', orders.updateOrders)
+    .delete('/:id', orders.deleteOrders)
 
 export default router

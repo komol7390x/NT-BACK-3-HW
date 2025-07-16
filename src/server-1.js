@@ -19,5 +19,5 @@ server.use('/orders', routerOrders);
 server.use((_, res) => {
     res.status(404).sendFile(join(process.cwd(), 'public', 'image', '404error.png'));
 })
-const PORT = +process.env.PORT
+const PORT = +process.env.PORT || 5000
 server.listen(PORT, () => console.log('Server is runing PORT:', PORT))

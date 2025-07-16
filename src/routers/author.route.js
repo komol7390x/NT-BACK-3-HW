@@ -2,12 +2,12 @@ import { Router } from 'express'
 import { AuthorController } from '../controller/author.controller.js'
 const router = Router()
 
-const product = new AuthorController()
+const author = new AuthorController()
 router
-    .post('/', product.createProduct)
-    .get('/', product.getAllProduct)
-    .get('/:id', product.getProductById)
-    .patch('/:id', product.updateProduct)
-    .delete('/:id', product.deleteProduct)
+    .post('/', author.createAuthor)
+    .get('/', author.getAllAuthor)
+    .get('/:id', author.getAuthorById)
+    .patch('/:id', author.updateAuthor)
+    .delete('/:id', author.deleteAuthor)
 
 export default router
