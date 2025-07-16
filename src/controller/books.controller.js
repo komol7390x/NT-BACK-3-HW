@@ -174,7 +174,7 @@ export class BooksController {
         }
     }
 
-    async MaxSoldGenre() {
+    async maxSoldGenre(req, res) {
         try {
             const result = await Books.aggregate([
                 {
@@ -183,19 +183,82 @@ export class BooksController {
                         totalSold: { $sum: '$sold' }
                     }
                 },
+                { $sort: { totalSold: -1 } },
+                { $limit: 5 }
+            ]);
+            return res.status(200).json({
+                statusCode: 200,
+                message: 'success',
+                data: result
+            })
+        } catch (error) {
+            return res.status(500).json({
+                statusCode: 500,
+                message: error.message || 'Internal server error'
+            })
+        }
+    }
+
+    async bestSellerAuthor(_, res) {
+        try {
+            const result = await Books.aggregate([
                 {
-                    $sort: { totalSold: -1 }
+                    $lookup: {
+                        from: 'authors',
+                        localField: 'authorID',
+                        foreignField: '_id',
+                        as: 'author'
+                    }
                 },
+                { $unwind: '$author' },
                 {
+                    $group: {
+                        _id: '$author.name',
+                        totalRevenue: { $sum: { $multiply: ['$sold', '$price'] } }
+                    }
+                },
+                { $sort: { totalRevenue: -1 } }, {
                     $limit: 1
                 },
                 {
                     $project: {
                         _id: 0,
-                        genre: '$_id',
-                        totalSold: 1
+                        author: '$_id',
+                        totalRevenue: 1
                     }
                 }
+            ]);
+
+            return res.status(200).json({
+                statusCode: 200,
+                message: 'success',
+                data: result
+            })
+        } catch (error) {
+            return res.status(500).json({
+                statusCode: 500,
+                message: error.message || 'Internal server error'
+            })
+        }
+    }
+
+    async totalGenrePrice(req, res) {
+        try {
+            const result = await Books.aggregate([
+                {
+                    $group: {
+                        _id: '$genre',
+                        averagePrice: { $avg: '$price' }
+                    }
+                },
+                {
+                    $project: {
+                        _id: 0,
+                        genre: '$_id',
+                        averagePrice: { $round: ['$averagePrice', 2] }
+                    }
+                },
+                { $sort: { averagePrice: -1 } }
             ]);
             return res.status(200).json({
                 statusCode: 200,
