@@ -17,9 +17,29 @@ export class OrdersController {
             })
         }
     }
+
     async getAllOrders(_, res) {
         try {
-            const result = await Orders.find();
+            const result = await Orders.aggregate([
+                {
+                    $lookup: {
+                        from: 'books',
+                        localField: 'bookID',
+                        foreignField: '_id',
+                        as: 'book'
+                    }
+                },
+                { $unwind: '$book' },
+                {
+                    $lookup: {
+                        from: 'authors',
+                        localField: 'book.authorID',
+                        foreignField: '_id',
+                        as: 'author'
+                    }
+                },
+                { $unwind: '$author' },
+            ]);
             return res.status(200).json({
                 statusCode: 200,
                 message: 'success',
@@ -119,3 +139,4 @@ export class OrdersController {
         }
     }
 }
+

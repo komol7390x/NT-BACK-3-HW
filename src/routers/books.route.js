@@ -5,9 +5,11 @@ const router = Router()
 const books = new BooksController()
 
 router
+    .get('/maxsoldgenre', books.MaxSoldGenre)
+    .get('/getauthorbook', books.getAuthorBooks)
+    .get('/:id', books.getBooksById)
     .post('/', books.createBooks)
     .get('/', books.getAllBooks)
-    .get('/:id', books.getBooksById)
     .patch('/:id', books.updateBooks)
     .delete('/:id', books.deleteBooks)
 

@@ -134,4 +134,79 @@ export class BooksController {
             })
         }
     }
+
+    async getAuthorBooks(_, res) {
+        try {
+            const result = await Books.aggregate([
+                {
+                    $group: {
+                        _id: '$authorID',
+                        bookCount: { $sum: 1 }
+                    }
+                },
+                {
+                    $lookup: {
+                        from: 'authors',
+                        localField: '_id',
+                        foreignField: '_id',
+                        as: 'author'
+                    }
+                },
+                { $unwind: '$author' },
+                {
+                    $project: {
+                        _id: 0,
+                        authorName: '$author.name',
+                        bookCount: 1
+                    }
+                }
+            ]);
+            return res.status(200).json({
+                statusCode: 200,
+                message: 'success',
+                data: result
+            })
+        } catch (error) {
+            return res.status(500).json({
+                statusCode: 500,
+                message: error.message || 'Internal server error'
+            })
+        }
+    }
+
+    async MaxSoldGenre() {
+        try {
+            const result = await Books.aggregate([
+                {
+                    $group: {
+                        _id: '$genre',
+                        totalSold: { $sum: '$sold' }
+                    }
+                },
+                {
+                    $sort: { totalSold: -1 }
+                },
+                {
+                    $limit: 1
+                },
+                {
+                    $project: {
+                        _id: 0,
+                        genre: '$_id',
+                        totalSold: 1
+                    }
+                }
+            ]);
+            return res.status(200).json({
+                statusCode: 200,
+                message: 'success',
+                data: result
+            })
+        } catch (error) {
+            return res.status(500).json({
+                statusCode: 500,
+                message: error.message || 'Internal server error'
+            })
+        }
+    }
 }
