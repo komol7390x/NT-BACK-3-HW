@@ -1,18 +1,13 @@
-import { Author } from '../modules/author.schema.js'
+import { Subscription } from '../modules/subscriptions.module.js'
 import { isValidObjectId } from 'mongoose'
 
-export class AuthorController {
-    async createAuthor(req, res) {
+export class SubscriptionController {
+    constructor() {
+        this
+    }
+    async createSubscription(req, res) {
         try {
-            const nameAuthor = req.body.name
-            const existAuthor = await Author.findOne({ name: nameAuthor });
-            if (existAuthor) {
-                return res.status(409).json({
-                    statusCode: 409,
-                    message: `this ${nameAuthor} already added Author`
-                })
-            }
-            const result = await Author.create(req.body);
+            const result = await Subscription.create(req.body);
             return res.status(201).json({
                 statusCode: 201,
                 message: 'success',
@@ -25,9 +20,10 @@ export class AuthorController {
             })
         }
     }
-    async getAllAuthor(_, res) {
+
+    async getAllSubscription(_, res) {
         try {
-            const result = await Author.find();
+            const result = await Subscription.find()
             return res.status(200).json({
                 statusCode: 200,
                 message: 'success',
@@ -40,7 +36,7 @@ export class AuthorController {
             })
         }
     }
-    async getAuthorById(req, res) {
+    async getSubscriptionById(req, res) {
         try {
             const id = req.params.id
             if (!isValidObjectId(id)) {
@@ -49,7 +45,7 @@ export class AuthorController {
                     message: 'invalid ObjectID'
                 })
             }
-            const findId = await Author.findById(id);
+            const findId = await Subscription.findById(id);
             if (!findId) {
                 return res.status(404).json({
                     statusCode: 404,
@@ -68,16 +64,8 @@ export class AuthorController {
             })
         }
     }
-    async updateAuthor(req, res) {
+    async updateSubscription(req, res) {
         try {
-            const nameAuthor = req.body.name
-            const existAuthor = await Author.findOne({ name: nameAuthor });
-            if (existAuthor) {
-                return res.status(409).json({
-                    statusCode: 409,
-                    message: `this ${nameAuthor} already added Author`
-                })
-            }
             const id = req.params.id
             if (!isValidObjectId(id)) {
                 return res.status(400).json({
@@ -85,14 +73,14 @@ export class AuthorController {
                     message: 'invalid ObjectID'
                 })
             }
-            const findId = await Author.findById(id);
+            const findId = await Subscription.findById(id);
             if (!findId) {
                 return res.status(404).json({
                     statusCode: 404,
                     message: `not found this user :( ID:${id}`
                 })
             }
-            const result = await Author.findByIdAndUpdate(id, req.body)
+            const result = await Subscription.findByIdAndUpdate(id, req.body)
             return res.status(200).json({
                 statusCode: 200,
                 message: 'success',
@@ -105,7 +93,7 @@ export class AuthorController {
             })
         }
     }
-    async deleteAuthor(req, res) {
+    async deleteSubscription(req, res) {
         try {
             const id = req.params.id
             if (!isValidObjectId(id)) {
@@ -114,14 +102,14 @@ export class AuthorController {
                     message: 'invalid ObjectID'
                 })
             }
-            const findId = await Author.findById(id);
+            const findId = await Subscription.findById(id);
             if (!findId) {
                 return res.status(404).json({
                     statusCode: 404,
                     message: `not found this user :( ID:${id}`
                 })
             }
-            await Author.findByIdAndDelete(id)
+            await Subscription.findByIdAndDelete(id)
             return res.status(200).json({
                 statusCode: 200,
                 message: 'success',
@@ -135,3 +123,4 @@ export class AuthorController {
         }
     }
 }
+

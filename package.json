@@ -5,7 +5,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "start": "nodemon src/server-1.js"
+    "dev": "nodemon src/server-2.js"
   },
   "repository": {
     "type": "git",
