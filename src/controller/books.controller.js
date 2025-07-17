@@ -148,7 +148,7 @@ export class BooksController {
                     $lookup: {
                         from: 'authors',
                         localField: '_id',
-                        foreignField: 'bookID',
+                        foreignField: '_id',
                         as: 'author'
                     }
                 },

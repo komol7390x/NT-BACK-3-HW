@@ -1,1 +1,0 @@
-# collection bir birga ulash
