@@ -1,13 +1,12 @@
-import { Subscription } from '../modules/subscriptions.module.js'
 import { isValidObjectId } from 'mongoose'
 
-export class SubscriptionController {
-    constructor() {
-        this
+export class FullController {
+    constructor(youtube) {
+        this.youtube = youtube
     }
-    async createSubscription(req, res) {
+    async create(req, res) {
         try {
-            const result = await Subscription.create(req.body);
+            const result = await this.youtube.create(req.body);
             return res.status(201).json({
                 statusCode: 201,
                 message: 'success',
@@ -21,9 +20,9 @@ export class SubscriptionController {
         }
     }
 
-    async getAllSubscription(_, res) {
+    async getAll(_, res) {
         try {
-            const result = await Subscription.find()
+            const result = await this.youtube.find()
             return res.status(200).json({
                 statusCode: 200,
                 message: 'success',
@@ -36,7 +35,7 @@ export class SubscriptionController {
             })
         }
     }
-    async getSubscriptionById(req, res) {
+    async getById(req, res) {
         try {
             const id = req.params.id
             if (!isValidObjectId(id)) {
@@ -45,7 +44,7 @@ export class SubscriptionController {
                     message: 'invalid ObjectID'
                 })
             }
-            const findId = await Subscription.findById(id);
+            const findId = await this.youtube.findById(id);
             if (!findId) {
                 return res.status(404).json({
                     statusCode: 404,
@@ -64,7 +63,7 @@ export class SubscriptionController {
             })
         }
     }
-    async updateSubscription(req, res) {
+    async updateById(req, res) {
         try {
             const id = req.params.id
             if (!isValidObjectId(id)) {
@@ -73,14 +72,14 @@ export class SubscriptionController {
                     message: 'invalid ObjectID'
                 })
             }
-            const findId = await Subscription.findById(id);
+            const findId = await this.youtube.findById(id);
             if (!findId) {
                 return res.status(404).json({
                     statusCode: 404,
                     message: `not found this user :( ID:${id}`
                 })
             }
-            const result = await Subscription.findByIdAndUpdate(id, req.body)
+            const result = await this.youtube.findByIdAndUpdate(id, req.body)
             return res.status(200).json({
                 statusCode: 200,
                 message: 'success',
@@ -93,7 +92,7 @@ export class SubscriptionController {
             })
         }
     }
-    async deleteSubscription(req, res) {
+    async deleteById(req, res) {
         try {
             const id = req.params.id
             if (!isValidObjectId(id)) {
@@ -102,14 +101,14 @@ export class SubscriptionController {
                     message: 'invalid ObjectID'
                 })
             }
-            const findId = await Subscription.findById(id);
+            const findId = await this.youtube.findById(id);
             if (!findId) {
                 return res.status(404).json({
                     statusCode: 404,
                     message: `not found this user :( ID:${id}`
                 })
             }
-            await Subscription.findByIdAndDelete(id)
+            await this.youtube.findByIdAndDelete(id)
             return res.status(200).json({
                 statusCode: 200,
                 message: 'success',
