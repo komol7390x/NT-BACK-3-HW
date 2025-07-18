@@ -80,35 +80,39 @@ export class TaskController {
     // TASK-3
     async getPopularCategories() {
         try {
-            
+            const result = await this.toTask.aggregate([
+                {
+                    $group: {
+                        _id: '$category',
+                        views: { $sum: '$views' },
+                        likes: { $sum: '$likes' }
+                    }
+                },
+                {
+                    $addFields: {
+                        popularity: { $add: ['$views', '$likes'] }
+                    }
+                },
+                { $sort: { popularity: -1 } },
+                {
+                    $project: {
+                        category: '$_id',
+                        views: 1,
+                        likes: 1,
+                        popularity: 1
+                    }
+                }
+            ]);
+            return res.status(201).json({
+                statusCode: 201,
+                message: 'success',
+                data: result
+            })
         } catch (error) {
             return res.status(500).json({
                 statusCode: 500,
                 message: error.message || 'Internal server error'
             })
         }
-        const result = await this.toTask.aggregate([
-            {
-                $group: {
-                    _id: '$category',
-                    views: { $sum: '$views' },
-                    likes: { $sum: '$likes' }
-                }
-            },
-            {
-                $addFields: {
-                    popularity: { $add: ['$views', '$likes'] }
-                }
-            },
-            { $sort: { popularity: -1 } },
-            {
-                $project: {
-                    category: '$_id',
-                    views: 1,
-                    likes: 1,
-                    popularity: 1
-                }
-            }
-        ]);
     }
 }
