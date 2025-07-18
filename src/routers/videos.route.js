@@ -7,7 +7,10 @@ const task=new TaskController(Video)
 router
     .post('/', controller.create.bind(controller))
     .get('/', controller.getAll.bind(controller))
+
     .get('/videocomments',task.getVideoCommentsStats.bind(task))
+    .get('/topfollowed',task.getTopFollowedUsers.bind(task))
+    .get('/popularcategories',task.getPopularCategories.bind(task))
     
     .get('/:id', controller.getById.bind(controller))
     .patch('/:id', controller.updateById.bind(controller))
