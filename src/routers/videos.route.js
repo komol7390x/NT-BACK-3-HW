@@ -1,10 +1,10 @@
 import { Router } from 'express'
 import { FullController,TaskController} from '../controller/index.js'
-import { Video ,Subscription} from '../modules/index.js'
+import { Video} from '../modules/index.js'
 
 const router = Router()
 const controller = new FullController(Video)
-const task=new TaskController(Subscription)
+const task=new TaskController(Video)
 
 router
     .post('/', controller.create.bind(controller))
