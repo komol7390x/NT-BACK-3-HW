@@ -6,6 +6,16 @@ export class FullController {
     }
     async create(req, res) {
         try {
+            const name = req.body.username
+            if (name) {
+                const existsName = await this.youtube.findOne({ username: name })
+                if (!existsName) {
+                    return res.status(404).json({
+                        statusCode: 404,
+                        message: `${existsName} already added`,
+                    })
+                }
+            }
             const result = await this.youtube.create(req.body);
             return res.status(201).json({
                 statusCode: 201,
@@ -65,6 +75,16 @@ export class FullController {
     }
     async updateById(req, res) {
         try {
+            const name = req.body.username
+            if (name) {
+                const existsName = await this.youtube.findOne({ username: name })
+                if (!existsName) {
+                    return res.status(404).json({
+                        statusCode: 404,
+                        message: `${existsName} already added`,
+                    })
+                }
+            }
             const id = req.params.id
             if (!isValidObjectId(id)) {
                 return res.status(400).json({
