@@ -9,6 +9,7 @@ import routerVideos from './routers/videos.route.js';
 
 import { connectDB } from './database/connect.databasa.js';
 config()
+// console.log(process.env.NODE_ENV);
 
 await connectDB()
 const server = express();

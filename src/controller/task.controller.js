@@ -1,12 +1,10 @@
+import {Comment,Subscription,Video} from '../modules/index.js'
 export class TaskController {
-    constructor(toTask) {
-        this.toTask = toTask
-    }
     // ---------------------------------------------------------------
     // TASK-1
     async getVideoCommentsStats() {
         try {
-            const result = await this.toTask.aggregate([
+            const result = await Comment.aggregate([
                 {
                     $lookup: {
                         from: 'comments',
@@ -36,7 +34,7 @@ export class TaskController {
         }
     } async getVideoCommentsStats(req, res) {
         try {
-            const result = await this.toTask.aggregate([
+            const result = await Subscription.aggregate([
                 {
                     $lookup: {
                         from: 'comments',
@@ -70,7 +68,7 @@ export class TaskController {
     // TASK-2
     async getTopFollowedUsers() {
         try {
-            const result = await this.toTask.aggregate([
+            const result = await Video.aggregate([
                 {
                     $group: {
                         _id: "$followee_id",
