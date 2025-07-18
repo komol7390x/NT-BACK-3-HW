@@ -1,18 +1,12 @@
-import { Author } from '../modules/author.schema.js'
 import { isValidObjectId } from 'mongoose'
 
-export class AuthorController {
-    async createAuthor(req, res) {
+export class FullController {
+    constructor(youtube) {
+        this.youtube = youtube
+    }
+    async create(req, res) {
         try {
-            const nameAuthor = req.body.name
-            const existAuthor = await Author.findOne({ name: nameAuthor });
-            if (existAuthor) {
-                return res.status(409).json({
-                    statusCode: 409,
-                    message: `this ${nameAuthor} already added Author`
-                })
-            }
-            const result = await Author.create(req.body);
+            const result = await this.youtube.create(req.body);
             return res.status(201).json({
                 statusCode: 201,
                 message: 'success',
@@ -25,9 +19,10 @@ export class AuthorController {
             })
         }
     }
-    async getAllAuthor(_, res) {
+
+    async getAll(_, res) {
         try {
-            const result = await Author.find();
+            const result = await this.youtube.find()
             return res.status(200).json({
                 statusCode: 200,
                 message: 'success',
@@ -40,7 +35,7 @@ export class AuthorController {
             })
         }
     }
-    async getAuthorById(req, res) {
+    async getById(req, res) {
         try {
             const id = req.params.id
             if (!isValidObjectId(id)) {
@@ -49,7 +44,7 @@ export class AuthorController {
                     message: 'invalid ObjectID'
                 })
             }
-            const findId = await Author.findById(id);
+            const findId = await this.youtube.findById(id);
             if (!findId) {
                 return res.status(404).json({
                     statusCode: 404,
@@ -68,16 +63,8 @@ export class AuthorController {
             })
         }
     }
-    async updateAuthor(req, res) {
+    async updateById(req, res) {
         try {
-            const nameAuthor = req.body.name
-            const existAuthor = await Author.findOne({ name: nameAuthor });
-            if (existAuthor) {
-                return res.status(409).json({
-                    statusCode: 409,
-                    message: `this ${nameAuthor} already added Author`
-                })
-            }
             const id = req.params.id
             if (!isValidObjectId(id)) {
                 return res.status(400).json({
@@ -85,14 +72,14 @@ export class AuthorController {
                     message: 'invalid ObjectID'
                 })
             }
-            const findId = await Author.findById(id);
+            const findId = await this.youtube.findById(id);
             if (!findId) {
                 return res.status(404).json({
                     statusCode: 404,
                     message: `not found this user :( ID:${id}`
                 })
             }
-            const result = await Author.findByIdAndUpdate(id, req.body)
+            const result = await this.youtube.findByIdAndUpdate(id, req.body)
             return res.status(200).json({
                 statusCode: 200,
                 message: 'success',
@@ -105,7 +92,7 @@ export class AuthorController {
             })
         }
     }
-    async deleteAuthor(req, res) {
+    async deleteById(req, res) {
         try {
             const id = req.params.id
             if (!isValidObjectId(id)) {
@@ -114,14 +101,14 @@ export class AuthorController {
                     message: 'invalid ObjectID'
                 })
             }
-            const findId = await Author.findById(id);
+            const findId = await this.youtube.findById(id);
             if (!findId) {
                 return res.status(404).json({
                     statusCode: 404,
                     message: `not found this user :( ID:${id}`
                 })
             }
-            await Author.findByIdAndDelete(id)
+            await this.youtube.findByIdAndDelete(id)
             return res.status(200).json({
                 statusCode: 200,
                 message: 'success',
@@ -135,3 +122,4 @@ export class AuthorController {
         }
     }
 }
+
