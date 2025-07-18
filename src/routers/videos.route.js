@@ -1,15 +1,15 @@
 import { Router } from 'express'
-import { FullController} from '../controller/index.js'
-import { Video } from '../modules/index.js'
+import { FullController,TaskController} from '../controller/index.js'
+import { Video ,Subscription} from '../modules/index.js'
 
 const router = Router()
 const controller = new FullController(Video)
+const task=new TaskController(Subscription)
 
 router
     .post('/', controller.create.bind(controller))
     .get('/', controller.getAll.bind(controller))
 
-    .get('/videocomments',task.getVideoCommentsStats.bind(task))
     .get('/popularcategories',task.getPopularCategories.bind(task))
 
     .get('/:id', controller.getById.bind(controller))

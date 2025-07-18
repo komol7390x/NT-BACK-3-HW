@@ -34,7 +34,38 @@ export class TaskController {
                 message: error.message || 'Internal server error'
             })
         }
+    } async getVideoCommentsStats(req, res) {
+        try {
+            const result = await this.toTask.aggregate([
+                {
+                    $lookup: {
+                        from: 'comments',
+                        localField: '_id',
+                        foreignField: 'video_id',
+                        as: 'comments'
+                    }
+                },
+                {
+                    $project: {
+                        title: 1,
+                        commentCount: { $size: '$comments' },
+                        avgLikes: { $avg: '$comments.likes' }
+                    }
+                }
+            ]);
+            return res.status(201).json({
+                statusCode: 201,
+                message: 'success',
+                data: result
+            });
+        } catch (error) {
+            return res.status(500).json({
+                statusCode: 500,
+                message: error.message || 'Internal server error'
+            });
+        }
     }
+
     // ---------------------------------------------------------------
     // TASK-2
     async getTopFollowedUsers() {
@@ -42,27 +73,28 @@ export class TaskController {
             const result = await this.toTask.aggregate([
                 {
                     $group: {
-                        _id: '$followee_id',
+                        _id: "$followee_id",
                         followers: { $sum: 1 }
                     }
                 },
-                { $sort: { followers: -1 } },
-                { $limit: 5 },
                 {
                     $lookup: {
-                        from: 'users',
-                        localField: '_id',
-                        foreignField: '_id',
-                        as: 'user'
+                        from: "users",
+                        localField: "_id",
+                        foreignField: "_id",
+                        as: "user"
                     }
                 },
-                { $unwind: '$user' },
+                { $unwind: "$user" },
                 {
                     $project: {
-                        username: '$user.username',
+                        _id: 0,
+                        username: "$user.username",
                         followers: 1
                     }
-                }
+                },
+                { $sort: { followers: -1 } },
+                { $limit: 5 }
             ]);
             return res.status(201).json({
                 statusCode: 201,
@@ -83,25 +115,23 @@ export class TaskController {
             const result = await this.toTask.aggregate([
                 {
                     $group: {
-                        _id: '$category',
-                        views: { $sum: '$views' },
-                        likes: { $sum: '$likes' }
+                        _id: "$category",
+                        videoCount: { $sum: 1 },
+                        totalViews: { $sum: "$views" },
+                        totalLikes: { $sum: "$likes" }
                     }
                 },
-                {
-                    $addFields: {
-                        popularity: { $add: ['$views', '$likes'] }
-                    }
-                },
-                { $sort: { popularity: -1 } },
                 {
                     $project: {
-                        category: '$_id',
-                        views: 1,
-                        likes: 1,
-                        popularity: 1
+                        category: "$_id",
+                        videoCount: 1,
+                        totalViews: 1,
+                        totalLikes: 1,
+                        _id: 0
                     }
-                }
+                },
+                { $sort: { videoCount: -1 } },
+                { $limit: 5 }
             ]);
             return res.status(201).json({
                 statusCode: 201,

@@ -6,10 +6,11 @@ export class FullController {
     }
     async create(req, res) {
         try {
-            const name = req.body.username
-            if (name) {
-                const existsName = await this.youtube.findOne({ username: name })
-                if (!existsName) {
+            const {username}=req.body
+ 
+            if (username) {
+                const existsName = await this.youtube.findOne({ username: username})
+                if (existsName) {
                     return res.status(404).json({
                         statusCode: 404,
                         message: `${existsName} already added`,
