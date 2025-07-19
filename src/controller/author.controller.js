@@ -1,9 +1,17 @@
 import { Author } from '../modules/author.schema.js'
 import { isValidObjectId } from 'mongoose'
+import {authorValidator} from '../validators/index.js'
 
 export class AuthorController {
     async createAuthor(req, res) {
         try {
+            const {error}=authorValidator(req.body)                        
+            if(error){
+                return res.status(400).json({
+                    statusCode:400,
+                    message:`invalid validators: ${error.details[0]?.message}`
+                })
+            }
             const nameAuthor = req.body.name
             const existAuthor = await Author.findOne({ name: nameAuthor });
             if (existAuthor) {
@@ -17,7 +25,7 @@ export class AuthorController {
                 statusCode: 201,
                 message: 'success',
                 data: result
-            })
+            })            
         } catch (error) {
             return res.status(500).json({
                 statusCode: 500,
@@ -70,6 +78,13 @@ export class AuthorController {
     }
     async updateAuthor(req, res) {
         try {
+            const {error}=authorValidator(req.body)                        
+            if(error){
+                return res.status(400).json({
+                    statusCode:400,
+                    message:`invalid validators: ${error.details[0]?.message}`
+                })
+            }
             const nameAuthor = req.body.name
             const existAuthor = await Author.findOne({ name: nameAuthor });
             if (existAuthor) {

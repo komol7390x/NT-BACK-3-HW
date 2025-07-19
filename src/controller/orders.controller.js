@@ -1,9 +1,17 @@
 import { Orders } from '../modules/orders.schema.js'
 import { isValidObjectId } from 'mongoose'
+import { orderValidator } from '../validators/index.js'
 
 export class OrdersController {
     async createOrders(req, res) {
         try {
+            const { error } = orderValidator(req.body)
+            if (error) {
+                return res.status(400).json({
+                    statusCode: 400,
+                    message: `invalid validators: ${error.details[0]?.message}`
+                })
+            }
             const result = await Orders.create(req.body);
             return res.status(201).json({
                 statusCode: 201,
@@ -82,6 +90,13 @@ export class OrdersController {
     }
     async updateOrders(req, res) {
         try {
+            const { error } = orderValidator(req.body)
+            if (error) {
+                return res.status(400).json({
+                    statusCode: 400,
+                    message: `invalid validators: ${error.details[0]?.message}`
+                })
+            }
             const id = req.params.id
             if (!isValidObjectId(id)) {
                 return res.status(400).json({

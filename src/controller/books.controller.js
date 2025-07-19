@@ -1,9 +1,17 @@
 import { Books } from '../modules/books.schema.js'
 import { isValidObjectId } from 'mongoose'
+import { bookValidator } from '../validators/index.js'
 
 export class BooksController {
     async createBooks(req, res) {
         try {
+            const { error } = bookValidator(req.body)
+            if (error) {
+                return res.status(400).json({
+                    statusCode: 400,
+                    message: `invalid validators: ${error.details[0]?.message}`
+                })
+            }
             const nameBooks = req.body.title
             const existBooks = await Books.findOne({ title: nameBooks });
             if (existBooks) {
@@ -70,6 +78,13 @@ export class BooksController {
     }
     async updateBooks(req, res) {
         try {
+            const { error } = bookValidator(req.body)
+            if (error) {
+                return res.status(400).json({
+                    statusCode: 400,
+                    message: `invalid validators: ${error.details[0]?.message}`
+                })
+            }
             const nameBooks = req.body.title
             const existBooks = await Books.findOne({ title: nameBooks });
             if (existBooks) {
