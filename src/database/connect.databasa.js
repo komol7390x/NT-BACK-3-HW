@@ -5,7 +5,7 @@ config()
 export const connectDB = async () => {
     try {
         await connect(process.env.MONGOOSE_DB)
-        // console.clear()
+        console.clear()
         console.log('Server is connect to Database');
     } catch (error) {
         console.log('error to database', error.message);

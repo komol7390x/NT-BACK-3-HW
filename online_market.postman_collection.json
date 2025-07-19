@@ -1,0 +1,476 @@
+{
+	"info": {
+		"_postman_id": "f9db12bf-aa75-4ef4-82de-714e5aa1133f",
+		"name": "online_market",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "46127988"
+	},
+	"item": [
+		{
+			"name": "author",
+			"item": [
+				{
+					"name": "getAll",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\":\"Abdula Qodriy\",\n    \"country\":\"Uzbekiston\",\n    \"age\":44\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3040/author",
+							"host": [
+								"localhost"
+							],
+							"port": "3040",
+							"path": [
+								"author"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\":\"Cholpon\",\n    \"country\":\"Uzbekiston\",\n    \"age\":40\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3040/author",
+							"host": [
+								"localhost"
+							],
+							"port": "3040",
+							"path": [
+								"author"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Mevala\",\n    \"desc\": \"Turli xil yangi va quritilgan mevala\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3040/author",
+							"host": [
+								"localhost"
+							],
+							"port": "3040",
+							"path": [
+								"author"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getById",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3040/author/6877dadae8df69f5d70e8cf2",
+							"host": [
+								"localhost"
+							],
+							"port": "3040",
+							"path": [
+								"author",
+								"6877dadae8df69f5d70e8cf2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:3040/author",
+							"host": [
+								"localhost"
+							],
+							"port": "3040",
+							"path": [
+								"author"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "books",
+			"item": [
+				{
+					"name": "getAll",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3040/books",
+							"host": [
+								"localhost"
+							],
+							"port": "3040",
+							"path": [
+								"books"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\":\"Kecha va kunduz\",\n    \"authorID\":\"6877e1e6ddcbe3e51f76595a\",\n    \"genre\":\"Poeta\",\n    \"price\":35000,\n    \"sold\":400,\n    \"stock\":150\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3040/books",
+							"host": [
+								"localhost"
+							],
+							"port": "3040",
+							"path": [
+								"books"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getById",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3040/books",
+							"host": [
+								"localhost"
+							],
+							"port": "3040",
+							"path": [
+								"books"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Iphone 16 Pro maxi\",\n    \"price\": 1100,\n    \"desc\": \"Yangi Iphone Apple maxsuloti\",\n    \"categoryID\": \"6875e72e8888699812c52921\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3040/books",
+							"host": [
+								"localhost"
+							],
+							"port": "3040",
+							"path": [
+								"books"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:3040/books",
+							"host": [
+								"localhost"
+							],
+							"port": "3040",
+							"path": [
+								"books"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "orders",
+			"item": [
+				{
+					"name": "getAll",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3040/orders",
+							"host": [
+								"localhost"
+							],
+							"port": "3040",
+							"path": [
+								"orders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n   \"user_id\":\"6\",\n   \"bookID\":\"6877e231ddcbe3e51f765961\",\n   \"quantity\":20,\n   \"total_price\":700000\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3040/orders",
+							"host": [
+								"localhost"
+							],
+							"port": "3040",
+							"path": [
+								"orders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getById",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3040/orders",
+							"host": [
+								"localhost"
+							],
+							"port": "3040",
+							"path": [
+								"orders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Samsung Galaxy S25 new\",\n    \"desc\":\"Elektrinika Samsung ni Galaxy S25\",\n    \"productID\":\"6875ef31548d4ebb47a14b46\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3040/orders",
+							"host": [
+								"localhost"
+							],
+							"port": "3040",
+							"path": [
+								"orders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:3040/orders",
+							"host": [
+								"localhost"
+							],
+							"port": "3040",
+							"path": [
+								"orders"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Task",
+			"item": [
+				{
+					"name": "Task-1",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3040/books/getauthorbook",
+							"host": [
+								"localhost"
+							],
+							"port": "3040",
+							"path": [
+								"books",
+								"getauthorbook"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Task-2",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3040/books/maxsoldgenre",
+							"host": [
+								"localhost"
+							],
+							"port": "3040",
+							"path": [
+								"books",
+								"maxsoldgenre"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Task-3",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3040/books/bestseller",
+							"host": [
+								"localhost"
+							],
+							"port": "3040",
+							"path": [
+								"books",
+								"bestseller"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Task-4",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3040/books/totalgenre",
+							"host": [
+								"localhost"
+							],
+							"port": "3040",
+							"path": [
+								"books",
+								"totalgenre"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

@@ -1,12 +1,18 @@
+import { Author } from '../modules/author.schema.js'
 import { isValidObjectId } from 'mongoose'
 
-export class FullController {
-    constructor(youtube) {
-        this.youtube = youtube
-    }
-    async create(req, res) {
+export class AuthorController {
+    async createAuthor(req, res) {
         try {
-            const result = await this.youtube.create(req.body);
+            const nameAuthor = req.body.name
+            const existAuthor = await Author.findOne({ name: nameAuthor });
+            if (existAuthor) {
+                return res.status(409).json({
+                    statusCode: 409,
+                    message: `this ${nameAuthor} already added Author`
+                })
+            }
+            const result = await Author.create(req.body);
             return res.status(201).json({
                 statusCode: 201,
                 message: 'success',
@@ -19,10 +25,9 @@ export class FullController {
             })
         }
     }
-
-    async getAll(_, res) {
+    async getAllAuthor(_, res) {
         try {
-            const result = await this.youtube.find()
+            const result = await Author.find();
             return res.status(200).json({
                 statusCode: 200,
                 message: 'success',
@@ -35,7 +40,7 @@ export class FullController {
             })
         }
     }
-    async getById(req, res) {
+    async getAuthorById(req, res) {
         try {
             const id = req.params.id
             if (!isValidObjectId(id)) {
@@ -44,7 +49,7 @@ export class FullController {
                     message: 'invalid ObjectID'
                 })
             }
-            const findId = await this.youtube.findById(id);
+            const findId = await Author.findById(id);
             if (!findId) {
                 return res.status(404).json({
                     statusCode: 404,
@@ -63,8 +68,16 @@ export class FullController {
             })
         }
     }
-    async updateById(req, res) {
+    async updateAuthor(req, res) {
         try {
+            const nameAuthor = req.body.name
+            const existAuthor = await Author.findOne({ name: nameAuthor });
+            if (existAuthor) {
+                return res.status(409).json({
+                    statusCode: 409,
+                    message: `this ${nameAuthor} already added Author`
+                })
+            }
             const id = req.params.id
             if (!isValidObjectId(id)) {
                 return res.status(400).json({
@@ -72,14 +85,14 @@ export class FullController {
                     message: 'invalid ObjectID'
                 })
             }
-            const findId = await this.youtube.findById(id);
+            const findId = await Author.findById(id);
             if (!findId) {
                 return res.status(404).json({
                     statusCode: 404,
                     message: `not found this user :( ID:${id}`
                 })
             }
-            const result = await this.youtube.findByIdAndUpdate(id, req.body)
+            const result = await Author.findByIdAndUpdate(id, req.body)
             return res.status(200).json({
                 statusCode: 200,
                 message: 'success',
@@ -92,7 +105,7 @@ export class FullController {
             })
         }
     }
-    async deleteById(req, res) {
+    async deleteAuthor(req, res) {
         try {
             const id = req.params.id
             if (!isValidObjectId(id)) {
@@ -101,14 +114,14 @@ export class FullController {
                     message: 'invalid ObjectID'
                 })
             }
-            const findId = await this.youtube.findById(id);
+            const findId = await Author.findById(id);
             if (!findId) {
                 return res.status(404).json({
                     statusCode: 404,
                     message: `not found this user :( ID:${id}`
                 })
             }
-            await this.youtube.findByIdAndDelete(id)
+            await Author.findByIdAndDelete(id)
             return res.status(200).json({
                 statusCode: 200,
                 message: 'success',
@@ -122,4 +135,3 @@ export class FullController {
         }
     }
 }
-
