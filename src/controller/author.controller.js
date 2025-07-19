@@ -1,11 +1,11 @@
 import { Author } from '../modules/author.schema.js'
 import { isValidObjectId } from 'mongoose'
-import {authorValidator} from '../validators/index.js'
+import {AuthorValidator} from '../validators/index.js'
 
 export class AuthorController {
     async createAuthor(req, res) {
         try {
-            const {error}=authorValidator(req.body)                        
+            const {error}=AuthorValidator.create(req.body)                        
             if(error){
                 return res.status(400).json({
                     statusCode:400,
@@ -78,7 +78,7 @@ export class AuthorController {
     }
     async updateAuthor(req, res) {
         try {
-            const {error}=authorValidator(req.body)                        
+            const {error}=AuthorValidator.update(req.body)                        
             if(error){
                 return res.status(400).json({
                     statusCode:400,

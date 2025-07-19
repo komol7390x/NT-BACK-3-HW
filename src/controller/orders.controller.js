@@ -1,11 +1,11 @@
 import { Orders } from '../modules/orders.schema.js'
 import { isValidObjectId } from 'mongoose'
-import { orderValidator } from '../validators/index.js'
+import { OrderValidator } from '../validators/index.js'
 
 export class OrdersController {
     async createOrders(req, res) {
         try {
-            const { error } = orderValidator(req.body)
+            const { error } = OrderValidator.create(req.body)
             if (error) {
                 return res.status(400).json({
                     statusCode: 400,
@@ -90,7 +90,7 @@ export class OrdersController {
     }
     async updateOrders(req, res) {
         try {
-            const { error } = orderValidator(req.body)
+            const { error } = OrderValidator.update(req.body)
             if (error) {
                 return res.status(400).json({
                     statusCode: 400,
