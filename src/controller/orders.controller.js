@@ -1,4 +1,4 @@
-import { Orders } from '../modules/orders.schema.js'
+import { Orders } from '../model/index.js'
 import { isValidObjectId } from 'mongoose'
 import { OrderValidator } from '../validators/index.js'
 

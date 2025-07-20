@@ -1,15 +1,15 @@
-import { Author } from '../modules/author.schema.js'
+import { Author } from '../model/index.js'
 import { isValidObjectId } from 'mongoose'
-import {AuthorValidator} from '../validators/index.js'
+import { AuthorValidator } from '../validators/index.js'
 
 export class AuthorController {
     async createAuthor(req, res) {
         try {
-            const {error}=AuthorValidator.create(req.body)                        
-            if(error){
+            const { error } = AuthorValidator.create(req.body)
+            if (error) {
                 return res.status(400).json({
-                    statusCode:400,
-                    message:`invalid validators: ${error.details[0]?.message}`
+                    statusCode: 400,
+                    message: `invalid validators: ${error.details[0]?.message}`
                 })
             }
             const nameAuthor = req.body.name
@@ -25,7 +25,7 @@ export class AuthorController {
                 statusCode: 201,
                 message: 'success',
                 data: result
-            })            
+            })
         } catch (error) {
             return res.status(500).json({
                 statusCode: 500,
@@ -78,11 +78,11 @@ export class AuthorController {
     }
     async updateAuthor(req, res) {
         try {
-            const {error}=AuthorValidator.update(req.body)                        
-            if(error){
+            const { error } = AuthorValidator.update(req.body)
+            if (error) {
                 return res.status(400).json({
-                    statusCode:400,
-                    message:`invalid validators: ${error.details[0]?.message}`
+                    statusCode: 400,
+                    message: `invalid validators: ${error.details[0]?.message}`
                 })
             }
             const nameAuthor = req.body.name

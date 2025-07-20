@@ -1,4 +1,4 @@
-import { Books } from '../modules/books.schema.js'
+import { Books } from '../model/index.js'
 import { isValidObjectId } from 'mongoose'
 import { BookValidator } from '../validators/index.js'
 
