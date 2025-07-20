@@ -1,9 +1,10 @@
-import {Comment,Subscription,Video} from '../modules/index.js'
+import { Comment, Subscription, Video } from '../modules/index.js'
 export class TaskController {
     // ---------------------------------------------------------------
     // TASK-1
-    async getVideoCommentsStats() {
+    async getVideoCommentsStats(req, res) {
         try {
+            res.send(111)
             const result = await Comment.aggregate([
                 {
                     $lookup: {
