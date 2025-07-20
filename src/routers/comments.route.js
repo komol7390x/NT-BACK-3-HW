@@ -9,12 +9,12 @@ const task = new TaskController()
 
 
 router
-    .get('/videocomments', task.getVideoCommentsStats) //TASK-1    
-// .post('/', controller.create.bind(controller))
-// .get('/', controller.getAll.bind(controller))
+    .get('/videocomments', task.getTopBloger) //TASK-1    
+    .post('/', controller.create.bind(controller))
+    .get('/', controller.getAll.bind(controller))
 
-// .get('/:id', controller.getById.bind(controller))
-// .patch('/:id', controller.updateById.bind(controller))
-// .delete('/:id', controller.deleteById.bind(controller))
+    .get('/:id', controller.getById.bind(controller))
+    .patch('/:id', controller.updateById.bind(controller))
+    .delete('/:id', controller.deleteById.bind(controller))
 
 export default router
