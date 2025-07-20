@@ -1,8 +1,8 @@
-import { Comment, Subscription, Video } from '../modules/index.js'
+import { Comment, Subscription, Video, User } from '../modules/index.js'
 export class TaskController {
     // ---------------------------------------------------------------
     // TASK-1
-    async getTopBloger(req, res) {
+    async getTopBloger(_, res) {
         try {
             const result = await Video.aggregate([
                 {
@@ -14,20 +14,14 @@ export class TaskController {
                     }
                 },
                 {
-                    $addFields: {
-                        commentCount: { $size: '$comments' },
-                        commentLikes: { $sum: '$comments.likes' }
-                    }
-                },
-                {
                     $project: {
                         title: 1,
-                        commentCount: 1,
+                        commentCount: { $size: '$comments' },
                         avgCommentLikes: {
                             $cond: [
-                                { $eq: ['$commentCount', 0] },
-                                0,
-                                { $divide: ['$commentLikes', '$commentCount'] }
+                                { $gt: [{ $size: '$comments' }, 0] },
+                                { $avg: '$comments.likes' },
+                                0
                             ]
                         }
                     }
@@ -47,13 +41,21 @@ export class TaskController {
     }
     // ---------------------------------------------------------------
     // TASK-2
-    async getTopFollowedUsers(req, res) {
+    async getTopFollowedUsers(_, res) {
         try {
-            const result = await Subscription.aggregate([
+
+            const result = await User.aggregate([
                 {
-                    $group: {
-                        _id: '$followee_id',
-                        followersCount: { $sum: 1 }
+                    $lookup: {
+                        from: "subscriptions",
+                        localField: "_id",
+                        foreignField: "followee_id",
+                        as: "followers"
+                    }
+                },
+                {
+                    $addFields: {
+                        followersCount: { $size: "$followers" }
                     }
                 },
                 {
@@ -63,32 +65,13 @@ export class TaskController {
                     $limit: 5
                 },
                 {
-                    $lookup: {
-                        from: 'users',
-                        localField: '_id',
-                        foreignField: '_id',
-                        as: 'user'
-                    }
-                },
-                {
-                    $unwind: {
-                        path: '$user',
-                        preserveNullAndEmptyArrays: false
-                    }
-                },
-                {
                     $project: {
-                        _id: 0,
-                        userId: '$_id',
-                        username: '$user.username',
+                        _id: 1,
+                        username: 1,
                         followersCount: 1
                     }
                 }
             ]);
-            console.log(db); // 'users' chiqishi kerak
-
-
-
             return res.status(200).json({
                 statusCode: 200,
                 message: 'Top followed users',
@@ -105,9 +88,9 @@ export class TaskController {
 
     // ---------------------------------------------------------------
     // TASK-3
-    async getPopularCategories(req, res) {
+    async getPopularCategories(_, res) {
         try {
-            const result = await this.toTask.aggregate([
+            const result = await Video.aggregate([
                 {
                     $group: {
                         _id: "$category",
@@ -126,7 +109,7 @@ export class TaskController {
                     }
                 },
                 { $sort: { videoCount: -1 } },
-                { $limit: 5 }
+                { $limit: 3 }
             ]);
             return res.status(201).json({
                 statusCode: 201,
