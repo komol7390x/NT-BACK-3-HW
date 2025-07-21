@@ -1,4 +1,4 @@
-import controller from '../controller/admin.controller.js'
+import controller from '../controller/client.controller.js'
 import { Router } from 'express'
 
 const router = Router()

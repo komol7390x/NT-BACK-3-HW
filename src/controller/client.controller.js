@@ -1,15 +1,15 @@
 import { BaseController } from './base.controller.js';
-import { Admin } from '../models/admin.model.js';
+import { Client } from '../models/client.model.js';
 import Crypt from '../utils/Crypt.js'
-class AdminController extends BaseController {
+class ClientController extends BaseController {
     constructor() {
-        super(Admin)
+        super(Client)
     }
-    createAdmin = async (req, res) => {
+    createClient = async (req, res) => {
         try {
             const { username, email, password } = req.body
-            const existUsername = await Admin.findOne({ username })
-            const existEmail = await Admin.findOne({ email })
+            const existUsername = await Client.findOne({ username })
+            const existEmail = await Client.findOne({ email })
             if (existUsername || existEmail) {
                 return res.status(409).json({
                     statusCode: 409,
@@ -17,16 +17,16 @@ class AdminController extends BaseController {
                 })
             }
             const hashPassword = await Crypt.encrypt(password);
-            const resultAdmin = {
+            const resultClient = {
                 username,
                 email,
                 hashPassword
             }
-            await Admin.create(resultAdmin)
+            await Client.create(resultClient)
             return res.status(201).json({
                 statusCode: 201,
                 message: 'success',
-                data: resultAdmin
+                data: resultClient
             })
         } catch (error) {
             return res.status(500).json({
@@ -36,17 +36,18 @@ class AdminController extends BaseController {
         }
     }
 
-    signInAdmin = async (req, res) => {
+    signInClient = async (req, res) => {
         try {
             const { username, password } = req.body
-            const existUsername = await Admin.findOne({ username })
+            const existUsername = await Client.findOne({ username })
             if (!existUsername) {
                 return res.status(409).json({
                     statusCode: 409,
                     message: 'Email or password incorrect'
                 })
             }
-            const decodePassword = await Crypt.decrypt(password, existUsername.hashPassword)
+            const decodePassword = await Crypt
+                .decrypt(password, existUsername.hashPassword)
             if (!decodePassword) {
                 return res.status(409).json({
                     statusCode: 409,
@@ -68,4 +69,4 @@ class AdminController extends BaseController {
 
 }
 
-export default new AdminController();
+export default new ClientController();

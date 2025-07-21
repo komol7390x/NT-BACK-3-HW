@@ -23,7 +23,7 @@ export class BaseController {
 
     getAll = async (_, res) => {
         try {
-            const data = this.model.find()
+            const data = await this.model.find()
             return res.status(200).json({
                 statusCode: 200,
                 message: 'success',
@@ -40,7 +40,7 @@ export class BaseController {
     getByID = async (req, res) => {
         try {
             const id = req.params.id
-            const checkUser = await checkID(id, res);
+            const checkUser = await this.checkByID(id, res);
             return res.status(200).json({
                 statusCode: 200,
                 message: 'success',
@@ -57,8 +57,11 @@ export class BaseController {
     update = async (req, res) => {
         try {
             const id = req.params.id
-            await checkID(id, res);
-            const updateUser = await this.model.findByIdAndUpdate(id, req.params)
+            await this.checkByID(id, res);
+            const updateUser = await this.model
+                .findByIdAndUpdate(id, req.body, { new: true })
+            console.log(updateUser);
+
             return res.status(200).json({
                 statusCode: 200,
                 message: 'success',
@@ -75,7 +78,7 @@ export class BaseController {
     delete = async (req, res) => {
         try {
             const id = req.params.id
-            await checkID(id, res);
+            await this.checkByID(id, res);
             const updateUser = await this.model.findByIdAndDelete(id, req.params)
             return res.status(200).json({
                 statusCode: 200,
@@ -89,14 +92,14 @@ export class BaseController {
             })
         }
     }
-    static checkID = async (id, res) => {
+    checkByID = async (id, res) => {
         if (!isValidObjectId(id)) {
             return res.status(400).json({
                 statusCode: 400,
                 message: 'Invalid ObjectId'
             });
         }
-        const data = this.model.findById(id);
+        const data = await this.model.findById(id);
         if (!data) {
             return res.status(404).json({
                 statusCode: 404,

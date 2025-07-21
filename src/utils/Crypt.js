@@ -1,10 +1,10 @@
-import { compare, genSalt, hash } from 'bcrypt'
+import { compare, hash, genSalt } from 'bcrypt'
 
 class Crypt {
     async encrypt(data) {
-        const salt = await genSalt(7)
-        const hashPass = await hash(data, salt)
-        return hashPass
+        const saltRounds = 10
+        const salt = await genSalt(saltRounds)
+        return await hash(data, salt)
     }
     async decrypt(data, encryptData) {
         return compare(data, encryptData)
