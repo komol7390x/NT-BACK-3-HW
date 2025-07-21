@@ -7,7 +7,7 @@ class ClientController extends BaseController {
     }
     createClient = async (req, res) => {
         try {
-            const { username, email, password } = req.body
+            const { username, email, password, isActive } = req.body
             const existUsername = await Client.findOne({ username })
             const existEmail = await Client.findOne({ email })
             if (existUsername || existEmail) {
@@ -20,7 +20,8 @@ class ClientController extends BaseController {
             const resultClient = {
                 username,
                 email,
-                hashPassword
+                hashPassword,
+                isActive
             }
             await Client.create(resultClient)
             return res.status(201).json({

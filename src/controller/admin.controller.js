@@ -7,7 +7,7 @@ class AdminController extends BaseController {
     }
     createAdmin = async (req, res) => {
         try {
-            const { username, email, password } = req.body
+            const { username, email, password, isActive } = req.body
             const existUsername = await Admin.findOne({ username })
             const existEmail = await Admin.findOne({ email })
             if (existUsername || existEmail) {
@@ -20,7 +20,8 @@ class AdminController extends BaseController {
             const resultAdmin = {
                 username,
                 email,
-                hashPassword
+                hashPassword,
+                isActive
             }
             await Admin.create(resultAdmin)
             return res.status(201).json({

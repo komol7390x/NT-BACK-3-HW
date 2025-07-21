@@ -4,8 +4,8 @@ import { Router } from 'express'
 const router = Router()
 
 router
-    .post('/', controller.createAdmin)
-    .post('/login', controller.signInAdmin)
+    .post('/', controller.createClient)
+    .post('/login', controller.signInClient)
     .get('/', controller.getAll)
     .get('/:id', controller.getByID)
     .patch('/:id', controller.update)
