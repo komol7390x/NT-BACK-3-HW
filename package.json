@@ -5,7 +5,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "dev": "nodemon src/server-2.js"
+    "start": "nodemon src/server-3.js"
   },
   "repository": {
     "type": "git",
@@ -21,6 +21,7 @@
   "dependencies": {
     "dotenv": "^17.2.0",
     "express": "^5.1.0",
+    "joi": "^17.13.3",
     "mongoose": "^8.16.3"
   },
   "devDependencies": {

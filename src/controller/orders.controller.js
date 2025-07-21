@@ -1,12 +1,18 @@
+import { Orders } from '../model/index.js'
 import { isValidObjectId } from 'mongoose'
+import { OrderValidator } from '../validators/index.js'
 
-export class FullController {
-    constructor(youtube) {
-        this.youtube = youtube
-    }
-    async create(req, res) {
+export class OrdersController {
+    async createOrders(req, res) {
         try {
-            const result = await this.youtube.create(req.body);
+            const { error } = OrderValidator.create(req.body)
+            if (error) {
+                return res.status(400).json({
+                    statusCode: 400,
+                    message: `invalid validators: ${error.details[0]?.message}`
+                })
+            }
+            const result = await Orders.create(req.body);
             return res.status(201).json({
                 statusCode: 201,
                 message: 'success',
@@ -20,9 +26,28 @@ export class FullController {
         }
     }
 
-    async getAll(_, res) {
+    async getAllOrders(_, res) {
         try {
-            const result = await this.youtube.find()
+            const result = await Orders.aggregate([
+                {
+                    $lookup: {
+                        from: 'books',
+                        localField: 'bookID',
+                        foreignField: '_id',
+                        as: 'book'
+                    }
+                },
+                { $unwind: '$book' },
+                {
+                    $lookup: {
+                        from: 'authors',
+                        localField: 'book.authorID',
+                        foreignField: '_id',
+                        as: 'author'
+                    }
+                },
+                { $unwind: '$author' },
+            ]);
             return res.status(200).json({
                 statusCode: 200,
                 message: 'success',
@@ -35,7 +60,7 @@ export class FullController {
             })
         }
     }
-    async getById(req, res) {
+    async getOrdersById(req, res) {
         try {
             const id = req.params.id
             if (!isValidObjectId(id)) {
@@ -44,7 +69,7 @@ export class FullController {
                     message: 'invalid ObjectID'
                 })
             }
-            const findId = await this.youtube.findById(id);
+            const findId = await Orders.findById(id);
             if (!findId) {
                 return res.status(404).json({
                     statusCode: 404,
@@ -63,8 +88,15 @@ export class FullController {
             })
         }
     }
-    async updateById(req, res) {
+    async updateOrders(req, res) {
         try {
+            const { error } = OrderValidator.update(req.body)
+            if (error) {
+                return res.status(400).json({
+                    statusCode: 400,
+                    message: `invalid validators: ${error.details[0]?.message}`
+                })
+            }
             const id = req.params.id
             if (!isValidObjectId(id)) {
                 return res.status(400).json({
@@ -72,14 +104,14 @@ export class FullController {
                     message: 'invalid ObjectID'
                 })
             }
-            const findId = await this.youtube.findById(id);
+            const findId = await Orders.findById(id);
             if (!findId) {
                 return res.status(404).json({
                     statusCode: 404,
                     message: `not found this user :( ID:${id}`
                 })
             }
-            const result = await this.youtube.findByIdAndUpdate(id, req.body)
+            const result = await Orders.findByIdAndUpdate(id, req.body)
             return res.status(200).json({
                 statusCode: 200,
                 message: 'success',
@@ -92,7 +124,7 @@ export class FullController {
             })
         }
     }
-    async deleteById(req, res) {
+    async deleteOrders(req, res) {
         try {
             const id = req.params.id
             if (!isValidObjectId(id)) {
@@ -101,14 +133,14 @@ export class FullController {
                     message: 'invalid ObjectID'
                 })
             }
-            const findId = await this.youtube.findById(id);
+            const findId = await Orders.findById(id);
             if (!findId) {
                 return res.status(404).json({
                     statusCode: 404,
                     message: `not found this user :( ID:${id}`
                 })
             }
-            await this.youtube.findByIdAndDelete(id)
+            await Orders.findByIdAndDelete(id)
             return res.status(200).json({
                 statusCode: 200,
                 message: 'success',
