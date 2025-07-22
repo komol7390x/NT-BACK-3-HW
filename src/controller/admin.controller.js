@@ -1,5 +1,7 @@
 import { BaseController } from './base.controller.js';
 import { Admin } from '../models/admin.model.js';
+import { configServer } from '../config/server.config.js';
+
 import token from '../utils/Token.js'
 import Crypt from '../utils/Crypt.js'
 import validat from '../validation/admin.validat.js'
@@ -51,6 +53,7 @@ class AdminController extends BaseController {
 
     signInAdmin = async (req, res) => {
         try {
+            // Validatsiyani tekshirvoti
             const { error } = validat.signIn(req.body);
             if (error) {
                 return res.status(422).json({
@@ -58,6 +61,8 @@ class AdminController extends BaseController {
                     message: error.details[0]?.message ?? 'Error input Validate'
                 })
             }
+
+            // req kelgan username ni bor yo'qligini tekshirvoti
             const { username, password } = req.body
             const admin = await Admin.findOne({ username })
             if (!admin) {
@@ -66,6 +71,8 @@ class AdminController extends BaseController {
                     message: 'Email or password incorrect'
                 })
             }
+
+            //parolni decrypt qilyapti yani tog'ri ekanligini tekshirvoti
             const decodePassword = await Crypt.decrypt(password, admin.hashPassword)
             if (!decodePassword) {
                 return res.status(409).json({
@@ -73,15 +80,27 @@ class AdminController extends BaseController {
                     message: 'Email or password incorrect'
                 })
             }
+
+            //Token berib yuborlidgn infolrni tog'irlanvoti
             const payload = {
                 id: admin._id, role: admin.role, isActive: admin.isActive
             }
-            const accessToken = token.accessToken(payload)
-            const refreshToken = token.refreshToken(payload)
+
+            //Token olinvoti payload orqali
+            const accessToken = await token.accessToken(payload)
+            const refreshToken = await token.refreshToken(payload)
+
+            //cookie jo'natib yuborilyabdi refreshTokeni 
+            await token.writeCookie(res, 'refreshTokenAdmin', refreshToken, 30);
+
+            //Json fayl qilib token bilan user ma'lumotlarni berib yuborlyapti
             return res.status(200).json({
                 statusCode: 200,
                 message: 'success',
-                data: admin
+                data: {
+                    token: accessToken,
+                    admin
+                }
             })
         } catch (error) {
             return res.status(500).json({
@@ -91,6 +110,95 @@ class AdminController extends BaseController {
         }
     }
 
+    newToken = async (req, res) => {
+        try {
+            //refreshToken muddati tugagan bo'lsa va yangi olmoqchi bo'lsa
+            //refresh Token borligini tekshiryapti 
+            const refresh = req.cookies?.refreshToken
+            if (!refresh) {
+                return res.status(401).json({
+                    statusCode: 401,
+                    message: 'Refresh token expire'
+                })
+            }
+            //refresh Token verify qilyapti
+            const verifiedToken = token.varifyToken(refresh, configServer.TOKEN.REFRESH_TOKEN_KEY);
+            if (!verifiedToken) {
+                return res.status(401).json({
+                    statusCode: 401,
+                    message: 'Refresh token expire'
+                })
+            }
+            //token dagi user borligni tekshiryapti
+            const admin = await Admin.findById(verifiedToken.id);
+            if (!admin) {
+                return res.status(403).json({
+                    statusCode: 403,
+                    message: 'Forbiden user'
+                })
+            }
+            //yangi tokenga payload berilvoti
+            const payload = {
+                id: admin.id, role: admin.role, isActive: admin.isActive
+            }
+
+            const accessToken = await token.accessToken(payload)
+            return res.status(200).json({
+                statusCode: 200,
+                message: 'success',
+                date: {
+                    token: accessToken
+                }
+            })
+
+        } catch (error) {
+            return res.status(500).json({
+                statusCode: 500,
+                message: error.message || 'Invalid server error'
+            })
+        }
+    }
+    signOut = async (req, res) => {
+        try {
+            //log out cookie tozlash
+            //refresh Token borligini tekshiryapti 
+            const refresh = req.cookies?.refreshToken;
+            if (!refresh) {
+                return res.status(401).json({
+                    statusCode: 401,
+                    message: 'Refresh token expire'
+                })
+            }
+            //refresh Token verify qilyapti
+            const verifiedToken = token.varifyToken(refresh, configServer.TOKEN.REFRESH_TOKEN_KEY);
+            if (!verifiedToken) {
+                return res.status(401).json({
+                    statusCode: 401,
+                    message: 'Refresh token expire'
+                })
+            }
+            //token dagi user borligni tekshiryapti
+            const admin = await Admin.findById(verifiedToken.id);
+            if (!admin) {
+                return res.status(403).json({
+                    statusCode: 403,
+                    message: 'Forbiden user'
+                })
+            }
+            // token tozlab tashlaypti
+            res.clearCookie('refreshTokenAdmin')
+            return res.status(200).json({
+                statusCode: 200,
+                message: 'success',
+                date: {}
+            })
+        } catch (error) {
+            return res.status(500).json({
+                statusCode: 500,
+                message: error.message || 'Invalid server error'
+            })
+        }
+    }
 }
 
 export default new AdminController();
