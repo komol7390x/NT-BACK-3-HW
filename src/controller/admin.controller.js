@@ -17,10 +17,10 @@ class AdminController extends BaseController {
             if (error) {
                 return res.status(422).json({
                     statusCode: 422,
-                    message: error.details[0]?.message ?? 'Error input Validate'
+                    message: `Error validate ${error.details[0]?.message}` ?? 'Error input Validate'
                 })
             }
-            const { username, email, password, isActive } = req.body
+            const { username, email, password, isActive, phone } = req.body
             const existUsername = await Admin.findOne({ username })
             const existEmail = await Admin.findOne({ email })
             if (existUsername || existEmail) {
@@ -34,7 +34,8 @@ class AdminController extends BaseController {
                 username,
                 email,
                 hashPassword,
-                isActive
+                isActive,
+                phone
             }
             await Admin.create(resultAdmin)
             return res.status(201).json({
@@ -63,8 +64,8 @@ class AdminController extends BaseController {
             }
 
             // req kelgan username ni bor yo'qligini tekshirvoti
-            const { username, password } = req.body
-            const admin = await Admin.findOne({ username })
+            const { email, password } = req.body
+            const admin = await Admin.findOne({ email })
             if (!admin) {
                 return res.status(409).json({
                     statusCode: 409,
@@ -114,7 +115,7 @@ class AdminController extends BaseController {
         try {
             //refreshToken muddati tugagan bo'lsa va yangi olmoqchi bo'lsa
             //refresh Token borligini tekshiryapti 
-            const refresh = req.cookies?.refreshToken
+            const refresh = req.cookies?.refreshTokenAdmin
             if (!refresh) {
                 return res.status(401).json({
                     statusCode: 401,
@@ -122,7 +123,7 @@ class AdminController extends BaseController {
                 })
             }
             //refresh Token verify qilyapti
-            const verifiedToken = token.varifyToken(refresh, configServer.TOKEN.REFRESH_TOKEN_KEY);
+            const verifiedToken = await token.varifyToken(refresh, configServer.TOKEN.REFRESH_TOKEN_KEY);
             if (!verifiedToken) {
                 return res.status(401).json({
                     statusCode: 401,
@@ -162,7 +163,7 @@ class AdminController extends BaseController {
         try {
             //log out cookie tozlash
             //refresh Token borligini tekshiryapti 
-            const refresh = req.cookies?.refreshToken;
+            const refresh = req.cookies?.refreshTokenAdmin;
             if (!refresh) {
                 return res.status(401).json({
                     statusCode: 401,
@@ -170,7 +171,7 @@ class AdminController extends BaseController {
                 })
             }
             //refresh Token verify qilyapti
-            const verifiedToken = token.varifyToken(refresh, configServer.TOKEN.REFRESH_TOKEN_KEY);
+            const verifiedToken = await token.varifyToken(refresh, configServer.TOKEN.REFRESH_TOKEN_KEY);
             if (!verifiedToken) {
                 return res.status(401).json({
                     statusCode: 401,
