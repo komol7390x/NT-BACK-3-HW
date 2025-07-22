@@ -1,5 +1,6 @@
 import { BaseController } from './base.controller.js';
 import { Admin } from '../models/admin.model.js';
+import token from '../utils/Token.js'
 import Crypt from '../utils/Crypt.js'
 import validat from '../validation/admin.validat.js'
 
@@ -75,7 +76,8 @@ class AdminController extends BaseController {
             const payload = {
                 id: admin._id, role: admin.role, isActive: admin.isActive
             }
-            // const accessToken =
+            const accessToken = token.accessToken(payload)
+            const refreshToken = token.refreshToken(payload)
             return res.status(200).json({
                 statusCode: 200,
                 message: 'success',
