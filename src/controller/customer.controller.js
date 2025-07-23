@@ -19,8 +19,8 @@ class CustomerController extends BaseController {
             }
             const hashPassword = await Crypt.encrypt(password);
             const resultClient = {
-                phoneNumber: phone,
-                fullName: username,
+                phone,
+                username,
                 email,
                 hashPassword,
                 isActive
