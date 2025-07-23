@@ -10,7 +10,7 @@ class CustomerValidation {
             email: Joi.string().pattern(this.emailReg).required().min(3).max(100),
             password: Joi.string().required().min(3).max(100),
             isActive: Joi.boolean(),
-            role: Joi.string().valid('Admin', 'SUPERADMIN'),
+            role: Joi.string().valid('Customer'),
             phone: Joi.string().pattern(this.phoneReg)
         })
 
@@ -22,7 +22,7 @@ class CustomerValidation {
             email: Joi.string().pattern(this.emailReg).optional().min(3).max(100),
             password: Joi.string().optional().min(3).max(100),
             isActive: Joi.boolean(),
-            role: Joi.string().valid(['Admin', 'SUPERADMIN']),
+            role: Joi.string().valid('Customer'),
             phone: Joi.string().pattern(this.phoneReg)
         })
 
