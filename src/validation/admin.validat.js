@@ -1,10 +1,10 @@
 import Joi from "joi";
 
 class AdminValidation {
-    constructor() {
-        this.emailReg = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
-        this.phoneReg = /^\+?998(9[01345789]|33|88)[0-9]{7}$/
-    }
+
+    static emailReg = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
+    static phoneReg = /^\+?998(9[01345789]|33|88)[0-9]{7}$/
+
     create = async () => {
         return Joi.object({
             username: Joi.string().required().min(3).max(100),
@@ -31,8 +31,8 @@ class AdminValidation {
 
     signIn = async () => {
         return Joi.object({
-            email: Joi.string().pattern(this.emailReg).required().min(3).max(100),
-            phone: Joi.string().pattern(this.phoneReg).required().min(3).max(100),
+            email: Joi.string().required(),
+            password: Joi.string().required(),
         })
 
     }

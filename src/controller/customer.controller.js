@@ -8,7 +8,7 @@ class CustomerController extends BaseController {
     }
     createCustomer = async (req, res) => {
         try {
-            const { username, email, password, isActive } = req.body
+            const { username, email, password, isActive, phone } = req.body
             const existUsername = await Customer.findOne({ fullName: username })
             const existEmail = await Customer.findOne({ email })
             if (existUsername || existEmail) {
@@ -19,10 +19,12 @@ class CustomerController extends BaseController {
             }
             const hashPassword = await Crypt.encrypt(password);
             const resultClient = {
+                phoneNumber: phone,
                 fullName: username,
                 email,
                 hashPassword,
                 isActive
+
             }
             await Client.create(resultClient)
             return res.status(201).json({

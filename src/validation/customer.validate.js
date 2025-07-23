@@ -1,10 +1,9 @@
 import Joi from "joi";
 
 class CustomerValidation {
-    constructor() {
-        this.emailReg = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
-        this.phoneReg = /^\+?998(9[01345789]|33|88)[0-9]{7}$/
-    }
+    static emailReg = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
+    static phoneReg = /^\+?998(9[01345789]|33|88)[0-9]{7}$/
+
     create = async () => {
         return Joi.object({
             username: Joi.string().required().min(3).max(100),
@@ -31,11 +30,19 @@ class CustomerValidation {
 
     signIn = async () => {
         return Joi.object({
-            email: Joi.string().pattern(this.emailReg).required().min(3).max(100),
-            phone: Joi.string().pattern(this.phoneReg).required().min(3).max(100),
+            email: Joi.string().required(),
+            password: Joi.string().required(),
         })
 
     }
 }
 
 export default new CustomerValidation();
+
+const customerSchema = new Schema({
+    phoneNumber: { type: String, required: true, unique: true, minlength: 9, maxlength: 13 },
+    email: { type: String, required: true, unique: true, min: 3, max: 100 },
+    fullName: { type: String, unique: true, min: 3, max: 100 },
+    isActive: { type: Boolean, default: false },
+    role: { type: String, enum: ['customer'], default: 'customer' },
+})
