@@ -4,6 +4,6 @@ import customerRouter from './customer.route.js';
 const router = Router();
 
 router.use('/admin', adminRouter);
-router.use('/client', customerRouter);
+router.use('/customer', customerRouter);
 
 export default router
