@@ -1,9 +1,11 @@
+console.log(111);
 import express from 'express'
 
 import { configServer } from './config/server.config.js'
 import { connectDB } from './database/server.database.js'
 import router from './routers/index.route.js'
 import cookieParse from 'cookie-parser'
+
 await connectDB()
 const server = express();
 server.use(express.json())
