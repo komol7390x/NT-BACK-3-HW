@@ -8,4 +8,4 @@ const clientSchema = new Schema({
     role: { type: String, enum: ['client'], default: 'client' },
 }, { timestamps: true, versionKey: false })
 
-export const Client = model('client', clientSchema)
+export const Client = model('client', clientSchema);

@@ -66,7 +66,7 @@ export class BaseController {
                 statusCode: 200,
                 message: 'success',
                 data: updateUser
-            })
+            });
         } catch (error) {
             return res.status(500).json({
                 statusCode: 500,

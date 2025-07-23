@@ -47,6 +47,7 @@ class ClientController extends BaseController {
                     message: 'Email or password incorrect'
                 })
             }
+
             const decodePassword = await Crypt
                 .decrypt(password, existUsername.hashPassword)
             if (!decodePassword) {
