@@ -1,7 +1,7 @@
 import controller from '../controller/admin.controller.js'
 import { Router } from 'express'
 import { RolesGuard } from '../guards/role.guard.js'
-import AuthGuard from '../guards/auth.guard.js'
+import { AuthGuard } from '../guards/auth.guard.js'
 import Adminvalidate from '../validation/admin.validat.js'
 import { validate } from '../middlewares/validate.js'
 const router = Router()
