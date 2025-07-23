@@ -13,6 +13,13 @@ class AdminController extends BaseController {
     }
     createAdmin = async (req, res) => {
         try {
+            const { error } = await validat.create(req.body)
+            if (error) {
+                return res.status(422).json({
+                    statusCode: 422,
+                    message: `Error validate ${error.details[0]?.message}` ?? 'Error input Validate'
+                })
+            }
             const { username, email, password, isActive, phone } = req.body
             const existUsername = await Admin.findOne({ username })
             const existEmail = await Admin.findOne({ email })
@@ -47,6 +54,15 @@ class AdminController extends BaseController {
 
     signInAdmin = async (req, res) => {
         try {
+            // Validatsiyani tekshirvoti
+            const { error } = validat.signIn(req.body);
+            if (error) {
+                return res.status(422).json({
+                    statusCode: 422,
+                    message: error.details[0]?.message ?? 'Error input Validate'
+                })
+            }
+
             // req kelgan username ni bor yo'qligini tekshirvoti
             const { email, password } = req.body
             const admin = await Admin.findOne({ email })
