@@ -1,4 +1,3 @@
-console.log(111);
 import express from 'express'
 
 import { configServer } from './config/server.config.js'
