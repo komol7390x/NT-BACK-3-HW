@@ -18,7 +18,7 @@ export const AuthGuard = async (req, res, next) => {
                 message: 'Unauthorized'
             });
         }
-        const user = token.varifyToken(authToken, configServer.TOKEN.ACCESS_TOKEN_KEY)
+        const user = await token.varifyToken(authToken, configServer.TOKEN.ACCESS_TOKEN_KEY)
         req.user = user;
         next()
     } catch (error) {

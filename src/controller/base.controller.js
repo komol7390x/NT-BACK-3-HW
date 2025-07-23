@@ -94,17 +94,11 @@ export class BaseController {
     }
     checkByID = async (id, res) => {
         if (!isValidObjectId(id)) {
-            return res.status(400).json({
-                statusCode: 400,
-                message: 'Invalid ObjectId'
-            });
+            throw new Error('Invalid ObjectId')
         }
         const data = await this.model.findById(id);
         if (!data) {
-            return res.status(404).json({
-                statusCode: 404,
-                message: `Not found this ${this.model}`
-            });
+            throw new Error`Not found this ${this.model}`
         }
         return data
     }
