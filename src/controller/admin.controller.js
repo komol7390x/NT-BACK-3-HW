@@ -30,7 +30,7 @@ class AdminController extends BaseController {
             const data = await Admin.create(resultAdmin)
             successRes(res, data, 201)
         } catch (error) {
-            next(error)
+            next(error.message)
         }
     }
 
