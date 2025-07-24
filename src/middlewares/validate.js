@@ -9,6 +9,7 @@ export const validate = (schema) => {
                     message: error?.details[0]?.message ?? 'Error input validation'
                 });
             }
+            next()
         } catch (error) {
             return res.status(500).json({
                 statusCode: 500,
