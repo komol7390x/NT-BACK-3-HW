@@ -1,20 +1,20 @@
 import { BaseController } from './base.controller.js';
 import { Client } from '../models/client.model.js';
 import Crypt from '../utils/Crypt.js'
+import { successRes } from '../utils/success-res.js'
+import { AppError } from '../error/AppError.js';
+
 class ClientController extends BaseController {
     constructor() {
         super(Client)
     }
-    createClient = async (req, res) => {
+    createClient = async (req, res, next) => {
         try {
             const { username, email, password, isActive } = req.body
             const existUsername = await Client.findOne({ username })
             const existEmail = await Client.findOne({ email })
             if (existUsername || existEmail) {
-                return res.status(409).json({
-                    statusCode: 409,
-                    message: 'Username already exists'
-                })
+                throw new AppError('Username already exists', 422)
             }
             const hashPassword = await Crypt.encrypt(password);
             const resultClient = {
@@ -24,50 +24,25 @@ class ClientController extends BaseController {
                 isActive
             }
             await Client.create(resultClient)
-            return res.status(201).json({
-                statusCode: 201,
-                message: 'success',
-                data: resultClient
-            })
+            successRes(res, resultClient)
         } catch (error) {
-            return res.status(500).json({
-                statusCode: 500,
-                message: error.message || 'Invalid server error'
-            })
+            next(error)
         }
     }
 
-    signInClient = async (req, res) => {
+    signInClient = async (req, res, next) => {
         try {
             const { username, password } = req.body
             const existUsername = await Client.findOne({ username })
+            await Crypt.decrypt(password, existUsername.hashPassword)
             if (!existUsername) {
-                return res.status(409).json({
-                    statusCode: 409,
-                    message: 'Email or password incorrect'
-                })
+                throw new AppError('Email or password incorrect', 409)
             }
-            const decodePassword = await Crypt
-                .decrypt(password, existUsername.hashPassword)
-            if (!decodePassword) {
-                return res.status(409).json({
-                    statusCode: 409,
-                    message: 'Email or password incorrect'
-                })
-            }
-            return res.status(200).json({
-                statusCode: 200,
-                message: 'success',
-                data: existUsername
-            })
+            successRes(res, existUsername)
         } catch (error) {
-            return res.status(500).json({
-                statusCode: 500,
-                message: error.message || 'Invalid server error'
-            })
+            next(error)
         }
     }
-
 }
 
 export default new ClientController();

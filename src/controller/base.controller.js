@@ -11,7 +11,7 @@ export class BaseController {
             const data = this.model.create(req.body)
             successRes(res, data, 201)
         } catch (error) {
-            next(error.message)
+            next(error)
         }
 
     }
@@ -21,7 +21,7 @@ export class BaseController {
             const data = await this.model.find()
             successRes(res, data)
         } catch (error) {
-            next(error.message)
+            next(error)
         }
     }
 
@@ -31,7 +31,7 @@ export class BaseController {
             const checkUser = await this.checkByID(id);
             successRes(res, checkUser)
         } catch (error) {
-            next(error.message)
+            next(error)
         }
     }
 
@@ -45,7 +45,7 @@ export class BaseController {
 
             successRes(updateUser)
         } catch (error) {
-            next(error.message)
+            next(error)
         }
     }
 
@@ -53,19 +53,19 @@ export class BaseController {
         try {
             const id = req.params.id
             await this.checkByID(id, res);
-            const updateUser = await this.model.findByIdAndDelete(id, req.params)
+            await this.model.findByIdAndDelete(id, req.params)
             successRes({})
         } catch (error) {
-            next(error.message)
+            next(error)
         }
     }
     checkByID = async (id) => {
         if (!isValidObjectId(id)) {
-            throw new Error('Invalid ObjectId', 400)
+            throw new AppError('Invalid ObjectId', 400)
         }
         const data = await this.model.findById(id);
         if (!data) {
-            throw new Error(`Not found this ${this.model}`, 404)
+            throw new AppError(`Not found this ${this.model}`, 404)
         }
         return data
     }
