@@ -6,7 +6,7 @@ export const connectDB = async () => {
         await connect(configServer.mongodb_url)
         console.log('Server connect to Database');
     } catch (error) {
-        console.log('Error to connect Database', error.message);
+        console.log('Error to connect Database', error.message)
         process.exit(1)
     }
 }
