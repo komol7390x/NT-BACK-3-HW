@@ -4,7 +4,6 @@ import { configServer } from '../config/server.config.js';
 
 import token from '../utils/Token.js'
 import Crypt from '../utils/Crypt.js'
-import validat from '../validation/admin.validat.js'
 
 
 class AdminController extends BaseController {
