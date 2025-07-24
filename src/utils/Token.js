@@ -2,19 +2,19 @@ import { configServer } from '../config/server.config.js'
 import jwt from 'jsonwebtoken'
 
 class Token {
-    async accessToken(payload) {
+    accessToken(payload) {
         return jwt.sign(payload, configServer.TOKEN.ACCESS_TOKEN_KEY, {
             expiresIn: configServer.TOKEN.ACCESS_TOKEN_TIME
         })
     }
 
-    async refreshToken(payload) {
+    refreshToken(payload) {
         return jwt.sign(payload, configServer.TOKEN.REFRESH_TOKEN_KEY, {
             expiresIn: configServer.TOKEN.REFRESH_TOKEN_TIME
         })
     }
 
-    async writeCookie(res, key, value, expireDay) {
+    writeCookie(res, key, value, expireDay) {
         res.cookie(key, value, {
             httpOnly: true,
             secure: true,
@@ -22,7 +22,7 @@ class Token {
         })
     }
 
-    async varifyToken(token, secretKey) {
+    varifyToken(token, secretKey) {
         return jwt.verify(token, secretKey)
     }
 }
