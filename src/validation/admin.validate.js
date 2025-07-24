@@ -5,7 +5,7 @@ class AdminValidation {
     static emailReg = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
     static phoneReg = /^\+?998(9[01345789]|33|88)[0-9]{7}$/
 
-    create = async () => {
+    create = () => {
         return Joi.object({
             username: Joi.string().required().min(3).max(100),
             email: Joi.string().pattern(this.emailReg).required().min(3).max(100),
@@ -14,10 +14,9 @@ class AdminValidation {
             role: Joi.string().valid('Admin'),
             phone: Joi.string().pattern(this.phoneReg)
         })
-
     }
 
-    update = async () => {
+    update = () => {
         return Joi.object({
             username: Joi.string().required().min(3).max(100),
             email: Joi.string().pattern(this.emailReg).optional().min(3).max(100),
@@ -29,12 +28,11 @@ class AdminValidation {
 
     }
 
-    signIn = async () => {
+    signIn = () => {
         return Joi.object({
             email: Joi.string().required(),
             password: Joi.string().required(),
         })
-
     }
 }
 
