@@ -7,7 +7,7 @@ class Crypt {
         return await hash(data, salt)
     }
     async decrypt(data, encryptData) {
-        return compare(data, encryptData)
+        return compare(data, encryptData);
     }
 }
 
