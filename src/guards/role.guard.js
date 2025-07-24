@@ -1,11 +1,13 @@
 export const RolesGuard = (...roles) => {
     return async (req, res, next) => {
         try {
+
             const role = await req.user.role
             if (role && roles.includes(role) ||
                 (roles.includes('ID') && req.params?.id === req.user?.id)) {
                 return next()
             }
+            console.log(1);
             return res.status(403).json({
                 statusCode: 403,
                 message: 'Forbidden user'
