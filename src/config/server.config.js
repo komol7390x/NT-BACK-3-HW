@@ -5,9 +5,9 @@ export const configServer = {
     PORT: process.env.PORT,
     mongodb_url: process.env.MONGODB_URL,
     ADMIN: {
-        SUPERADMIN_USERNAME: process.env.SUPERADMIN_USERNAME,
-        SUPERADMIN_EMAIL: process.env.SUPERADMIN_EMAIL,
-        SUPERADMIN_PASSWORD: process.env.SUPERADMIN_PASSWORD
+        USERNAME: process.env.SUPERADMIN_USERNAME,
+        EMAIL: process.env.SUPERADMIN_EMAIL,
+        PASSWORD: process.env.SUPERADMIN_PASSWORD
     },
     TOKEN: {
         ACCESS_TOKEN_KEY: String(process.env.ACCESS_TOKEN_KEY),

@@ -9,21 +9,24 @@ import { Admin } from '../models/admin.model.js'
     try {
         console.clear()
         await connectDB();
+
         const role = await Admin.findOne({ role: 'SUPERADMIN' })
         if (role) {
             console.log('This SUPERADMIN already added')
             return
         }
-        const hashPassword = await crypt.encrypt(configServer.ADMIN.SUPERADMIN_PASSWORD)
-        await Admin.create({
-            username: configServer.ADMIN.SUPERADMIN_USERNAME,
-            email: configServer.ADMIN.SUPERADMIN_EMAIL,
+        const hashPassword = await crypt.encrypt(configServer.ADMIN.PASSWORD)
+        const user1 = await Admin.create({
+            username: configServer.ADMIN.USERNAME,
+            email: configServer.ADMIN.EMAIL,
             hashPassword,
+            phone: '+998977507416',
             role: 'SUPERADMIN'
         })
         console.log('Super admin created :)');
         await disconnect()
     } catch (error) {
-
+        console.log('Error create SUPERADMIN', error.message);
+        return
     }
 }())
