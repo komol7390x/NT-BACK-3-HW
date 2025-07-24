@@ -16,9 +16,12 @@ class AdminController extends BaseController {
         try {
             const { username, email, password, isActive, phone } = req.body
             const existUsername = await Admin.findOne({ username })
+            if (existUsername) {
+                throw new AppError('Username already exists', 422);
+            }
             const existEmail = await Admin.findOne({ email })
-            if (existUsername || existEmail) {
-                throw new AppError('Username already exists', 422)
+            if (existEmail) {
+                throw new AppError('Email already exists', 422);
             }
             const hashPassword = await Crypt.encrypt(password);
             const resultAdmin = {
@@ -31,7 +34,7 @@ class AdminController extends BaseController {
             const data = await Admin.create(resultAdmin)
             successRes(res, data, 201)
         } catch (error) {
-            next(error.message)
+            next(error)
         }
     }
 
