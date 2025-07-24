@@ -6,97 +6,59 @@ class CustomerController extends BaseController {
     constructor() {
         super(Customer)
     }
-    createCustomer = async (req, res) => {
+    createCustomer = async (req, res, next) => {
         try {
-            const { username, email, password, isActive, phone } = req.body
-            const existUsername = await Customer.findOne({ fullName: username })
+            const { username, email, password, isActive } = req.body
+            const existUsername = await Customer.findOne({ username })
             const existEmail = await Customer.findOne({ email })
             if (existUsername || existEmail) {
-                return res.status(409).json({
-                    statusCode: 409,
-                    message: 'Username already exists'
-                })
+                throw new AppError('Username already exists', 422)
             }
             const hashPassword = await Crypt.encrypt(password);
-            const resultClient = {
+            const resultCustomer = {
                 phone,
                 username,
                 email,
                 hashPassword,
                 isActive
-
             }
-            await Client.create(resultClient)
-            return res.status(201).json({
-                statusCode: 201,
-                message: 'success',
-                data: resultClient
-            })
+            await Customer.create(resultCustomer)
+            successRes(res, resultCustomer)
         } catch (error) {
-            return res.status(500).json({
-                statusCode: 500,
-                message: error.message || 'Invalid server error'
-            })
+            next(error)
         }
     }
 
-    signIn = async (req, res) => {
+    signIn = async (req, res, next) => {
         try {
             const { username, password } = req.body
-            const existUsername = await Customer.findOne({ fullName: username })
+            const existUsername = await Customer.findOne({ username })
+            await Crypt.decrypt(password, existUsername.hashPassword)
             if (!existUsername) {
-                return res.status(409).json({
-                    statusCode: 409,
-                    message: 'Email or password incorrect'
-                })
+                throw new AppError('Email or password incorrect', 409)
             }
-
-            const decodePassword = await Crypt
-                .decrypt(password, existUsername.hashPassword)
-            if (!decodePassword) {
-                return res.status(409).json({
-                    statusCode: 409,
-                    message: 'Email or password incorrect'
-                })
-            }
-            return res.status(200).json({
-                statusCode: 200,
-                message: 'success',
-                data: existUsername
-            })
+            successRes(res, existUsername)
         } catch (error) {
-            return res.status(500).json({
-                statusCode: 500,
-                message: error.message || 'Invalid server error'
-            })
+            next(error)
         }
     }
-    newToken = async (req, res) => {
+    newToken = async (req, res, next) => {
         try {
             //refreshToken muddati tugagan bo'lsa va yangi olmoqchi bo'lsa
             //refresh Token borligini tekshiryapti 
             const refresh = req.cookies?.refreshTokenAdmin
             if (!refresh) {
-                return res.status(401).json({
-                    statusCode: 401,
-                    message: 'Refresh token expire'
-                })
+                throw new AppError('Authorization error', 401)
             }
             //refresh Token verify qilyapti
             const verifiedToken = await token.varifyToken(refresh, configServer.TOKEN.REFRESH_TOKEN_KEY);
             if (!verifiedToken) {
-                return res.status(401).json({
-                    statusCode: 401,
-                    message: 'Refresh token expire'
-                })
+                throw new AppError('Refresh token expire', 401)
             }
             //token dagi user borligni tekshiryapti
             const customer = await Customer.findById(verifiedToken.id);
             if (!customer) {
-                return res.status(403).json({
-                    statusCode: 403,
-                    message: 'Forbiden user'
-                })
+                throw new AppError('Forbiden user', 403)
             }
             //yangi tokenga payload berilvoti
             const payload = {
@@ -104,60 +66,35 @@ class CustomerController extends BaseController {
             }
 
             const accessToken = await token.accessToken(payload)
-            return res.status(200).json({
-                statusCode: 200,
-                message: 'success',
-                date: {
-                    token: accessToken
-                }
-            })
+            successRes(res, accessToken)
 
         } catch (error) {
-            return res.status(500).json({
-                statusCode: 500,
-                message: error.message || 'Invalid server error'
-            })
+            next(error)
         }
     }
-    signOut = async (req, res) => {
+    signOut = async (req, res, next) => {
         try {
             //log out cookie tozlash
             //refresh Token borligini tekshiryapti 
             const refresh = req.cookies?.refreshTokenAdmin;
             if (!refresh) {
-                return res.status(401).json({
-                    statusCode: 401,
-                    message: 'Refresh token expire'
-                })
+                throw new AppError('Refresh token not found', 401);
             }
             //refresh Token verify qilyapti
             const verifiedToken = await token.varifyToken(refresh, configServer.TOKEN.REFRESH_TOKEN_KEY);
             if (!verifiedToken) {
-                return res.status(401).json({
-                    statusCode: 401,
-                    message: 'Refresh token expire'
-                })
+                throw new AppError('Refresh token expire', 401)
             }
             //token dagi user borligni tekshiryapti
             const customer = await Customer.findById(verifiedToken.id);
             if (!customer) {
-                return res.status(403).json({
-                    statusCode: 403,
-                    message: 'Forbiden user'
-                })
+                throw new AppError('Forbiden user', 403)
             }
             // token tozlab tashlaypti
             res.clearCookie('refreshTokenAdmin')
-            return res.status(200).json({
-                statusCode: 200,
-                message: 'success',
-                date: {}
-            })
+            successRes(res, {})
         } catch (error) {
-            return res.status(500).json({
-                statusCode: 500,
-                message: error.message || 'Invalid server error'
-            })
+            next(error)
         }
     }
 

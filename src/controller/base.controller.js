@@ -1,22 +1,17 @@
 import { isValidObjectId } from "mongoose";
+import { successRes } from '../utils/success-res.js'
+import { AppError } from '../error/AppError.js';
 
 export class BaseController {
     constructor(model) {
         this.model = model
     }
-    create = async (req, res) => {
+    create = async (req, res, next) => {
         try {
             const data = this.model.create(req.body)
-            return res.status(201).json({
-                statusCode: 201,
-                message: 'success',
-                data
-            })
+            successRes(res, data, 201)
         } catch (error) {
-            return res.status(500).json({
-                statusCode: 500,
-                message: error.message || 'Invalid server error'
-            })
+            next(error)
         }
 
     }
@@ -24,33 +19,19 @@ export class BaseController {
     getAll = async (_, res) => {
         try {
             const data = await this.model.find()
-            return res.status(200).json({
-                statusCode: 200,
-                message: 'success',
-                data
-            })
+            successRes(res, data)
         } catch (error) {
-            return res.status(500).json({
-                statusCode: 500,
-                message: error.message || 'Invalid server error'
-            })
+            next(error)
         }
     }
 
     getByID = async (req, res) => {
         try {
             const id = req.params.id
-            const checkUser = await this.checkByID(id, res);
-            return res.status(200).json({
-                statusCode: 200,
-                message: 'success',
-                data: checkUser
-            })
+            const checkUser = await this.checkByID(id);
+            successRes(res, checkUser)
         } catch (error) {
-            return res.status(500).json({
-                statusCode: 500,
-                message: error.message || 'Invalid server error'
-            })
+            next(error)
         }
     }
 
@@ -62,16 +43,9 @@ export class BaseController {
                 .findByIdAndUpdate(id, req.body, { new: true })
             console.log(updateUser);
 
-            return res.status(200).json({
-                statusCode: 200,
-                message: 'success',
-                data: updateUser
-            });
+            successRes(updateUser)
         } catch (error) {
-            return res.status(500).json({
-                statusCode: 500,
-                message: error.message || 'Invalid server error'
-            })
+            next(error)
         }
     }
 
@@ -79,26 +53,19 @@ export class BaseController {
         try {
             const id = req.params.id
             await this.checkByID(id, res);
-            const updateUser = await this.model.findByIdAndDelete(id, req.params)
-            return res.status(200).json({
-                statusCode: 200,
-                message: 'success',
-                data: {}
-            })
+            await this.model.findByIdAndDelete(id, req.params)
+            successRes({})
         } catch (error) {
-            return res.status(500).json({
-                statusCode: 500,
-                message: error.message || 'Invalid server error'
-            })
+            next(error)
         }
     }
-    checkByID = async (id, res) => {
+    checkByID = async (id) => {
         if (!isValidObjectId(id)) {
-            throw new Error('Invalid ObjectId')
+            throw new AppError('Invalid ObjectId', 400)
         }
         const data = await this.model.findById(id);
         if (!data) {
-            throw new Error`Not found this ${this.model}`
+            throw new AppError(`Not found this ${this.model}`, 404)
         }
         return data
     }
