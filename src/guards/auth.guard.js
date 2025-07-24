@@ -19,7 +19,15 @@ export const AuthGuard = async (req, res, next) => {
             });
         }
         const user = await token.varifyToken(authToken, configServer.TOKEN.ACCESS_TOKEN_KEY)
+        console.log(3);
+        if (!user) {
+            return res.status(403).json({
+                statusCode: 403,
+                message: 'Forbidden Error'
+            })
+        }
         req.user = user;
+
         next()
     } catch (error) {
         return res.status(500).json({

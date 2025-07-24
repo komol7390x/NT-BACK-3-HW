@@ -23,7 +23,10 @@ class Token {
     }
 
     async varifyToken(token, secretKey) {
-        return jwt.verify(token, secretKey)
+        console.log(secretKey);
+        const salo = jwt.verify(token, secretKey)
+
+        return salo
     }
 }
 
