@@ -6,5 +6,4 @@ export const globalErrorHandle = (err, _req, res, _next) => {
         statusCode,
         message
     })
-
 }

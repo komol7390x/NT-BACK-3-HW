@@ -43,11 +43,13 @@ class AdminController extends BaseController {
             // req kelgan username ni bor yo'qligini tekshirvoti
             const { email, password } = req.body
             const admin = await Admin.findOne({ email })
+
             //parolni decrypt qilyapti yani tog'ri ekanligini tekshirvoti
             await Crypt.decrypt(password, admin.hashPassword)
             if (!admin) {
                 throw new AppError('Email or password incorrect', 409)
             }
+            
             //Token berib yuborlidgn infolrni tog'irlanvoti
             const payload = {
                 id: admin._id, role: admin.role, isActive: admin.isActive
