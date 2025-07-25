@@ -6,6 +6,7 @@ class CustomerController extends BaseController {
     constructor() {
         super(Customer)
     }
+    
     createCustomer = async (req, res, next) => {
         try {
             const { username, email, password, isActive } = req.body
@@ -42,6 +43,7 @@ class CustomerController extends BaseController {
             next(error)
         }
     }
+
     newToken = async (req, res, next) => {
         try {
             //refreshToken muddati tugagan bo'lsa va yangi olmoqchi bo'lsa
@@ -72,6 +74,7 @@ class CustomerController extends BaseController {
             next(error)
         }
     }
+
     signOut = async (req, res, next) => {
         try {
             //log out cookie tozlash
