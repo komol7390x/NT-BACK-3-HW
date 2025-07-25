@@ -15,15 +15,18 @@ import { Admin } from '../models/admin.model.js'
             return
         }
         const hashPassword = await crypt.encrypt(configServer.ADMIN.SUPERADMIN_PASSWORD)
+        
         await Admin.create({
             username: configServer.ADMIN.SUPERADMIN_USERNAME,
             email: configServer.ADMIN.SUPERADMIN_EMAIL,
             hashPassword,
-            role: 'SUPERADMIN'
+            role: 'SUPERADMIN',
+            phone:'+998997507416'
         })
         console.log('Super admin created :)');
         await disconnect()
     } catch (error) {
-
+        console.log(error.message);
+        return 
     }
 }())
