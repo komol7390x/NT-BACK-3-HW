@@ -7,7 +7,6 @@ import { Admin } from '../models/admin.model.js'
 
 (async function () {
     try {
-        console.clear()
         await connectDB();
         const role = await Admin.findOne({ role: 'SUPERADMIN' })
         if (role) {
