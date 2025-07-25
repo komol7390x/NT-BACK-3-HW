@@ -12,7 +12,7 @@ export const AuthGuard = async (req, res, next) => {
         if (bearer !== 'Bearer' || !authToken) {
             throw new AppError('Unauthorized', 401)
         }
-        const user = token.varifyToken(authToken, configServer.TOKEN.ACCESS_TOKEN_KEY)
+        const user = token.varifyToken(authToken, configServer.TOKEN.ACCESS_TOKEN_KEY)        
         req.user = user;
         next()
     } catch (error) {
