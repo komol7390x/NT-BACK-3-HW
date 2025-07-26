@@ -3,7 +3,6 @@ import token from '../utils/Token.js'
 import { AppError } from '../error/AppError.js';
 export const AuthGuard = async (req, res, next) => {
     try {
-
         const auth = req.headers?.authorization;
         if (!auth) {
             throw new AppError('Authhorization error', 401)

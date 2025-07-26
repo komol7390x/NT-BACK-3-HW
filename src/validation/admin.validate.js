@@ -18,7 +18,7 @@ class AdminValidation {
 
     update = () => {
         return Joi.object({
-            username: Joi.string().required().min(3).max(100),
+            username: Joi.string().optional().min(3).max(100),
             email: Joi.string().pattern(emailReg).optional().min(3).max(100),
             password: Joi.string().optional().min(3).max(100),
             isActive: Joi.boolean(),
@@ -38,7 +38,7 @@ class AdminValidation {
     password = () => {
         return Joi.object({
             oldPassword: Joi.string().required(),
-            newPassword: Joi.string().required().pattern(phoneReg)
+            newPassword: Joi.string().required()
         })
     }
 

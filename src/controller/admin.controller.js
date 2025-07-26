@@ -43,13 +43,14 @@ class AdminController extends BaseController {
             // req kelgan username ni bor yo'qligini tekshirvoti
             const { email, password } = req.body
             const admin = await Admin.findOne({ email })
-
-            //parolni decrypt qilyapti yani tog'ri ekanligini tekshirvoti
-            await Crypt.decrypt(password, admin.hashPassword)
             if (!admin) {
                 throw new AppError('Email or password incorrect', 409)
             }
-
+            //parolni decrypt qilyapti yani tog'ri ekanligini tekshirvoti
+            const hashPass = await Crypt.decrypt(password, admin.hashPassword)
+            if (!hashPass) {
+                throw new AppError('Email or password incorrect', 409)
+            }
             //Token berib yuborlidgn infolrni tog'irlanvoti
             const payload = {
                 id: admin._id, role: admin.role, isActive: admin.isActive
@@ -120,6 +121,56 @@ class AdminController extends BaseController {
             // token tozlab tashlaypti
             res.clearCookie('refreshTokenAdmin')
             successRes(res, {})
+        } catch (error) {
+            next(error)
+        }
+    }
+
+    async updateAdmin(req, res, next) {
+        try {
+            const id = req.params?.id
+            const admin = await BaseController.checkByID(id, Admin)
+            const { email, username, password } = req.body;
+            if (username) {
+                const exists = await Admin.findOne({ username });
+                if (exists && exists.username !== username) {
+                    throw new AppError('Username already exists', 409)
+                }
+            }
+            if (email) {
+                const exists = await Admin.findOne({ email });
+                if (exists && exists.email !== email) {
+                    throw new AppError('email already exists', 409)
+                }
+            }
+            let hashPassword = admin.hashPassword
+            if (password) {
+                if (req.user?.role != admin.role) {
+                    throw new AppError('Not access to change password for admin', 403);
+                }
+                hashPassword = await Crypt.encrypt(password)
+                delete req.body.password
+            }
+            const updateAdmin = await Admin.findByIdAndUpdate(id, {
+                ...req.body, password
+            }, { new: true });
+            return successRes(res, updateAdmin)
+        } catch (error) {
+            next(error)
+        }
+    }
+    async updatePasswordForAdmin(req, res, next) {
+        try {
+            const id = req.params?.id;
+            const admin = await BaseController.checkByID(id, Admin);
+            const { oldPassword, newPassword } = req.body;
+            const isMatchPassword = await Crypt.decrypt(oldPassword, admin.hashPassword);
+            if (isMatchPassword) {
+                throw new AppError('Incorrect old Password', 409)
+            }
+            const hashPass = await Crypt.encrypt(newPassword);
+            const updateAdmin = await Admin.findByIdAndUpdate(id, { hashPassword: hashPass }, { new: true });
+            return successRes(res, updateAdmin)
         } catch (error) {
             next(error)
         }

@@ -8,7 +8,7 @@ export class BaseController {
     }
     create = async (req, res, next) => {
         try {
-            const data = this.model.create(req.body)
+            const data = await this.model.create(req.body)
             successRes(res, data, 201)
         } catch (error) {
             next(error)
@@ -59,11 +59,12 @@ export class BaseController {
             next(error)
         }
     }
-    checkByID = async (id) => {
+    static checkByID = async (id, schema) => {
         if (!isValidObjectId(id)) {
             throw new AppError('Invalid ObjectId', 400)
         }
-        const data = await this.model.findById(id);
+        const result = schema || this.model
+        const data = await result.findById(id);
         if (!data) {
             throw new AppError(`Not found this ${this.model}`, 404)
         }
