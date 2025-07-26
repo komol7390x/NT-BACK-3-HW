@@ -5,12 +5,19 @@ import { connectDB } from './database/server.database.js'
 import router from './routers/index.route.js'
 import cookieParse from 'cookie-parser'
 import { globalErrorHandle } from "./error/global-error-handle.js";
+import cors from 'cors'
+import helmet from 'helmet'
+
+
+const server = express();
+
+server.use(cors({ origin: '*' }))
+server.use(helmet())
+server.use(express.json())
+server.use(cookieParse())
 
 
 await connectDB()
-const server = express();
-server.use(express.json())
-server.use(cookieParse())
 
 server.use('/api', router)
 

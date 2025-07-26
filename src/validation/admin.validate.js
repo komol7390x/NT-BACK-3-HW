@@ -34,6 +34,15 @@ class AdminValidation {
             password: Joi.string().required(),
         })
     }
+
+    password = () => {
+        return Joi.object({
+            oldPassword: Joi.string().required(),
+            newPassword: Joi.string().required().pattern(phoneReg)
+        })
+    }
+
+
 }
 
 export default new AdminValidation();
