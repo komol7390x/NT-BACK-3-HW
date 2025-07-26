@@ -17,7 +17,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4N2U2YzhkMTdmODFhOTBlMWEwOGE4YiIsInJvbGUiOiJTVVBFUkFETUlOIiwiaXNBY3RpdmUiOmZhbHNlLCJpYXQiOjE3NTMyODk0MjcsImV4cCI6MTc1MzM3NTgyN30.FXRVMpjXbRIreQJvZF7zjoZ74OQamq4uCYHnX7-hSfw",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ODI2ZGYwZjJjMTQyMDUyZDVlYjg3YiIsInJvbGUiOiJTVVBFUkFETUlOIiwiaXNBY3RpdmUiOmZhbHNlLCJpYXQiOjE3NTM1MTU2NTAsImV4cCI6MTc1MzYwMjA1MH0.NxCamxt3kJOt1Ru8SAUtzKWamH6uO6GaUxq7PszxeVw",
 									"type": "string"
 								}
 							]
@@ -26,7 +26,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"username\":\"Sherzod13232\",\n    \"email\":\"sher@gmai2l3321.com\",\n    \"password\":\"X@z1sDfG\",\n    \"isActive\":true,\n    \"phone\":\"+998901234567\"\n}",
+							"raw": "{\n    \"username\":\"Sherzod566\",\n    \"email\":\"www.sher42@gmail.com\",\n    \"password\":\"KomolSher@123\",\n    \"isActive\":true,\n    \"phone\":\"+998914423545\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -55,7 +55,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4N2U2YzhkMTdmODFhOTBlMWEwOGE4YiIsInJvbGUiOiJTVVBFUkFETUlOIiwiaXNBY3RpdmUiOmZhbHNlLCJpYXQiOjE3NTMyODk0MjcsImV4cCI6MTc1MzM3NTgyN30.FXRVMpjXbRIreQJvZF7zjoZ74OQamq4uCYHnX7-hSfw",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ODI2ZGYwZjJjMTQyMDUyZDVlYjg3YiIsInJvbGUiOiJTVVBFUkFETUlOIiwiaXNBY3RpdmUiOmZhbHNlLCJpYXQiOjE3NTM1MTU2NTAsImV4cCI6MTc1MzYwMjA1MH0.NxCamxt3kJOt1Ru8SAUtzKWamH6uO6GaUxq7PszxeVw",
 									"type": "string"
 								}
 							]
@@ -84,7 +84,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4N2U2YzhkMTdmODFhOTBlMWEwOGE4YiIsInJvbGUiOiJTVVBFUkFETUlOIiwiaXNBY3RpdmUiOmZhbHNlLCJpYXQiOjE3NTMyODk0MjcsImV4cCI6MTc1MzM3NTgyN30.FXRVMpjXbRIreQJvZF7zjoZ74OQamq4uCYHnX7-hSfw",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ODI2ZGYwZjJjMTQyMDUyZDVlYjg3YiIsInJvbGUiOiJTVVBFUkFETUlOIiwiaXNBY3RpdmUiOmZhbHNlLCJpYXQiOjE3NTM1MTU2NTAsImV4cCI6MTc1MzYwMjA1MH0.NxCamxt3kJOt1Ru8SAUtzKWamH6uO6GaUxq7PszxeVw",
 									"type": "string"
 								}
 							]
@@ -92,7 +92,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:3030/api/admin/687e7cd8c6cbf4f48430ce46",
+							"raw": "localhost:3030/api/admin/68826e4dd9d45acbb1d13931",
 							"host": [
 								"localhost"
 							],
@@ -100,7 +100,7 @@
 							"path": [
 								"api",
 								"admin",
-								"687e7cd8c6cbf4f48430ce46"
+								"68826e4dd9d45acbb1d13931"
 							]
 						}
 					},
@@ -192,7 +192,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"email\": \"www.komol@gmail.com\",\n    \"password\":\"Komol12345\"\n}",
+							"raw": "{\n       \"email\":\"www.sher2@gmail.com\",\n        \"password\":\"KomolSher@124\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -242,7 +242,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4N2ZjYzhjMWM4NTk5MTE4NDVmMDk3NiIsInJvbGUiOiJBZG1pbiIsImlzQWN0aXZlIjp0cnVlLCJpYXQiOjE3NTMyODg2MDEsImV4cCI6MTc1MzM3NTAwMX0.hU86hbCprHJRpmPWaEYrfOEOwv1wKR6QhfK7vfgc8Fs",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ODI2ZGYwZjJjMTQyMDUyZDVlYjg3YiIsInJvbGUiOiJTVVBFUkFETUlOIiwiaXNBY3RpdmUiOmZhbHNlLCJpYXQiOjE3NTM1MTU2NTAsImV4cCI6MTc1MzYwMjA1MH0.NxCamxt3kJOt1Ru8SAUtzKWamH6uO6GaUxq7PszxeVw",
 									"type": "string"
 								}
 							]
@@ -259,6 +259,46 @@
 								"api",
 								"admin",
 								"logout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updatePassword",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ODI2ZGYwZjJjMTQyMDUyZDVlYjg3YiIsInJvbGUiOiJTVVBFUkFETUlOIiwiaXNBY3RpdmUiOmZhbHNlLCJpYXQiOjE3NTM1MTU2NTAsImV4cCI6MTc1MzYwMjA1MH0.NxCamxt3kJOt1Ru8SAUtzKWamH6uO6GaUxq7PszxeVw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"oldPassword\":\"KomolSher@12\",\n    \"newPassword\":\"Komol123!@A\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3030/api/admin/password/68826e4dd9d45acbb1d13931",
+							"host": [
+								"localhost"
+							],
+							"port": "3030",
+							"path": [
+								"api",
+								"admin",
+								"password",
+								"68826e4dd9d45acbb1d13931"
 							]
 						}
 					},
