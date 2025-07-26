@@ -10,7 +10,7 @@ export const RolesGuard = (...roles) => {
             }
             throw new AppError('Forbidden user', 403)
         } catch (error) {
-            next(error.message)
+            next(error)
         }
     }
 }

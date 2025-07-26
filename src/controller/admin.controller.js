@@ -49,7 +49,7 @@ class AdminController extends BaseController {
             if (!admin) {
                 throw new AppError('Email or password incorrect', 409)
             }
-            
+
             //Token berib yuborlidgn infolrni tog'irlanvoti
             const payload = {
                 id: admin._id, role: admin.role, isActive: admin.isActive
