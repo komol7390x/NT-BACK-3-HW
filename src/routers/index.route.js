@@ -1,9 +1,11 @@
-import express, { Router } from "express";
-import adminRouter from './admin.route.js'
-import clientRouter from './client.route.js'
-const router = Router()
+import { Router } from "express";
+import adminRouter from './admin.route.js';
+import customerRouter from './customer.route.js';
+import {pageError} from '../error/page-not-found.js'
+const router = Router();
 
-router.use('/admin', adminRouter)
-router.use('/client', clientRouter)
+router.use('/admin', adminRouter);
+router.use('/customer', customerRouter);
 
+router.use(pageError)
 export default router

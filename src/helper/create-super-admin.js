@@ -7,7 +7,6 @@ import { Admin } from '../models/admin.model.js'
 
 (async function () {
     try {
-        console.clear()
         await connectDB();
         const role = await Admin.findOne({ role: 'SUPERADMIN' })
         if (role) {
@@ -19,11 +18,13 @@ import { Admin } from '../models/admin.model.js'
             username: configServer.ADMIN.SUPERADMIN_USERNAME,
             email: configServer.ADMIN.SUPERADMIN_EMAIL,
             hashPassword,
+            phone:'+998998883322',
             role: 'SUPERADMIN'
         })
         console.log('Super admin created :)');
         await disconnect()
     } catch (error) {
-
+        console.log(error.message);
+        return 
     }
 }())

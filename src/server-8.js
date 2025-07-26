@@ -4,11 +4,24 @@ import { configServer } from './config/server.config.js'
 import { connectDB } from './database/server.database.js'
 import router from './routers/index.route.js'
 import cookieParse from 'cookie-parser'
-await connectDB()
+import { globalErrorHandle } from "./error/global-error-handle.js";
+import cors from 'cors'
+import helmet from 'helmet'
+
+
 const server = express();
+
+server.use(cors({ origin: '*' }))
+server.use(helmet())
 server.use(express.json())
 server.use(cookieParse())
+
+
+await connectDB()
+
 server.use('/api', router)
+
+server.use(globalErrorHandle)
 
 const PORT = +configServer.PORT || 4040
 

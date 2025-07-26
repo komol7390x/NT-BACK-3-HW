@@ -12,11 +12,21 @@
 				{
 					"name": "create",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ODI2ZGYwZjJjMTQyMDUyZDVlYjg3YiIsInJvbGUiOiJTVVBFUkFETUlOIiwiaXNBY3RpdmUiOmZhbHNlLCJpYXQiOjE3NTM1MTU2NTAsImV4cCI6MTc1MzYwMjA1MH0.NxCamxt3kJOt1Ru8SAUtzKWamH6uO6GaUxq7PszxeVw",
+									"type": "string"
+								}
+							]
+						},
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"username\":\"Sherzod\",\n    \"email\":\"sher@gmail.com\",\n    \"password\":\"X@z1sDfG\",\n    \"isActive\":true,\n    \"phone\":\"+998901234567\"\n}",
+							"raw": "{\n    \"username\":\"Sherzod566\",\n    \"email\":\"www.sher42@gmail.com\",\n    \"password\":\"KomolSher@123\",\n    \"isActive\":true,\n    \"phone\":\"+998914423545\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -40,6 +50,16 @@
 				{
 					"name": "getAll",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ODI2ZGYwZjJjMTQyMDUyZDVlYjg3YiIsInJvbGUiOiJTVVBFUkFETUlOIiwiaXNBY3RpdmUiOmZhbHNlLCJpYXQiOjE3NTM1MTU2NTAsImV4cCI6MTc1MzYwMjA1MH0.NxCamxt3kJOt1Ru8SAUtzKWamH6uO6GaUxq7PszxeVw",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [],
 						"url": {
@@ -59,10 +79,20 @@
 				{
 					"name": "getById",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ODI2ZGYwZjJjMTQyMDUyZDVlYjg3YiIsInJvbGUiOiJTVVBFUkFETUlOIiwiaXNBY3RpdmUiOmZhbHNlLCJpYXQiOjE3NTM1MTU2NTAsImV4cCI6MTc1MzYwMjA1MH0.NxCamxt3kJOt1Ru8SAUtzKWamH6uO6GaUxq7PszxeVw",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:3030/api/admin/687e79fe976175fa0096da72",
+							"raw": "localhost:3030/api/admin/68826e4dd9d45acbb1d13931",
 							"host": [
 								"localhost"
 							],
@@ -70,7 +100,7 @@
 							"path": [
 								"api",
 								"admin",
-								"687e79fe976175fa0096da72"
+								"68826e4dd9d45acbb1d13931"
 							]
 						}
 					},
@@ -79,6 +109,16 @@
 				{
 					"name": "update",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4N2ZjYzhjMWM4NTk5MTE4NDVmMDk3NiIsInJvbGUiOiJBZG1pbiIsImlzQWN0aXZlIjp0cnVlLCJpYXQiOjE3NTMyODg2MDEsImV4cCI6MTc1MzM3NTAwMX0.hU86hbCprHJRpmPWaEYrfOEOwv1wKR6QhfK7vfgc8Fs",
+									"type": "string"
+								}
+							]
+						},
 						"method": "PATCH",
 						"header": [],
 						"body": {
@@ -108,6 +148,16 @@
 				{
 					"name": "delete",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4N2ZjYzhjMWM4NTk5MTE4NDVmMDk3NiIsInJvbGUiOiJBZG1pbiIsImlzQWN0aXZlIjp0cnVlLCJpYXQiOjE3NTMyODg2MDEsImV4cCI6MTc1MzM3NTAwMX0.hU86hbCprHJRpmPWaEYrfOEOwv1wKR6QhfK7vfgc8Fs",
+									"type": "string"
+								}
+							]
+						},
 						"method": "DELETE",
 						"header": [],
 						"url": {
@@ -128,11 +178,21 @@
 				{
 					"name": "signIn",
 					"request": {
+						"auth": {
+							"type": "bearer"
+						},
 						"method": "POST",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"email\":\"sher@gmail.com\",\n    \"password\":\"X@z1sDfG\"\n}",
+							"raw": "{\n       \"email\":\"www.sher2@gmail.com\",\n        \"password\":\"KomolSher@124\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -177,6 +237,16 @@
 				{
 					"name": "signout",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ODI2ZGYwZjJjMTQyMDUyZDVlYjg3YiIsInJvbGUiOiJTVVBFUkFETUlOIiwiaXNBY3RpdmUiOmZhbHNlLCJpYXQiOjE3NTM1MTU2NTAsImV4cCI6MTc1MzYwMjA1MH0.NxCamxt3kJOt1Ru8SAUtzKWamH6uO6GaUxq7PszxeVw",
+									"type": "string"
+								}
+							]
+						},
 						"method": "POST",
 						"header": [],
 						"url": {
@@ -193,20 +263,25 @@
 						}
 					},
 					"response": []
-				}
-			]
-		},
-		{
-			"name": "client",
-			"item": [
+				},
 				{
-					"name": "create",
+					"name": "updatePassword",
 					"request": {
-						"method": "POST",
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ODI2ZGYwZjJjMTQyMDUyZDVlYjg3YiIsInJvbGUiOiJTVVBFUkFETUlOIiwiaXNBY3RpdmUiOmZhbHNlLCJpYXQiOjE3NTM1MTU2NTAsImV4cCI6MTc1MzYwMjA1MH0.NxCamxt3kJOt1Ru8SAUtzKWamH6uO6GaUxq7PszxeVw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"username\":\"Bekzod2322\",\n    \"email\":\"bekzo2d1122@3gmail.com\",\n    \"password\":\"bek2025\",\n    \"isActive\": true\n}",
+							"raw": "{\n    \"oldPassword\":\"KomolSher@12\",\n    \"newPassword\":\"Komol123!@A\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -214,14 +289,59 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:3030/api/client",
+							"raw": "localhost:3030/api/admin/password/68826e4dd9d45acbb1d13931",
 							"host": [
 								"localhost"
 							],
 							"port": "3030",
 							"path": [
 								"api",
-								"client"
+								"admin",
+								"password",
+								"68826e4dd9d45acbb1d13931"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "customers",
+			"item": [
+				{
+					"name": "create",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4N2U2YzhkMTdmODFhOTBlMWEwOGE4YiIsInJvbGUiOiJTVVBFUkFETUlOIiwiaXNBY3RpdmUiOmZhbHNlLCJpYXQiOjE3NTMyODk0MjcsImV4cCI6MTc1MzM3NTgyN30.FXRVMpjXbRIreQJvZF7zjoZ74OQamq4uCYHnX7-hSfw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\":\"Sherzod13232\",\n    \"email\":\"sher@gmai2l3321.com\",\n    \"password\":\"X@z1sDfG\",\n    \"isActive\":true,\n    \"phone\":\"+998901234567\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3030/api/customer",
+							"host": [
+								"localhost"
+							],
+							"port": "3030",
+							"path": [
+								"api",
+								"customer"
 							]
 						}
 					},
@@ -230,17 +350,28 @@
 				{
 					"name": "getAll",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4N2U2YzhkMTdmODFhOTBlMWEwOGE4YiIsInJvbGUiOiJTVVBFUkFETUlOIiwiaXNBY3RpdmUiOmZhbHNlLCJpYXQiOjE3NTMyODk0MjcsImV4cCI6MTc1MzM3NTgyN30.FXRVMpjXbRIreQJvZF7zjoZ74OQamq4uCYHnX7-hSfw",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:3030/api/client",
+							"raw": "localhost:3030/api/customer/",
 							"host": [
 								"localhost"
 							],
 							"port": "3030",
 							"path": [
 								"api",
-								"client"
+								"customer",
+								""
 							]
 						}
 					},
@@ -249,18 +380,28 @@
 				{
 					"name": "getById",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4N2U2YzhkMTdmODFhOTBlMWEwOGE4YiIsInJvbGUiOiJTVVBFUkFETUlOIiwiaXNBY3RpdmUiOmZhbHNlLCJpYXQiOjE3NTMyODk0MjcsImV4cCI6MTc1MzM3NTgyN30.FXRVMpjXbRIreQJvZF7zjoZ74OQamq4uCYHnX7-hSfw",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:3030/api/admin/687e79fe976175fa0096da72",
+							"raw": "localhost:3030/api/customer/",
 							"host": [
 								"localhost"
 							],
 							"port": "3030",
 							"path": [
 								"api",
-								"admin",
-								"687e79fe976175fa0096da72"
+								"customer",
+								""
 							]
 						}
 					},
@@ -269,6 +410,16 @@
 				{
 					"name": "update",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4N2ZjYzhjMWM4NTk5MTE4NDVmMDk3NiIsInJvbGUiOiJBZG1pbiIsImlzQWN0aXZlIjp0cnVlLCJpYXQiOjE3NTMyODg2MDEsImV4cCI6MTc1MzM3NTAwMX0.hU86hbCprHJRpmPWaEYrfOEOwv1wKR6QhfK7vfgc8Fs",
+									"type": "string"
+								}
+							]
+						},
 						"method": "PATCH",
 						"header": [],
 						"body": {
@@ -281,15 +432,15 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:3030/api/admin/687e79fe976175fa0096da72",
+							"raw": "localhost:3030/api/customer/",
 							"host": [
 								"localhost"
 							],
 							"port": "3030",
 							"path": [
 								"api",
-								"admin",
-								"687e79fe976175fa0096da72"
+								"customer",
+								""
 							]
 						}
 					},
@@ -298,18 +449,116 @@
 				{
 					"name": "delete",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4N2ZjYzhjMWM4NTk5MTE4NDVmMDk3NiIsInJvbGUiOiJBZG1pbiIsImlzQWN0aXZlIjp0cnVlLCJpYXQiOjE3NTMyODg2MDEsImV4cCI6MTc1MzM3NTAwMX0.hU86hbCprHJRpmPWaEYrfOEOwv1wKR6QhfK7vfgc8Fs",
+									"type": "string"
+								}
+							]
+						},
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "localhost:3030/api/admin/687e79fe976175fa0096da72",
+							"raw": "localhost:3030/api/customer",
 							"host": [
 								"localhost"
 							],
 							"port": "3030",
 							"path": [
 								"api",
-								"admin",
-								"687e79fe976175fa0096da72"
+								"customer"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "signIn",
+					"request": {
+						"auth": {
+							"type": "bearer"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"www.komol@gmail.com\",\n    \"password\":\"Komol12345\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3030/api/customer/signin",
+							"host": [
+								"localhost"
+							],
+							"port": "3030",
+							"path": [
+								"api",
+								"customer",
+								"signin"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "newtoken",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "localhost:3030/api/customer/token",
+							"host": [
+								"localhost"
+							],
+							"port": "3030",
+							"path": [
+								"api",
+								"customer",
+								"token"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "signout",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4N2ZjYzhjMWM4NTk5MTE4NDVmMDk3NiIsInJvbGUiOiJBZG1pbiIsImlzQWN0aXZlIjp0cnVlLCJpYXQiOjE3NTMyODg2MDEsImV4cCI6MTc1MzM3NTAwMX0.hU86hbCprHJRpmPWaEYrfOEOwv1wKR6QhfK7vfgc8Fs",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "localhost:3030/api/customer/signout",
+							"host": [
+								"localhost"
+							],
+							"port": "3030",
+							"path": [
+								"api",
+								"customer",
+								"signout"
 							]
 						}
 					},
