@@ -8,6 +8,7 @@ export const validate = (schema) => {
                 throw new AppError((error?.details[0]?.message ?? 'Error input validation'), 422)
             }
             next()
+
         } catch (error) {
             next(error)
         }
