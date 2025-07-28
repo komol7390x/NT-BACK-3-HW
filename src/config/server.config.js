@@ -16,8 +16,6 @@ export const configServer = {
         REFRESH_TOKEN_TIME: String(process.env.REFRESH_TOKEN_TIME)
     },
     MAIL: {
-        HOST: process.env.MAIL_HOST,
-        PORT: +process.env.MAIL_PORT,
         USER: process.env.MAIL_USER,
         PASS: process.env.MAIL_PASSWORD
     },
@@ -26,5 +24,5 @@ export const configServer = {
         PORT: +process.env.REDIS_PORT,
         PASS: process.env.REDIS_PASSWORD,
     },
-    CONFIRM_URL:process.env.CONFIRM_PASSWORD_URL,
+    CONFIRM_URL: process.env.CONFIRM_PASSWORD_URL,
 }

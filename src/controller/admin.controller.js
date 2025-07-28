@@ -202,8 +202,8 @@ class AdminController extends BaseController {
             //email borligini tekshiriladi
             const { email } = req.body;
             const admin = await Admin.findOne({ email });
-            if (admin) {
-                throw new AppError('Email adress is found', 404)
+            if (!admin) {
+                throw new AppError('Email adress is not found', 404)
             }
             //6 xonali son olinadi random tarzida
             const otp = generateOTP();
@@ -228,7 +228,7 @@ class AdminController extends BaseController {
             const { email, otp } = req.body;
             //email orqali redis ichidagi vaqtinchalik 6 xonali soni olinadi
             const checkOTP = await redis.getData(email);
-            if (checkOTP != otp) {
+            if (checkOTP != String(otp)) {
                 throw new AppError('OTP incorrect or expired', 400);
             };
             //email orqali redisdan 6 xonali soni o'chiriladi
@@ -256,8 +256,14 @@ class AdminController extends BaseController {
             //yangi paroli hashlab qaytrilib yuboriladi
             const hashPassword = await Crypt.encrypt(newPassword);
             //id boyicha topiladi va update qilinadi
-            const updateAdmin = await Admin.findByIdAndUpdate(admin._id, hashPassword, { new: true });
-            successRes(res, updateAdmin)
+            const updateAdmin = await Admin.findByIdAndUpdate(admin._id, { hashPassword }, { new: true });
+            successRes(res, {
+                id: updateAdmin._id,
+                email: updateAdmin.email,
+                password: updateAdmin.hashPassword,
+                isAvtive: updateAdmin.isActive,
+                role: updateAdmin.role
+            })
         } catch (error) {
             next(error)
         }
