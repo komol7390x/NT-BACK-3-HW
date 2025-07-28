@@ -4,11 +4,11 @@ import { configServer } from '../config/server.config.js'
 import { connectDB } from '../database/server.database.js'
 import crypt from '../utils/Crypt.js'
 import { Admin } from '../models/admin.model.js'
-
+import {Roles} from '../const/Role.js'
 (async function () {
     try {
         await connectDB();
-        const role = await Admin.findOne({ role: 'SUPERADMIN' })
+        const role = await Admin.findOne({ role: Roles.SUPERADMIN })
         if (role) {
             console.log('This SUPERADMIN already added')
             return
@@ -19,7 +19,7 @@ import { Admin } from '../models/admin.model.js'
             email: configServer.ADMIN.SUPERADMIN_EMAIL,
             hashPassword,
             phone:'+998998883322',
-            role: 'SUPERADMIN'
+            role: Roles.SUPERADMIN
         })
         console.log('Super admin created :)');
         await disconnect()
