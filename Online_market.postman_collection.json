@@ -1,7 +1,7 @@
 {
 	"info": {
-		"_postman_id": "4ef0e5d0-dc33-4e6e-9dce-189263f9cd46",
-		"name": "Online_Book",
+		"_postman_id": "ccfe7942-4805-4674-a232-717ef00ce604",
+		"name": "Online_market",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "46127988"
 	},
@@ -17,7 +17,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ODI2ZGYwZjJjMTQyMDUyZDVlYjg3YiIsInJvbGUiOiJTVVBFUkFETUlOIiwiaXNBY3RpdmUiOmZhbHNlLCJpYXQiOjE3NTM1MTU2NTAsImV4cCI6MTc1MzYwMjA1MH0.NxCamxt3kJOt1Ru8SAUtzKWamH6uO6GaUxq7PszxeVw",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ODUyZjZhZmViNDU3YmM0YjY2NjhjMSIsImlzQWN0aXZlIjpmYWxzZSwicm9sZSI6IlNVUEVSQURNSU4iLCJpYXQiOjE3NTM2MDM0ODIsImV4cCI6MTc1MzY4OTg4Mn0.1T_jDoTm1Hs6mkcfKjcient32lAfgE3PjvOSi5VHxO8",
 									"type": "string"
 								}
 							]
@@ -26,7 +26,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"username\":\"Sherzod566\",\n    \"email\":\"www.sher42@gmail.com\",\n    \"password\":\"KomolSher@123\",\n    \"isActive\":true,\n    \"phone\":\"+998914423545\"\n}",
+							"raw": "{\n    \"username\":\"Sherz22221o2d23\",\n    \"email\":\"www.sher4122223@gmail.com\",\n    \"password\":\"KomolSher@123\",\n    \"isActive\":true,\n    \"role\":\"ADMIN\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -34,11 +34,11 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:3030/api/admin",
+							"raw": "localhost:4040/api/admin",
 							"host": [
 								"localhost"
 							],
-							"port": "3030",
+							"port": "4040",
 							"path": [
 								"api",
 								"admin"
@@ -63,11 +63,11 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:3030/api/admin",
+							"raw": "localhost:4040/api/admin",
 							"host": [
 								"localhost"
 							],
-							"port": "3030",
+							"port": "4040",
 							"path": [
 								"api",
 								"admin"
@@ -92,15 +92,15 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:3030/api/admin/68826e4dd9d45acbb1d13931",
+							"raw": "localhost:4040/api/admin/68852f6afeb457bc4b6668c1",
 							"host": [
 								"localhost"
 							],
-							"port": "3030",
+							"port": "4040",
 							"path": [
 								"api",
 								"admin",
-								"68826e4dd9d45acbb1d13931"
+								"68852f6afeb457bc4b6668c1"
 							]
 						}
 					},
@@ -192,7 +192,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n       \"email\":\"www.sher2@gmail.com\",\n        \"password\":\"KomolSher@124\"\n}",
+							"raw": "{\n       \"email\":\"www.Komol1646@gmail.com\",\n        \"password\":\"@Komol7390x\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -200,11 +200,11 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:3030/api/admin/signin",
+							"raw": "localhost:4040/api/admin/signin",
 							"host": [
 								"localhost"
 							],
-							"port": "3030",
+							"port": "4040",
 							"path": [
 								"api",
 								"admin",
@@ -220,15 +220,15 @@
 						"method": "POST",
 						"header": [],
 						"url": {
-							"raw": "localhost:3030/api/admin/newtoken",
+							"raw": "localhost:4040/api/admin/token",
 							"host": [
 								"localhost"
 							],
-							"port": "3030",
+							"port": "4040",
 							"path": [
 								"api",
 								"admin",
-								"newtoken"
+								"token"
 							]
 						}
 					},
@@ -250,15 +250,15 @@
 						"method": "POST",
 						"header": [],
 						"url": {
-							"raw": "localhost:3030/api/admin/logout",
+							"raw": "localhost:4040/api/admin/signout",
 							"host": [
 								"localhost"
 							],
-							"port": "3030",
+							"port": "4040",
 							"path": [
 								"api",
 								"admin",
-								"logout"
+								"signout"
 							]
 						}
 					},
@@ -289,7 +289,7 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:3030/api/admin/password/68826e4dd9d45acbb1d13931",
+							"raw": "localhost:3030/api/admin/password/",
 							"host": [
 								"localhost"
 							],
@@ -298,7 +298,47 @@
 								"api",
 								"admin",
 								"password",
-								"68826e4dd9d45acbb1d13931"
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "forgetPassword",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ODI2ZGYwZjJjMTQyMDUyZDVlYjg3YiIsInJvbGUiOiJTVVBFUkFETUlOIiwiaXNBY3RpdmUiOmZhbHNlLCJpYXQiOjE3NTM1MTU2NTAsImV4cCI6MTc1MzYwMjA1MH0.NxCamxt3kJOt1Ru8SAUtzKWamH6uO6GaUxq7PszxeVw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"oldPassword\":\"KomolSher@12\",\n    \"newPassword\":\"Komol123!@A\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3030/api/admin/password/",
+							"host": [
+								"localhost"
+							],
+							"port": "3030",
+							"path": [
+								"api",
+								"admin",
+								"password",
+								""
 							]
 						}
 					},
