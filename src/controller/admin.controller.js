@@ -212,7 +212,7 @@ class AdminController extends BaseController {
             //rediga vaqtinchalik malumot yuboriladi saqlab turish uchun
             await redis.setData(email, otp)
             //fronend ga email,otp va vaqt yuboriladi
-            return successRes(req, {
+            return successRes(res, {
                 email, 
                 otp, 
                 expireOTP: '5 minutes'
