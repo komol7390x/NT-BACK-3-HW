@@ -134,7 +134,7 @@ class AdminController extends BaseController {
     }
 
     // admin malumotlarini update qilish 
-    async updateAdmin(req, res, next) {
+    updateAdmin = async (req, res, next) => {
         try {
             //id tekshirish
             const id = req.params?.id
@@ -175,7 +175,7 @@ class AdminController extends BaseController {
     }
 
     //admin parolini update qilish eski parolni kirtgan holda
-    async updatePasswordForAdmin(req, res, next) {
+    updatePasswordForAdmin = async (req, res, next) => {
         try {
             //id boyicha admin topiladi
             const id = req.params?.id;
@@ -213,8 +213,8 @@ class AdminController extends BaseController {
             await redis.setData(email, otp)
             //fronend ga email,otp va vaqt yuboriladi
             return successRes(res, {
-                email, 
-                otp, 
+                email,
+                otp,
                 expireOTP: '5 minutes'
             });
         } catch (error) {
@@ -255,6 +255,7 @@ class AdminController extends BaseController {
             };
             //yangi paroli hashlab qaytrilib yuboriladi
             const hashPassword = await Crypt.encrypt(newPassword);
+            //id boyicha topiladi va update qilinadi
             const updateAdmin = await Admin.findByIdAndUpdate(admin._id, hashPassword, { new: true });
             successRes(res, updateAdmin)
         } catch (error) {
