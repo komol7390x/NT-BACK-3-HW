@@ -25,5 +25,6 @@ export const configServer = {
         HOST: process.env.REDIS_HOST,
         PORT: +process.env.REDIS_PORT,
         PASS: process.env.REDIS_PASSWORD,
-    }
+    },
+    CONFIRM_URL:process.env.CONFIRM_PASSWORD_URL,
 }
