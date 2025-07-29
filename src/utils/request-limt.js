@@ -1,4 +1,5 @@
 import { rateLimit, ipKeyGenerator } from 'express-rate-limit';
+import { Roles } from '../const/Role.js';
 
 // 🧱 So‘rov cheklovchi middleware funksiyasi (seconds va limit parametr bilan)
 export const requestLimiter = (seconds, limit) => {
@@ -7,7 +8,7 @@ export const requestLimiter = (seconds, limit) => {
         windowMs: seconds * 1000,         // ⏱ Necha soniyalik oynada cheklash (ms ga o‘giradi)
         limit,                            // 🔢 Shu oynada maksimal necha so‘rovga ruxsat
 
-        skip: (req, _) => req.user?.role === 'SUPERADMIN',
+        skip: (req, _) => req.user?.role === Roles.SUPERADMIN,
         // 🛡 SUPERADMIN foydalanuvchilar uchun cheklov ishlamaydi
 
         skipSuccessfulRequests: true,

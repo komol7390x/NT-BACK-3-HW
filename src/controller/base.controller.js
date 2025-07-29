@@ -28,7 +28,7 @@ export class BaseController {
     getByID = async (req, res) => {
         try {
             const id = req.params.id
-            const checkUser = await this.checkByID(id);
+            const checkUser = await BaseController.checkByID(id, this.model);
             successRes(res, checkUser)
         } catch (error) {
             next(error)
@@ -38,7 +38,7 @@ export class BaseController {
     update = async (req, res) => {
         try {
             const id = req.params.id
-            await this.checkByID(id, res);
+            await this.checkByID(id, this.model);
             const updateUser = await this.model
                 .findByIdAndUpdate(id, req.body, { new: true })
             console.log(updateUser);
@@ -52,7 +52,7 @@ export class BaseController {
     delete = async (req, res) => {
         try {
             const id = req.params.id
-            await this.checkByID(id, res);
+            await BaseController.checkByID(id, this.model);
             await this.model.findByIdAndDelete(id, req.params)
             successRes({})
         } catch (error) {

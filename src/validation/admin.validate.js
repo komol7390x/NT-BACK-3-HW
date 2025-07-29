@@ -8,7 +8,7 @@ class AdminValidation {
     create = () => {
         return Joi.object({
             username: Joi.string().required().min(3).max(100),
-            email: Joi.string().pattern(emailReg).required().min(3).max(100),
+            email: Joi.string().pattern(emailReg).required().email(),
             password: Joi.string().required().min(3).max(100),
             isActive: Joi.boolean(),
             role: Joi.string().valid('Admin'),
@@ -19,7 +19,7 @@ class AdminValidation {
     update = () => {
         return Joi.object({
             username: Joi.string().optional().min(3).max(100),
-            email: Joi.string().pattern(emailReg).optional().min(3).max(100),
+            email: Joi.string().pattern(emailReg).optional().email(),
             password: Joi.string().optional().min(3).max(100),
             isActive: Joi.boolean(),
             role: Joi.string().valid('Admin'),
@@ -30,7 +30,7 @@ class AdminValidation {
 
     signIn = () => {
         return Joi.object({
-            email: Joi.string().required(),
+            email: Joi.string().required().email(),
             password: Joi.string().required(),
         })
     }
@@ -42,6 +42,25 @@ class AdminValidation {
         })
     }
 
+    forgetPassword = () => {
+        return Joi.object({
+            email: Joi.string().email().required()
+        })
+    }
+
+    congirmOTP = () => {
+        return Joi.object({
+            email: Joi.string().email().required(),
+            otp: Joi.string().length(6).required(),
+        })
+    }
+
+    confirmPassword = () => {
+        return Joi.object({
+            email: Joi.string().email().required(),
+            newPassword: Joi.string().optional().min(3).max(100),
+        })
+    }
 
 }
 

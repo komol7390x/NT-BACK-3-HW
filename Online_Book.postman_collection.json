@@ -17,7 +17,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ODI2ZGYwZjJjMTQyMDUyZDVlYjg3YiIsInJvbGUiOiJTVVBFUkFETUlOIiwiaXNBY3RpdmUiOmZhbHNlLCJpYXQiOjE3NTM1MTU2NTAsImV4cCI6MTc1MzYwMjA1MH0.NxCamxt3kJOt1Ru8SAUtzKWamH6uO6GaUxq7PszxeVw",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ODI2ZGYwZjJjMTQyMDUyZDVlYjg3YiIsInJvbGUiOiJTVVBFUkFETUlOIiwiaXNBY3RpdmUiOmZhbHNlLCJpYXQiOjE3NTM3MjA0MzksImV4cCI6MTc1MzgwNjgzOX0.WkLPlyXEwQoOvVAEP9v8eA5nJt16JXzzXEct2_iBcoE",
 									"type": "string"
 								}
 							]
@@ -26,7 +26,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"username\":\"Sherzod566\",\n    \"email\":\"www.sher42@gmail.com\",\n    \"password\":\"KomolSher@123\",\n    \"isActive\":true,\n    \"phone\":\"+998914423545\"\n}",
+							"raw": "{\n    \"username\":\"Komol6\",\n    \"email\":\"komol7390@gmail.com\",\n    \"password\":\"Komol123!@\",\n    \"isActive\":true,\n    \"phone\":\"+998977507417\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -55,7 +55,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ODI2ZGYwZjJjMTQyMDUyZDVlYjg3YiIsInJvbGUiOiJTVVBFUkFETUlOIiwiaXNBY3RpdmUiOmZhbHNlLCJpYXQiOjE3NTM1MTU2NTAsImV4cCI6MTc1MzYwMjA1MH0.NxCamxt3kJOt1Ru8SAUtzKWamH6uO6GaUxq7PszxeVw",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ODI2ZGYwZjJjMTQyMDUyZDVlYjg3YiIsInJvbGUiOiJTVVBFUkFETUlOIiwiaXNBY3RpdmUiOmZhbHNlLCJpYXQiOjE3NTM3MjA0MzksImV4cCI6MTc1MzgwNjgzOX0.WkLPlyXEwQoOvVAEP9v8eA5nJt16JXzzXEct2_iBcoE",
 									"type": "string"
 								}
 							]
@@ -84,7 +84,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ODI2ZGYwZjJjMTQyMDUyZDVlYjg3YiIsInJvbGUiOiJTVVBFUkFETUlOIiwiaXNBY3RpdmUiOmZhbHNlLCJpYXQiOjE3NTM1MTU2NTAsImV4cCI6MTc1MzYwMjA1MH0.NxCamxt3kJOt1Ru8SAUtzKWamH6uO6GaUxq7PszxeVw",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ODI2ZGYwZjJjMTQyMDUyZDVlYjg3YiIsInJvbGUiOiJTVVBFUkFETUlOIiwiaXNBY3RpdmUiOmZhbHNlLCJpYXQiOjE3NTM3MjA0MzksImV4cCI6MTc1MzgwNjgzOX0.WkLPlyXEwQoOvVAEP9v8eA5nJt16JXzzXEct2_iBcoE",
 									"type": "string"
 								}
 							]
@@ -92,7 +92,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:3030/api/admin/68826e4dd9d45acbb1d13931",
+							"raw": "localhost:3030/api/admin/6887a6cb6cfbe14965b4e63d",
 							"host": [
 								"localhost"
 							],
@@ -100,7 +100,7 @@
 							"path": [
 								"api",
 								"admin",
-								"68826e4dd9d45acbb1d13931"
+								"6887a6cb6cfbe14965b4e63d"
 							]
 						}
 					},
@@ -192,7 +192,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n       \"email\":\"www.sher2@gmail.com\",\n        \"password\":\"KomolSher@124\"\n}",
+							"raw": "{\n    \"email\":\"komol7390@gmail.com\",\n    \"password\":\"11233\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -299,6 +299,103 @@
 								"admin",
 								"password",
 								"68826e4dd9d45acbb1d13931"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "sendEmail",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ODI2ZGYwZjJjMTQyMDUyZDVlYjg3YiIsInJvbGUiOiJTVVBFUkFETUlOIiwiaXNBY3RpdmUiOmZhbHNlLCJpYXQiOjE3NTM1MTU2NTAsImV4cCI6MTc1MzYwMjA1MH0.NxCamxt3kJOt1Ru8SAUtzKWamH6uO6GaUxq7PszxeVw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\":\"komol7390@gmail.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3030/api/admin/forget-password",
+							"host": [
+								"localhost"
+							],
+							"port": "3030",
+							"path": [
+								"api",
+								"admin",
+								"forget-password"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "confirm-OTP",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\":\"komol7390@gmail.com\",\n    \"otp\":\"453578\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3030/api/admin/send-email-otp",
+							"host": [
+								"localhost"
+							],
+							"port": "3030",
+							"path": [
+								"api",
+								"admin",
+								"send-email-otp"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "write-email-pass",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\":\"komol7390@gmail.com\",\n    \"newPassword\":\"11233\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3030/api/admin/confirm-password",
+							"host": [
+								"localhost"
+							],
+							"port": "3030",
+							"path": [
+								"api",
+								"admin",
+								"confirm-password"
 							]
 						}
 					},
