@@ -4,7 +4,9 @@
 
 ## 🔐 Parollarni xashlash (hash qilish) uchun foydalaniladi
 
-` npm i bcrypt`
+```
+npm i bcrypt
+```
 
 // 🍪 Cookie'larni o'qish va parslash uchun kerak
 
