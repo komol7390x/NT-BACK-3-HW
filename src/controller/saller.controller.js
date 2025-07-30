@@ -44,12 +44,12 @@ class CustomerController extends BaseController {
             const { phoneNumber, password } = req.body
             const saller = await Saller.findOne({ phoneNumber })
             if (!saller) {
-                throw new AppError('Email or password incorrect', 409)
+                throw new AppError('phone or password incorrect', 409)
             }
             //parolni decrypt qilyapti yani tog'ri ekanligini tekshirvoti
             const hashPass = await Crypt.decrypt(password, saller?.hashedPassword ?? "")
             if (!hashPass) {
-                throw new AppError('Email or password incorrect', 409)
+                throw new AppError('phone or password incorrect', 409)
             }
             //Token berib yuborlidgn infolrni tog'irlanvoti
             const payload = {
