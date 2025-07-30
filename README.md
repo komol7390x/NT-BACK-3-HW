@@ -1,17 +1,20 @@
 {
-// 🔐 Parollarni xashlash (hash qilish) uchun foydalaniladi
 
-## "bcrypt": "^6.0.0",
+# "bcrypt": "^6.0.0",
 
-// 🍪 Cookie'larni o‘qish va parslash uchun kerak
+## 🔐 Parollarni xashlash (hash qilish) uchun foydalaniladi
+
+` npm i bcrypt`
+
+// 🍪 Cookie'larni o'qish va parslash uchun kerak
 
 ## "cookie-parser": "^1.4.7",
 
-// 🌐 Frontend bilan backend o‘rtasidagi CORS (cross-origin) ruxsatini boshqarish uchun
+// 🌐 Frontend bilan backend o'rtasidagi CORS (cross-origin) ruxsatini boshqarish uchun
 
 ## "cors": "^2.8.5",
 
-// 🔒 Maxfiy sozlamalarni `.env` faylidan o‘qish uchun
+// 🔒 Maxfiy sozlamalarni `.env` faylidan o'qish uchun
 
 ## "dotenv": "^17.2.0",
 
@@ -21,7 +24,7 @@
 
 // 🛡️ DDoS yoki bruteforce urinishlarini cheklash (rate limiting) uchun middleware
 
-## "express-rate-limit": "^8.0.1",
+## "express-rate-limit": "^8.0.1",s
 
 // 📝 HTTP loglarni `winston` logger yordamida saqlash uchun (masalan: MongoDB'ga log yozish)
 
@@ -55,7 +58,7 @@
 
 ## "otp-generator": "^4.0.1",
 
-// 🚀 Caching, session management, yoki rate limit ma’lumotlarini saqlash uchun Redis client
+// 🚀 Caching, session management, yoki rate limit ma'lumotlarini saqlash uchun Redis client
 
 ## "redis": "^5.6.1",
 
