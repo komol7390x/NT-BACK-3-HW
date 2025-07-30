@@ -8,11 +8,19 @@ const customTime = winston.format((info) => {
     return info
 })
 
+const infoOnlyFilter = winston.format((info) => {
+    return info.level === 'info' ? info : false;
+});
+
 const logger = winston.createLogger({
     transports: [
         // file log
         new winston.transports.File({ filename: 'logs/error.log', level: 'error' }),
-        new winston.transports.File({ filename: 'logs/info.log', level: 'info' }),
+        new winston.transports.File({
+            filename: 'logs/info.log',
+            level: 'info',
+            format: winston.format.combine(infoOnlyFilter())
+        }),
         new winston.transports.File({ filename: 'logs/combined.log' }),
 
         //mongodb log error
