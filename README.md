@@ -1,8 +1,8 @@
 {
 
-# "bcrypt": "^6.0.0",
+## "bcrypt": "^6.0.0",
 
-## 🔐 Parollarni xashlash (hash qilish) uchun foydalaniladi
+### 🔐 Parollarni xashlash (hash qilish) uchun foydalaniladi
 
 ```
 npm i bcrypt
