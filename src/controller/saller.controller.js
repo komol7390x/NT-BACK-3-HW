@@ -27,8 +27,6 @@ class CustomerController extends BaseController {
             }
             req.body.hashedPassword = await Crypt.encrypt(password);
             delete req.body.password
-            console.log(2);
-
             const data = await Saller.create(req.body)
             successRes(res, data, 201)
         } catch (error) {
