@@ -35,3 +35,48 @@
 {"level":"info","message":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4OGExZGQ2N2EyYzQ1ZjNkNjIzNzNhOCIsInJvbGUiOiJTQUxMRVIiLCJpc0FjdGl2ZSI6ZmFsc2UsImlhdCI6MTc1Mzg5NDM5NywiZXhwIjoxNzUzOTgwNzk3fQ.f2UdKILWLxsL04HJ-GyDgHOj_9R7gefB_X6WcOyT8rY 200","timestamp":"30/07/2025, 21:53:17"}
 {"level":"error","message":"409 Phone or password incorrect","timestamp":"30/07/2025, 21:53:20"}
 {"level":"info","message":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4OGExZGQ2N2EyYzQ1ZjNkNjIzNzNhOCIsInJvbGUiOiJTQUxMRVIiLCJpc0FjdGl2ZSI6ZmFsc2UsImlhdCI6MTc1Mzg5NDQwNywiZXhwIjoxNzUzOTgwODA3fQ.90yoyw9h6oRFaS3ytA4BjN7oYFe9UPV_EbvXKuT23To 200","timestamp":"30/07/2025, 21:53:27"}
+{
+  message: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4OGExZGQ2N2EyYzQ1ZjNkNjIzNzNhOCIsInJvbGUiOiJTQUxMRVIiLCJpc0FjdGl2ZSI6ZmFsc2UsImlhdCI6MTc1Mzg5NDUwNiwiZXhwIjoxNzUzOTgwOTA2fQ.IWkYRniEpKXLJHx4VC5zSen3XhdvCbWDxm07Dk33Ikc 200',
+  level: 'info',
+  timestamp: '30/07/2025, 21:55:06'
+}
+{
+  message: '409 Phone or password incorrect',
+  level: 'error',
+  timestamp: '30/07/2025, 21:55:19'
+}
+{
+  message: '409 Phone or password incorrect',
+  level: 'error',
+  timestamp: '30/07/2025, 21:55:36'
+}
+{
+  message: '409 Phone or password incorrect',
+  level: 'error',
+  timestamp: '30/07/2025, 21:55:37'
+}
+{
+  message: '409 Phone or password incorrect',
+  level: 'error',
+  timestamp: '30/07/2025, 21:55:37'
+}
+{
+  message: '409 Phone or password incorrect',
+  level: 'error',
+  timestamp: '30/07/2025, 21:55:38'
+}
+{
+  message: '409 Phone or password incorrect',
+  level: 'error',
+  timestamp: '30/07/2025, 21:55:39'
+}
+{
+  message: '409 Phone or password incorrect',
+  level: 'error',
+  timestamp: '30/07/2025, 21:55:39'
+}
+{
+  message: '409 Phone or password incorrect',
+  level: 'error',
+  timestamp: '30/07/2025, 21:55:40'
+}

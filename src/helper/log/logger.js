@@ -40,7 +40,7 @@ const logger = winston.createLogger({
     //yozish formatini berish
     format: winston.format.combine(
         customTime(),
-        winston.format.json()
+        winston.format.prettyPrint()
     )
 })
 
