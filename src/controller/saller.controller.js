@@ -4,6 +4,8 @@ import Crypt from '../utils/Crypt.js';
 import { AppError } from '../error/AppError.js';
 import Token from '../utils/Token.js';
 import { configServer } from '../config/server.config.js';
+import { successRes } from '../utils/success-res.js';
+
 
 class CustomerController extends BaseController {
     constructor() {
@@ -16,15 +18,18 @@ class CustomerController extends BaseController {
             const { phoneNumber, email, password } = req.body
             const existNumber = await Saller.findOne({ phoneNumber })
             if (existNumber) {
-                throw new AppError('Username already exists', 422);
+                throw new AppError('PhoneNumber already exists', 422);
             }
+
             const existEmail = await Saller.findOne({ email })
             if (existEmail) {
                 throw new AppError('Email already exists', 422);
             }
-            const hashedPassword = await Crypt.encrypt(password);
+            req.body.hashedPassword = await Crypt.encrypt(password);
             delete req.body.password
-            const data = await Saller.create({ ...req.body, hashedPassword })
+            console.log(2);
+
+            const data = await Saller.create(req.body)
             successRes(res, data, 201)
         } catch (error) {
             next(error)

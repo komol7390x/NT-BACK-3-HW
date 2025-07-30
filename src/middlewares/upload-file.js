@@ -4,12 +4,13 @@ import multer from 'multer'
 import { v4 } from 'uuid'
 
 const uploadDir = join(process.cwd(), '../upload')
+
 if (!existsSync(uploadDir)) {
     mkdirSync(uploadDir, { recursive: true })
 }
 
 const storage = multer.diskStorage({
-    destination: function (_req, file, cb) {
+    destination: function (_req, _file, cb) {
         cb(null, uploadDir)
     },
 
