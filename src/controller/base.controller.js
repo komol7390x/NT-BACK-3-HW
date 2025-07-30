@@ -3,8 +3,9 @@ import { successRes } from '../utils/success-res.js'
 import { AppError } from '../error/AppError.js';
 
 export class BaseController {
-    constructor(model) {
+    constructor(model, populateFields = []) {
         this.model = model
+        this.populateFields = populateFields
     }
     create = async (req, res, next) => {
         try {
@@ -18,7 +19,12 @@ export class BaseController {
 
     getAll = async (_, res) => {
         try {
-            const data = await this.model.find()
+            let data = await this.model.find()
+            if (this.populateFields.length) {
+                for (let populateField of this.populateFields) {
+                    data = data.populate(populateField)
+                }
+            }
             successRes(res, data)
         } catch (error) {
             next(error)
@@ -28,8 +34,13 @@ export class BaseController {
     getByID = async (req, res) => {
         try {
             const id = req.params.id
-            const checkUser = await BaseController.checkByID(id, this.model);
-            successRes(res, checkUser)
+            const data = await BaseController.checkByID(id, this.model);
+            if (this.populateFields.length) {
+                for (let populateField of this.populateFields) {
+                    data = data.populate(populateField)
+                }
+            }
+            successRes(res, data)
         } catch (error) {
             next(error)
         }
@@ -39,11 +50,13 @@ export class BaseController {
         try {
             const id = req.params.id
             await this.checkByID(id, this.model);
-            const updateUser = await this.model
-                .findByIdAndUpdate(id, req.body, { new: true })
-            console.log(updateUser);
-
-            successRes(updateUser)
+            let data = await this.model.findByIdAndUpdate(id, req.body, { new: true })
+            if (this.populateFields.length) {
+                for (let populateField of this.populateFields) {
+                    data = data.populate(populateField)
+                }
+            }
+            successRes(res, data)
         } catch (error) {
             next(error)
         }

@@ -404,7 +404,7 @@
 			]
 		},
 		{
-			"name": "customers",
+			"name": "saller",
 			"item": [
 				{
 					"name": "create",
@@ -414,7 +414,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4N2U2YzhkMTdmODFhOTBlMWEwOGE4YiIsInJvbGUiOiJTVVBFUkFETUlOIiwiaXNBY3RpdmUiOmZhbHNlLCJpYXQiOjE3NTMyODk0MjcsImV4cCI6MTc1MzM3NTgyN30.FXRVMpjXbRIreQJvZF7zjoZ74OQamq4uCYHnX7-hSfw",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ODI2ZGYwZjJjMTQyMDUyZDVlYjg3YiIsInJvbGUiOiJTVVBFUkFETUlOIiwiaXNBY3RpdmUiOmZhbHNlLCJpYXQiOjE3NTM3MjA0MzksImV4cCI6MTc1MzgwNjgzOX0.WkLPlyXEwQoOvVAEP9v8eA5nJt16JXzzXEct2_iBcoE",
 									"type": "string"
 								}
 							]
@@ -422,23 +422,44 @@
 						"method": "POST",
 						"header": [],
 						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"username\":\"Sherzod13232\",\n    \"email\":\"sher@gmai2l3321.com\",\n    \"password\":\"X@z1sDfG\",\n    \"isActive\":true,\n    \"phone\":\"+998901234567\"\n}",
-							"options": {
-								"raw": {
-									"language": "json"
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "phoneNumber",
+									"value": "+998995300025",
+									"type": "text"
+								},
+								{
+									"key": "fullName",
+									"value": "Komol Xoja",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "www.komol21@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "1122",
+									"type": "text"
+								},
+								{
+									"key": "file",
+									"type": "file",
+									"src": "postman-cloud:///1f06d472-c446-41f0-af3b-7aed604607f9"
 								}
-							}
+							]
 						},
 						"url": {
-							"raw": "localhost:3030/api/customer",
+							"raw": "localhost:3030/api/saller",
 							"host": [
 								"localhost"
 							],
 							"port": "3030",
 							"path": [
 								"api",
-								"customer"
+								"saller"
 							]
 						}
 					},
@@ -452,7 +473,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4N2U2YzhkMTdmODFhOTBlMWEwOGE4YiIsInJvbGUiOiJTVVBFUkFETUlOIiwiaXNBY3RpdmUiOmZhbHNlLCJpYXQiOjE3NTMyODk0MjcsImV4cCI6MTc1MzM3NTgyN30.FXRVMpjXbRIreQJvZF7zjoZ74OQamq4uCYHnX7-hSfw",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ODdhNmNiNmNmYmUxNDk2NWI0ZTYzZCIsInJvbGUiOiJBRE1JTiIsImlzQWN0aXZlIjp0cnVlLCJpYXQiOjE3NTM4ODIyMDcsImV4cCI6MTc1Mzk2ODYwN30.53n7MIK-s39roJAyYnEcLJ367WWZ3D6WVDBLBSn5Vuc",
 									"type": "string"
 								}
 							]
@@ -460,15 +481,15 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:3030/api/customer/",
+							"raw": "localhost:3030/api/saller/688a1dd67a2c45f3d62373a8",
 							"host": [
 								"localhost"
 							],
 							"port": "3030",
 							"path": [
 								"api",
-								"customer",
-								""
+								"saller",
+								"688a1dd67a2c45f3d62373a8"
 							]
 						}
 					},
@@ -482,7 +503,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4N2U2YzhkMTdmODFhOTBlMWEwOGE4YiIsInJvbGUiOiJTVVBFUkFETUlOIiwiaXNBY3RpdmUiOmZhbHNlLCJpYXQiOjE3NTMyODk0MjcsImV4cCI6MTc1MzM3NTgyN30.FXRVMpjXbRIreQJvZF7zjoZ74OQamq4uCYHnX7-hSfw",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ODdhNmNiNmNmYmUxNDk2NWI0ZTYzZCIsInJvbGUiOiJBRE1JTiIsImlzQWN0aXZlIjp0cnVlLCJpYXQiOjE3NTM4ODIyMDcsImV4cCI6MTc1Mzk2ODYwN30.53n7MIK-s39roJAyYnEcLJ367WWZ3D6WVDBLBSn5Vuc",
 									"type": "string"
 								}
 							]
@@ -490,15 +511,15 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:3030/api/customer/",
+							"raw": "localhost:3030/api/saller/688a1dd67a2c45f3d62373a8",
 							"host": [
 								"localhost"
 							],
 							"port": "3030",
 							"path": [
 								"api",
-								"customer",
-								""
+								"saller",
+								"688a1dd67a2c45f3d62373a8"
 							]
 						}
 					},
@@ -529,15 +550,15 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:3030/api/customer/",
+							"raw": "localhost:3030/api/saller/688a1dd67a2c45f3d62373a8",
 							"host": [
 								"localhost"
 							],
 							"port": "3030",
 							"path": [
 								"api",
-								"customer",
-								""
+								"saller",
+								"688a1dd67a2c45f3d62373a8"
 							]
 						}
 					},
@@ -559,14 +580,15 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "localhost:3030/api/customer",
+							"raw": "localhost:3030/api/saller/688a1dd67a2c45f3d62373a8",
 							"host": [
 								"localhost"
 							],
 							"port": "3030",
 							"path": [
 								"api",
-								"customer"
+								"saller",
+								"688a1dd67a2c45f3d62373a8"
 							]
 						}
 					},
@@ -589,7 +611,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"email\": \"www.komol@gmail.com\",\n    \"password\":\"Komol12345\"\n}",
+							"raw": "{\n    \"phoneNumber\":\"+998995300025\",\n    \"password\":\"1122\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -597,14 +619,14 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:3030/api/customer/signin",
+							"raw": "localhost:3030/api/saller/signin",
 							"host": [
 								"localhost"
 							],
 							"port": "3030",
 							"path": [
 								"api",
-								"customer",
+								"saller",
 								"signin"
 							]
 						}
@@ -617,14 +639,14 @@
 						"method": "POST",
 						"header": [],
 						"url": {
-							"raw": "localhost:3030/api/customer/token",
+							"raw": "localhost:3030/api/saller/token",
 							"host": [
 								"localhost"
 							],
 							"port": "3030",
 							"path": [
 								"api",
-								"customer",
+								"saller",
 								"token"
 							]
 						}
@@ -639,7 +661,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4N2ZjYzhjMWM4NTk5MTE4NDVmMDk3NiIsInJvbGUiOiJBZG1pbiIsImlzQWN0aXZlIjp0cnVlLCJpYXQiOjE3NTMyODg2MDEsImV4cCI6MTc1MzM3NTAwMX0.hU86hbCprHJRpmPWaEYrfOEOwv1wKR6QhfK7vfgc8Fs",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4OGExZGQ2N2EyYzQ1ZjNkNjIzNzNhOCIsInJvbGUiOiJTQUxMRVIiLCJpc0FjdGl2ZSI6ZmFsc2UsImlhdCI6MTc1Mzg4Mjc5MiwiZXhwIjoxNzUzOTY5MTkyfQ.ScKUhzIhGb9B2KpRFwCkKnakYqA8hjHdJVIdyt4U8Bo",
 									"type": "string"
 								}
 							]
@@ -647,15 +669,15 @@
 						"method": "POST",
 						"header": [],
 						"url": {
-							"raw": "localhost:3030/api/customer/signout",
+							"raw": "localhost:3030/api/admin/logout",
 							"host": [
 								"localhost"
 							],
 							"port": "3030",
 							"path": [
 								"api",
-								"customer",
-								"signout"
+								"admin",
+								"logout"
 							]
 						}
 					},

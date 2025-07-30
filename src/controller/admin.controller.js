@@ -9,7 +9,7 @@ import Crypt from '../utils/Crypt.js'
 import { generateOTP } from '../utils/generate-otp.js'
 import { sendOTPToMail } from '../utils/send-mail.js';
 
-class AdminController extends BaseController {
+export class AdminController extends BaseController {
     constructor() {
         super(Admin)
     }
