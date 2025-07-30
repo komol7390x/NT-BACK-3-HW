@@ -12,7 +12,7 @@ const router = Router();
 
 router
     .post('/', uploadFile.single('file'), validate(sallerValidate.create), controller.createSaller)
-    .post('/sigin', validate(sallerValidate.create), controller.signIn)
+    .post('/signin', validate(sallerValidate.signIn), controller.signIn)
     .post('/token', controller.newToken)
 
     .get('/', AuthGuard, RolesGuard(Roles.SUPERADMIN, Roles.ADMIN), controller.getAll)

@@ -94,7 +94,9 @@ class CustomerController extends BaseController {
             const payload = {
                 id: saller.id, role: saller.role, isActive: saller.isActive
             }
-            const accessToken = await Saller.accessToken(payload)
+            console.log(1);
+            const accessToken = await Token.accessToken(payload)
+
             successRes(res, accessToken)
         } catch (error) {
             next(error)
