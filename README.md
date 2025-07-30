@@ -1,79 +1,177 @@
-{
+### "bcrypt": "^6.0.0",
 
-## "bcrypt": "^6.0.0",
-
-### 🔐 Parollarni xashlash (hash qilish) uchun foydalaniladi
+#### 🔐 Parollarni xashlash (hash qilish) uchun foydalaniladi
 
 ```
 npm i bcrypt
 ```
 
-// 🍪 Cookie'larni o'qish va parslash uchun kerak
+## 🍪 Cookie'larni o'qish va parslash uchun kerak
 
-## "cookie-parser": "^1.4.7",
+### "cookie-parser": "^1.4.7",
 
-// 🌐 Frontend bilan backend o'rtasidagi CORS (cross-origin) ruxsatini boshqarish uchun
+```
+npm i cookie-parser
+```
 
-## "cors": "^2.8.5",
+---
 
-// 🔒 Maxfiy sozlamalarni `.env` faylidan o'qish uchun
+## 🌐 Frontend bilan backend o'rtasidagi CORS (cross-origin) ruxsatini boshqarish uchun
 
-## "dotenv": "^17.2.0",
+### "cors": "^2.8.5",
 
-// 🚀 Backend framework — HTTP endpointlar, routing, middleware boshqaruvi uchun
+```
+npm i cors
+```
 
-## "express": "^5.1.0",
+---
 
-// 🛡️ DDoS yoki bruteforce urinishlarini cheklash (rate limiting) uchun middleware
+## 🔒 Maxfiy sozlamalarni `.env` faylidan o'qish uchun
 
-## "express-rate-limit": "^8.0.1",s
+### "dotenv": "^17.2.0",
 
-// 📝 HTTP loglarni `winston` logger yordamida saqlash uchun (masalan: MongoDB'ga log yozish)
+```
+npm i dotenv
+```
 
-## "express-winston": "^4.2.0",
+---
 
-// 🔐 HTTP xavfsizligini kuchaytiradigan middleware (headerlar bilan)
+## 🚀 Backend framework — HTTP endpointlar, routing, middleware boshqaruvi uchun
 
-## "helmet": "^8.1.0",
+### "express": "^5.1.0",
 
-// ✅ Request body'larni validatsiya qilish uchun (schema orqali, input check)
+```
+npm i express
+```
 
-## "joi": "^17.13.3",
+---
 
-// 🔏 JWT (JSON Web Token) yaratish va tekshirish (authentication va authorization uchun)
+## 🛡️ DDoS yoki bruteforce urinishlarini cheklash (rate limiting) uchun middleware
 
-## "jsonwebtoken": "^9.0.2",
+### "express-rate-limit": "^8.0.1",s
 
-// 🧠 MongoDB bilan ishlash uchun ODM (Object Data Modeling) kutubxonasi
+```
+npm i express-rate-limit
+```
 
-## "mongoose": "^8.16.4",
+---
 
-// 📂 Fayllarni yuklab olish (upload) uchun middleware (masalan: rasm yuklash)
+## 📝 HTTP loglarni `winston` logger yordamida saqlash uchun (masalan: MongoDB'ga log yozish)
 
-## "multer": "^2.0.2",
+### "express-winston": "^4.2.0",
 
-// 📧 Email yuborish uchun (masalan: tasdiqlash kodi yoki xush kelibsiz xat)
+```
+npm i express-winston
+```
 
-## "nodemailer": "^7.0.5",
+---
 
-// 🔢 OTP (One-Time Password) kodlar generatsiyasi uchun
+## 🔐 HTTP xavfsizligini kuchaytiradigan middleware (headerlar bilan)
 
-## "otp-generator": "^4.0.1",
+### "helmet": "^8.1.0",
 
-// 🚀 Caching, session management, yoki rate limit ma'lumotlarini saqlash uchun Redis client
+```
+npm i helmet
+```
 
-## "redis": "^5.6.1",
+---
 
-// 🆔 Unikal identifikatorlar yaratish uchun (UUID v4, v5 va hokazo)
+## ✅ Request body'larni validatsiya qilish uchun (schema orqali, input check)
 
-## "uuid": "^11.1.0",
+### "joi": "^17.13.3",
 
-// 📝 Log yozuvlarini konsolga yoki faylga chiqarish uchun asosiy logger kutubxonasi
+```
+npm i joi
+```
 
-## "winston": "^3.17.0",
+---
 
-// 📊 Log yozuvlarini MongoDB bazasiga yozish uchun `winston` plugin
+## 🔏 JWT (JSON Web Token) yaratish va tekshirish (authentication va authorization uchun)
 
-## "winston-mongodb": "^7.0.0"
+### "jsonwebtoken": "^9.0.2",
 
-}
+```
+npm i jsonwebtoken
+```
+
+---
+
+## 🧠 MongoDB bilan ishlash uchun ODM (Object Data Modeling) kutubxonasi
+
+### "mongoose": "^8.16.4",
+
+```
+npm i mongoose
+```
+
+---
+
+## 📂 Fayllarni yuklab olish (upload) uchun middleware (masalan: rasm yuklash)
+
+### "multer": "^2.0.2",
+
+```
+npm i multer
+```
+
+---
+
+## 📧 Email yuborish uchun (masalan: tasdiqlash kodi yoki xush kelibsiz xat)
+
+### "nodemailer": "^7.0.5",
+
+```
+npm i nodemailer
+```
+
+---
+
+## 🔢 OTP (One-Time Password) kodlar generatsiyasi uchun
+
+### "otp-generator": "^4.0.1",
+
+```
+npm i otp-generator
+```
+
+---
+
+## 🚀 Caching, session management, yoki rate limit ma'lumotlarini saqlash uchun Redis client
+
+### "redis": "^5.6.1",
+
+```
+npm i redis
+```
+
+---
+
+## 🆔 Unikal identifikatorlar yaratish uchun (UUID v4, v5 va hokazo)
+
+### "uuid": "^11.1.0",
+
+```
+npm i uuid
+```
+
+---
+
+## 📝 Log yozuvlarini konsolga yoki faylga chiqarish uchun asosiy logger kutubxonasi
+
+### "winston": "^3.17.0",
+
+```
+npm i winston
+```
+
+---
+
+## 📊 Log yozuvlarini MongoDB bazasiga yozish uchun `winston` plugin
+
+### "winston-mongodb": "^7.0.0"
+
+```
+npm i winston-mongodb
+```
+
+---
