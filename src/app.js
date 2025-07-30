@@ -26,9 +26,9 @@ export const application = async (server) => {
 
     server.use('/api', router)
 
-    server.use(expressWinston.errorLogger({
-        winstonInstance: logger
-    }))
+    // server.use(expressWinston.errorLogger({
+    //     winstonInstance: logger
+    // }))
 
     server.use(globalErrorHandle)
 }
