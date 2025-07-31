@@ -1,6 +1,7 @@
 import { isValidObjectId } from "mongoose";
 import { successRes } from '../utils/success-res.js'
 import { AppError } from '../error/AppError.js';
+import { query } from "winston";
 
 export class BaseController {
     constructor(model, populateFields = []) {
@@ -19,13 +20,13 @@ export class BaseController {
 
     getAll = async (_, res) => {
         try {
-            let data = await this.model.find()
-            if (this.populateFields.length) {
-                for (let populateField of this.populateFields) {
-                    data = data.populate(populateField)
-                }
+            let query = await this.model.find()
+            const fields = this.populateFields;
+            if (fields?.length) {
+                fields.forEach(field => query.populate(field))
             }
-            successRes(res, data)
+            const data = await query.exec()
+            return successRes(res, data)
         } catch (error) {
             next(error)
         }
@@ -34,12 +35,13 @@ export class BaseController {
     getByID = async (req, res) => {
         try {
             const id = req.params.id
-            const data = await BaseController.checkByID(id, this.model);
-            if (this.populateFields.length) {
-                for (let populateField of this.populateFields) {
-                    data = data.populate(populateField)
-                }
+            await BaseController.checkByID(id, this.model);
+            let query = await this.model.find()
+            const fields = this.populateFields;
+            if (fields?.length) {
+                fields.forEach(field => query.populate(field))
             }
+            const data = await query.exec()
             successRes(res, data)
         } catch (error) {
             next(error)
