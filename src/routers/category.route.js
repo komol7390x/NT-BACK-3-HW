@@ -3,7 +3,7 @@ import controller from '../controller/category.controller.js'
 import {AuthGuard} from '../guards/auth.guard.js'
 import {RolesGuard} from '../guards/role.guard.js'
 import category from '../validation/category.validate.js'
-import validate from '../middlewares/validate.js'
+import {validate} from '../middlewares/validate.js'
 import {Roles} from '../const/Role.js'
 
 const router=Router()
@@ -14,3 +14,5 @@ router
     .get('/:id',AuthGuard,RolesGuard(Roles.SUPERADMIN,Roles.ADMIN),controller.getByID)
     .patch('/:id',AuthGuard,RolesGuard(Roles.SUPERADMIN,Roles.ADMIN),validate(category.update),controller.updateCategory)
     .delete('/:id',AuthGuard,RolesGuard(Roles.SUPERADMIN,Roles.ADMIN),controller.delete)
+
+export default router

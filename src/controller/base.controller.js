@@ -1,7 +1,6 @@
 import { isValidObjectId } from "mongoose";
 import { successRes } from '../utils/success-res.js'
 import { AppError } from '../error/AppError.js';
-import { query } from "winston";
 
 export class BaseController {
     constructor(model, populateFields = []) {
