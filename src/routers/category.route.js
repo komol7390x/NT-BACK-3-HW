@@ -5,11 +5,12 @@ import {RolesGuard} from '../guards/role.guard.js'
 import category from '../validation/category.validate.js'
 import {validate} from '../middlewares/validate.js'
 import {Roles} from '../const/Role.js'
+import { uploadFile } from "../middlewares/upload-file.js";
 
 const router=Router()
 
 router
-    .post('/',AuthGuard,RolesGuard(Roles.SUPERADMIN,Roles.ADMIN),validate(category.create),controller.createCategory)
+    .post('/',AuthGuard,RolesGuard(Roles.SUPERADMIN,Roles.ADMIN),validate(category.create),uploadFile.single('file'),controller.createCategory)
     .get('/',AuthGuard,RolesGuard(Roles.SUPERADMIN,Roles.ADMIN),controller.getAll)
     .get('/:id',AuthGuard,RolesGuard(Roles.SUPERADMIN,Roles.ADMIN),controller.getByID)
     .patch('/:id',AuthGuard,RolesGuard(Roles.SUPERADMIN,Roles.ADMIN),validate(category.update),controller.updateCategory)
