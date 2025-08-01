@@ -192,7 +192,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"email\":\"komol7390@gmail.com\",\n    \"password\":\"11233\"\n}",
+							"raw": "{\n    \"email\":\"www.komol@gmail.com\",\n    \"password\":\"Komol12345\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -611,7 +611,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"phoneNumber\":\"+998995300025\",\n    \"password\":\"1122\"\n}",
+							"raw": "{\n    \"phoneNumber\":\"+9989953000e25\",\n    \"password\":\"1122\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -678,6 +678,354 @@
 								"api",
 								"admin",
 								"logout"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "category",
+			"item": [
+				{
+					"name": "create",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ODJmOTg5YTUyODIxMTM1NjFmMzM0OSIsInJvbGUiOiJTVVBFUkFETUlOIiwiaXNBY3RpdmUiOmZhbHNlLCJpYXQiOjE3NTQwMjk2MDcsImV4cCI6MTc1NDExNjAwN30.yqRkpKxZJB2kBZ2VFFnGFCe868ogEiRCRhb92J9tFJw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "smm",
+									"type": "text"
+								},
+								{
+									"key": "file",
+									"type": "file",
+									"src": "postman-cloud:///1f06d472-c446-41f0-af3b-7aed604607f9"
+								},
+								{
+									"key": "image",
+									"value": "panda",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3030/api/category",
+							"host": [
+								"localhost"
+							],
+							"port": "3030",
+							"path": [
+								"api",
+								"category"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAll",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ODJmOTg5YTUyODIxMTM1NjFmMzM0OSIsInJvbGUiOiJTVVBFUkFETUlOIiwiaXNBY3RpdmUiOmZhbHNlLCJpYXQiOjE3NTQwMjk2MDcsImV4cCI6MTc1NDExNjAwN30.yqRkpKxZJB2kBZ2VFFnGFCe868ogEiRCRhb92J9tFJw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3030/api/category",
+							"host": [
+								"localhost"
+							],
+							"port": "3030",
+							"path": [
+								"api",
+								"category"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getById",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ODJmOTg5YTUyODIxMTM1NjFmMzM0OSIsInJvbGUiOiJTVVBFUkFETUlOIiwiaXNBY3RpdmUiOmZhbHNlLCJpYXQiOjE3NTQwMjk2MDcsImV4cCI6MTc1NDExNjAwN30.yqRkpKxZJB2kBZ2VFFnGFCe868ogEiRCRhb92J9tFJw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3030/api/category",
+							"host": [
+								"localhost"
+							],
+							"port": "3030",
+							"path": [
+								"api",
+								"category"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4N2ZjYzhjMWM4NTk5MTE4NDVmMDk3NiIsInJvbGUiOiJBZG1pbiIsImlzQWN0aXZlIjp0cnVlLCJpYXQiOjE3NTMyODg2MDEsImV4cCI6MTc1MzM3NTAwMX0.hU86hbCprHJRpmPWaEYrfOEOwv1wKR6QhfK7vfgc8Fs",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Dizayn",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3030/api/category",
+							"host": [
+								"localhost"
+							],
+							"port": "3030",
+							"path": [
+								"api",
+								"category"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4N2ZjYzhjMWM4NTk5MTE4NDVmMDk3NiIsInJvbGUiOiJBZG1pbiIsImlzQWN0aXZlIjp0cnVlLCJpYXQiOjE3NTMyODg2MDEsImV4cCI6MTc1MzM3NTAwMX0.hU86hbCprHJRpmPWaEYrfOEOwv1wKR6QhfK7vfgc8Fs",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:3030/api/category",
+							"host": [
+								"localhost"
+							],
+							"port": "3030",
+							"path": [
+								"api",
+								"category"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "product",
+			"item": [
+				{
+					"name": "create",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ODJmOTg5YTUyODIxMTM1NjFmMzM0OSIsInJvbGUiOiJTVVBFUkFETUlOIiwiaXNBY3RpdmUiOmZhbHNlLCJpYXQiOjE3NTQwMjk2MDcsImV4cCI6MTc1NDExNjAwN30.yqRkpKxZJB2kBZ2VFFnGFCe868ogEiRCRhb92J9tFJw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Super Laptop\",\n  \"price\": 1200,\n  \"quantity\": 5,\n  \"description\": \"Yangi avlod, kuchli va ishonchli laptop\",\n  \"sallerID\": \"688a1dd67a2c45f3d62373a8\",\n  \"categoryID\": \"688a1dd67a2c45f3d62373a8\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3030/api/product",
+							"host": [
+								"localhost"
+							],
+							"port": "3030",
+							"path": [
+								"api",
+								"product"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAll",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ODJmOTg5YTUyODIxMTM1NjFmMzM0OSIsInJvbGUiOiJTVVBFUkFETUlOIiwiaXNBY3RpdmUiOmZhbHNlLCJpYXQiOjE3NTQwMjk2MDcsImV4cCI6MTc1NDExNjAwN30.yqRkpKxZJB2kBZ2VFFnGFCe868ogEiRCRhb92J9tFJw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3030/api/product",
+							"host": [
+								"localhost"
+							],
+							"port": "3030",
+							"path": [
+								"api",
+								"product"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getById",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ODJmOTg5YTUyODIxMTM1NjFmMzM0OSIsInJvbGUiOiJTVVBFUkFETUlOIiwiaXNBY3RpdmUiOmZhbHNlLCJpYXQiOjE3NTQwMjk2MDcsImV4cCI6MTc1NDExNjAwN30.yqRkpKxZJB2kBZ2VFFnGFCe868ogEiRCRhb92J9tFJw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3030/api/product",
+							"host": [
+								"localhost"
+							],
+							"port": "3030",
+							"path": [
+								"api",
+								"product"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4N2ZjYzhjMWM4NTk5MTE4NDVmMDk3NiIsInJvbGUiOiJBZG1pbiIsImlzQWN0aXZlIjp0cnVlLCJpYXQiOjE3NTMyODg2MDEsImV4cCI6MTc1MzM3NTAwMX0.hU86hbCprHJRpmPWaEYrfOEOwv1wKR6QhfK7vfgc8Fs",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Super Laptop\",\n  \"price\": 1200,\n  \"quantity\": 5,\n  \"description\": \"Yangi avlod, kuchli va ishonchli laptop\",\n  \"sallerID\": \"688a1dd67a2c45f3d62373a8\",\n  \"categoryID\": \"688a1dd67a2c45f3d62373a8\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3030/api/product",
+							"host": [
+								"localhost"
+							],
+							"port": "3030",
+							"path": [
+								"api",
+								"product"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4N2ZjYzhjMWM4NTk5MTE4NDVmMDk3NiIsInJvbGUiOiJBZG1pbiIsImlzQWN0aXZlIjp0cnVlLCJpYXQiOjE3NTMyODg2MDEsImV4cCI6MTc1MzM3NTAwMX0.hU86hbCprHJRpmPWaEYrfOEOwv1wKR6QhfK7vfgc8Fs",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:3030/api/product",
+							"host": [
+								"localhost"
+							],
+							"port": "3030",
+							"path": [
+								"api",
+								"product"
 							]
 						}
 					},
