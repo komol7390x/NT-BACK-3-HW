@@ -69,7 +69,7 @@ export class BaseController {
             const id = req.params.id
             await BaseController.checkByID(id, this.model);
             await this.model.findByIdAndDelete(id, req.params)
-            successRes({})
+            successRes(res,{})
         } catch (error) {
             next(error)
         }
