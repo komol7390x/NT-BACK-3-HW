@@ -7,7 +7,7 @@ class CategoryController extends BaseController {
     constructor() {
         super(Category, ['Products'])
     }
-
+// ========================== CREARE CATEGORY ==========================
     createCategory = async (req, res, next) => {
         try {
             const { name } = req.body;
@@ -24,7 +24,7 @@ class CategoryController extends BaseController {
             next(error)
         }
     }
-
+// ========================== UPDATE CATEGORY ==========================
     updateCategory = async (req, res, next) => {
         try {
             const { name } = req.body;
