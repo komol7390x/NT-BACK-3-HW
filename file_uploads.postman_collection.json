@@ -1,0 +1,51 @@
+{
+	"info": {
+		"_postman_id": "3cedbeae-41ba-47a4-bae0-1a987191f282",
+		"name": "file_uploads",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "46127988"
+	},
+	"item": [
+		{
+			"name": "task-1 (5mb/5 files)",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ODhiMzc3NmFhYTg5MzRiNzQ3NzMyNSIsIm5hbWUiOiJLb21vbGJlayBYdWRveWJlcmdhbm92IiwiaXNBZG1pbiI6dHJ1ZSwicm9sZSI6IkFkbWluIiwiaWF0IjoxNzUzNzg5NjA1LCJleHAiOjE3NTM4NzYwMDV9.IJNSB5adXVBqZXvwEzdZ0xE09dVSH8YHej22kQnk-Ro",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "files",
+							"type": "file",
+							"src": "/home/linux/node_modules/qs/lib/parse.js"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:3000/api/file/upload/task1",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"file",
+						"upload",
+						"task1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
