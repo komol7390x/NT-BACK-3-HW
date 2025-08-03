@@ -10,14 +10,7 @@
 			"name": "task-1 (5mb/5 files)",
 			"request": {
 				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ODhiMzc3NmFhYTg5MzRiNzQ3NzMyNSIsIm5hbWUiOiJLb21vbGJlayBYdWRveWJlcmdhbm92IiwiaXNBZG1pbiI6dHJ1ZSwicm9sZSI6IkFkbWluIiwiaWF0IjoxNzUzNzg5NjA1LCJleHAiOjE3NTM4NzYwMDV9.IJNSB5adXVBqZXvwEzdZ0xE09dVSH8YHej22kQnk-Ro",
-							"type": "string"
-						}
-					]
+					"type": "noauth"
 				},
 				"method": "POST",
 				"header": [],
