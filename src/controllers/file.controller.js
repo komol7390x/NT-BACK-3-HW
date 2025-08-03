@@ -4,7 +4,6 @@ import { envConfig } from '../config/env.config.js'
 class FileController {
   fileUpload = asyncHandler(async (req, res) => {
     // console.log(req.files);
-
     const files = req.files.map(file => {
       const filePath = file.path.split('uploads')[1]
       return {

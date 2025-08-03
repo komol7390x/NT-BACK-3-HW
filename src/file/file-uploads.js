@@ -4,7 +4,6 @@ import multer from 'multer'
 import { v4 } from 'uuid'
 
 const uploadDir = join(process.cwd(), 'uploads') // '/' olib tashladim
-
 if (!existsSync(uploadDir)) {
     mkdirSync(uploadDir, { recursive: true })
 }
@@ -27,14 +26,19 @@ const storage = multer.diskStorage({
         cb(null, fileName)
     }
 })
+const fileNames = ['image', 'video', 'application', 'text']
 
-const uploadFile = multer({ storage })
-// Fayl hajmini 5 MB bilan chekladik
-const mbSize = multer({ storage, limits: { fileSize: 5 * 1024 * 1024 } })
-// Fayl sonini 5 taga bilan chekladik
-const limitSize = multer({ storage, limits: { files: 5 } })
-
+const uploadFile = multer({
+    storage,
+    fileFilter: (_req, file, cb) => {
+        const files = file.mimetype.split('/')[0]
+        if (fileNames.includes(files)) {
+            cb(null, true)
+        } else {
+            cb(new Error('Faqat rasm, video va hujjat yuklash mumkin!'), false)
+        }
+    },
+    limits: { fileSize: 5 * 1024 * 1024, files: 5 }
+})
 // Middleware'lar
-export const oneFile = uploadFile.any()         // Har qanday fayl
-export const sizeLimit = mbSize.any()           // 5mb limit
-export const limitFile = limitSize.any()        // Max 5ta video
+export const oneFile = uploadFile.array('files', 5)         // Har qanday fayl
