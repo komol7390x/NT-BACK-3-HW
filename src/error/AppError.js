@@ -1,3 +1,4 @@
+// Error dan voris olib AppError ga har qnaday error berib yuboriladi
 export class AppError extends Error {
     constructor(message, statusCode) {
         super(message);
