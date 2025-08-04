@@ -3,12 +3,12 @@ import cookieParse from 'cookie-parser'
 import cors from 'cors'
 import helmet from 'helmet'
 import { join } from 'path'
-import expressWinston from 'express-winston'
+// import expressWinston from 'express-winston'
 
 import router from './routers/index.route.js'
 import { connectDB } from './database/server.database.js'
 import { globalErrorHandle } from "./error/global-error-handle.js";
-import logger from './helper/log/logger.js'
+// import logger from './helper/log/logger.js'
 
 export const application = async (server) => {
 

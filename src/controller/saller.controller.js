@@ -9,7 +9,7 @@ import { successRes } from '../utils/success-res.js';
 
 class CustomerController extends BaseController {
     constructor() {
-        super(Saller)
+        super(Saller, ['Products'])
     }
     // ============================== CREATE =================================
     // Yangi saller create qilish
