@@ -1,6 +1,5 @@
 import winston from "winston";
 import 'winston-mongodb';
-import { configServer } from "../../config/server.config.js";
 
 const customTime = winston.format((info) => {
     const data = new Date();
@@ -22,20 +21,6 @@ const logger = winston.createLogger({
             format: winston.format.combine(infoOnlyFilter())
         }),
         new winston.transports.File({ filename: 'logs/combined.log' }),
-
-        //mongodb log error
-        new winston.transports.MongoDB({
-            db: configServer.mongodb_url,
-            collection: 'errorLogs',
-            level: 'error'
-        }),
-
-        //mongodb log info
-        new winston.transports.MongoDB({
-            db: configServer.mongodb_url,
-            collection: 'infoLogs',
-            level: 'info'
-        })
     ],
     //yozish formatini berish
     format: winston.format.combine(
