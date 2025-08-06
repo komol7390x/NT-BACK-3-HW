@@ -24,7 +24,9 @@ class DeviceInfo {
     }
     // decrypto qilish kerak 
     decrypt = (deviceID) => {
+        //decrypt qilamiza 
         const decrypt = CryptoJS.AES.decrypt(deviceID, configServer.CRYPTO_SECRET_KEY);
+        // uni oqib olish uchun utf8 formatiga otqazamiza
         const data = decrypt.toString(CryptoJS.enc.Utf8);
         return data
     }
