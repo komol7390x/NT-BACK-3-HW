@@ -1,4 +1,7 @@
 import { isValidObjectId } from "mongoose";
+import DeviceDetector from "node-device-detector";
+
+const device=new DeviceDetector()
 
 export class BaseController {
     constructor(model) {
@@ -21,8 +24,11 @@ export class BaseController {
 
     }
 
-    getAll = async (_, res) => {
+    getAll = async (req, res) => {
         try {
+            const result=device.detect(req.headers['user-agent'])
+            console.log(result);
+            
             const data = await this.model.find()
             return res.status(200).json({
                 statusCode: 200,
