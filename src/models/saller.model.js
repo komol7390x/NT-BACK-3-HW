@@ -1,6 +1,6 @@
 import { Schema, model } from "mongoose";
 import { Roles } from "../const/Role.js";
-
+import { deviceSchema } from "./device.model.js";
 
 const sallerSchema = new Schema({
     phoneNumber: { type: String, unique: true, required: true },
@@ -12,6 +12,7 @@ const sallerSchema = new Schema({
     image: { type: String },
     address: { type: String },
     role: { type: String, enum: [Roles.SALLER], default: Roles.SALLER },
+    device:[deviceSchema]
 }, {
     timestamps: true, virtuals: false, virtuals: true,
     toObject: { virtuals: true }, toJSON: { virtuals: true }

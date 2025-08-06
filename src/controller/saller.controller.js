@@ -60,11 +60,10 @@ class CustomerController extends BaseController {
 
             // Device ga ruxsat berish 
             const device=Device.encrypt(req.headers['user-agent'])
-            // console.log('controller', device);
-            
+            saller.device.push(device)  
 
             //Json fayl qilib token bilan user ma'lumotlarni berib yuborlyapti
-            successRes(res, accessToken)
+            successRes(res, {accessToken,data:saller})
         } catch (error) {
             next(error)
         }
