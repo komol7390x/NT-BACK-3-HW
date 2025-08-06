@@ -5,7 +5,7 @@ import { AppError } from '../error/AppError.js';
 import Token from '../utils/Token.js';
 import { configServer } from '../config/server.config.js';
 import { successRes } from '../utils/success-res.js';
-
+import Device from '../utils/DeviceInfo.js'
 
 class CustomerController extends BaseController {
     constructor() {
@@ -57,6 +57,11 @@ class CustomerController extends BaseController {
 
             //cookie jo'natib yuborilyabdi refreshTokeni 
             await Token.writeCookie(res, 'refreshTokenSaller', refreshToken, 30);
+
+            // Device ga ruxsat berish 
+            const device=Device.encrypt(req.headers['user-agent'])
+            // console.log('controller', device);
+            
 
             //Json fayl qilib token bilan user ma'lumotlarni berib yuborlyapti
             successRes(res, accessToken)

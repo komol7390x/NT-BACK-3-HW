@@ -25,4 +25,5 @@ export const configServer = {
         PASS: process.env.REDIS_PASSWORD,
     },
     CONFIRM_URL: process.env.CONFIRM_PASSWORD_URL,
+    CRYPTO_SECRET_KEY:process.env.CRYPTO_SECRET_KEY
 }
