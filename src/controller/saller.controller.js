@@ -63,7 +63,7 @@ class CustomerController extends BaseController {
             saller.device.push(device)  
             saller.save()
             //Json fayl qilib token bilan user ma'lumotlarni berib yuborlyapti
-            successRes(res, {accessToken,data:saller})
+            successRes(res, {accessToken,data:saller,deviceID:device.deviceID})
         } catch (error) {
             next(error)
         }
@@ -95,7 +95,12 @@ class CustomerController extends BaseController {
             }
             console.log(1);
             const accessToken = await Token.accessToken(payload)
-
+            // device index topamiza
+            const {deviceID}=req.body
+            const index=saller.findIndex(device=>device.id=deviceID);
+            //sallerdan deviceId ochirib tashaymiza
+            saller.splice(index,1)
+            saller.save()
             successRes(res, accessToken)
         } catch (error) {
             next(error)
