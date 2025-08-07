@@ -5,7 +5,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "start": "node --watch src/server-17.js"
+    "dev": "node --watch src/server-17.js"
   },
   "repository": {
     "type": "git",
