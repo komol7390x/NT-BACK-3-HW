@@ -13,9 +13,9 @@ export default {
 
     TOKEN: {
         ACCESS_KEY: process.env.ACCESS_TOKEN_KEY,
-        ACCESS_TIME: process.env.ACCESS_TOKEN_KEY,
-        REFRESH_KEY: process.env.ACCESS_TOKEN_KEY,
-        REFRESH_TIME: process.env.ACCESS_TOKEN_KEY
+        ACCESS_TIME: process.env.ACCESS_TOKEN_TIME,
+        REFRESH_KEY: process.env.REFRESH_TOKEN_KEY,
+        REFRESH_TIME: process.env.REFRESH_TOKEN_TIME,
     },
 
     REDIS: {
@@ -30,5 +30,6 @@ export default {
     },
 
     CONFIRM_PASSWORD_URL: process.env.CONFIRM_PASSWORD_URL,
-    CRYPTO_SECRET_KEY:process.env.CRYPTO_SECRET_KEY
+    CRYPTO_SECRET_KEY:process.env.CRYPTO_SECRET_KEY,
+    DEVICE_NUMBER:+process.env.DEVICE_NUMBER
 }

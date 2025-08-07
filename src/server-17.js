@@ -3,8 +3,8 @@ import config from "./config/config.js";
 import { allFunction } from "./app.js";
 
 const server=express()
-await allFunction(server)
 
+await allFunction(server)
 
 const PORT=config.PORT
 
