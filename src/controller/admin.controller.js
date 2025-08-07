@@ -2,10 +2,12 @@ import { BaseController } from "./base.controller.js";
 import { Admin } from '../model/admin.model.js'
 import { AppError } from "../error/AppError.js";
 import Crypt from '../utils/Crypt.js'
+import Token from '../utils/Token.js'
 // import Redis from "../utils/Redis.js";
 // import { generateOTP } from "../utils/generate-number.js";
 // import { sendOTPToMail } from '../utils/Email.js'
 import { successRes } from "../utils/successRes.js";
+import { configFile } from "../config/server.config.js";
 
 
 class AdminController extends BaseController {
@@ -34,18 +36,25 @@ class AdminController extends BaseController {
         }
     }
 
-    //=================== CONFIRM ADMIN ===================\\
-    confirmEmail = async (req, res, next) => {
-        try {
-
-        } catch (error) {
-            next(error)
-        }
-    }
     //=================== SIGN IN ===================\\
     signIn = async (req, res, next) => {
         try {
-
+            const { email, password } = req.body
+            const admin = await Admin.findOne({ email })
+            const checkPassword = await Crypt.decrypt(password, admin?.hashPassword)
+            if (!checkPassword) {
+                throw new AppError('Email or Password incorect', 409)
+            }
+            const payload = {
+                id: admin._id, role: admin.role, isActive: admin.isActive
+            }
+            const access = await Token.accessToken(payload);
+            const refresh = await Token.refreshToken(payload);
+            await Token.writeCookie(res, 'refreshTokenAdmin', refresh, 30)
+            successRes(res, {
+                token: access,
+                date: admin
+            })
         } catch (error) {
             next(error)
         }
@@ -54,7 +63,9 @@ class AdminController extends BaseController {
     //=================== SIGN OUT ===================\\
     signOut = async (req, res, next) => {
         try {
-
+            await AdminController.checkToken(req)
+            res.clearCookie('refreshTokenAdmin')
+            successRes(res, {})
         } catch (error) {
             next(error)
         }
@@ -62,12 +73,33 @@ class AdminController extends BaseController {
     //=================== NEW TOKEN ===================\\
     newToken = async (req, res, next) => {
         try {
-
+            const admin = await AdminController.checkToken(req);
+            const payload = {
+                id: admin._id, role: admin.role, isActive: admin.isActive
+            }
+            const access = await Token.accessToken(payload);
+            successRes(res, access)
         } catch (error) {
             next(error)
         }
     }
+    //=================== CHECK REFRESH TOKEN ===================\\
+    static checkToken = async (req) => {
+        const refresh = req.cookies?.refreshTokenAdmin
+        if (!refresh) {
+            throw new AppError('Refresh token is not found', 401)
+        }
+        const verify = await Token.verifyToken(refresh, configFile.TOKEN.REFRESH_KEY);
 
+        if (!verify) {
+            throw new AppError('Refresh token is not verify', 401)
+        }
+        const admin = await Admin.findById(verify.id)
+        if (!admin) {
+            throw new AppError('Admin is not found', 401)
+        }
+        return admin
+    }
 
 }
 

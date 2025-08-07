@@ -1,4 +1,4 @@
-import { hash, compare, genSalt, hashSync, genSaltSync } from 'bcrypt'
+import { hash, compare, genSalt } from 'bcrypt'
 
 class Crypt {
     encrypt = async (password) => {
@@ -6,7 +6,8 @@ class Crypt {
         return await hash(password, salt)
     }
     decrypt = async (password, hashPassword) => {
-        return compare(password, hashPassword)
+        const result = await compare(password, hashPassword)
+        return result
     }
 }
 
