@@ -50,7 +50,7 @@ export class BaseController {
         try {
             const id = req.params.id
             await BaseController.checkById(id, this.model);
-            const result = await this.model.findByIdAndUpdate(id, req.body)
+            const result = await this.model.findByIdAndUpdate(id, req.body, { new: true })
             successRes(res, result)
         } catch (error) {
             next(error)

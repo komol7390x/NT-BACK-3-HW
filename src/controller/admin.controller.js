@@ -8,6 +8,7 @@ import Token from '../utils/Token.js'
 // import { sendOTPToMail } from '../utils/Email.js'
 import { successRes } from "../utils/successRes.js";
 import { configFile } from "../config/server.config.js";
+import { Role } from "../const/Role.js";
 
 
 class AdminController extends BaseController {
@@ -83,6 +84,38 @@ class AdminController extends BaseController {
             next(error)
         }
     }
+    //=================== FORGET PASSWORD ===================\\
+    updateAdmin = async (req, res, next) => {
+        try {
+            const id = req.params?.id
+            const admin = await BaseController.checkById(id, Admin)
+            const { email, username, password } = req.body
+            if (email) {
+                const existEmail = await Admin.findOne({ email })
+                if (existEmail && existEmail.email != email) {
+                    throw new AppError('Email already added', 409)
+                }
+            }
+            if (username) {
+                const existUsername = await Admin.findOne({ username })
+                if (existUsername && existUsername.username != username) {
+                    throw new AppError('Username already added', 409)
+                }
+            }
+            if (password) {
+                if (req.user.role !== admin.role) {
+                    throw new AppError(`Only ${admin.role} is updated`, 403)
+                }
+                req.body.hashPassword = await Crypt.encrypt(password)
+                delete req.body.password
+            }
+            const updateAdmin = await Admin.findByIdAndUpdate(id, req.body, { new: true })
+            successRes(res, updateAdmin)
+        } catch (error) {
+            next(error)
+        }
+    }
+
     //=================== CHECK REFRESH TOKEN ===================\\
     static checkToken = async (req) => {
         const refresh = req.cookies?.refreshTokenAdmin
@@ -100,6 +133,8 @@ class AdminController extends BaseController {
         }
         return admin
     }
+
+
 
 }
 
