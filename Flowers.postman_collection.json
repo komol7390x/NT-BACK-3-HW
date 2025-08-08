@@ -403,7 +403,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"email\":\"komol7390@gmail.com\",\n    \"otp\":\"513319\"\n}",
+							"raw": "{\n    \"email\":\"komol7390@gmail.com\",\n    \"otp\":\"472136\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -543,7 +543,7 @@
 							"raw": "{\n    \"username\":\"Komol21\",\n    \"hashPassword\":\"123W4\"\n}"
 						},
 						"url": {
-							"raw": "localhost:3030/api/customer/6895e50b6ded4dad58735bc7",
+							"raw": "localhost:3030/api/customer/689610e05c255bba1463fe7f",
 							"host": [
 								"localhost"
 							],
@@ -551,7 +551,7 @@
 							"path": [
 								"api",
 								"customer",
-								"6895e50b6ded4dad58735bc7"
+								"689610e05c255bba1463fe7f"
 							]
 						}
 					},
@@ -1125,7 +1125,7 @@
 								},
 								{
 									"key": "name",
-									"value": "Smm",
+									"value": "smmp",
 									"type": "text"
 								}
 							]
@@ -1160,14 +1160,14 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:3030/api/saller",
+							"raw": "localhost:3030/api/category",
 							"host": [
 								"localhost"
 							],
 							"port": "3030",
 							"path": [
 								"api",
-								"saller"
+								"category"
 							]
 						}
 					},
@@ -1189,15 +1189,15 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:3030/api/saller/6895e79326e2ee215c5ab6a9",
+							"raw": "localhost:3030/api/category/6896049d0ab716b29d7dab34",
 							"host": [
 								"localhost"
 							],
 							"port": "3030",
 							"path": [
 								"api",
-								"saller",
-								"6895e79326e2ee215c5ab6a9"
+								"category",
+								"6896049d0ab716b29d7dab34"
 							]
 						}
 					},
@@ -1220,7 +1220,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"fullName\":\"Komol21\"\n}",
+							"raw": "{\n    \"name\":\"Dizayn\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1228,15 +1228,15 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:3030/api/saller/6895e79326e2ee215c5ab6a9",
+							"raw": "localhost:3030/api/category/6896049d0ab716b29d7dab34",
 							"host": [
 								"localhost"
 							],
 							"port": "3030",
 							"path": [
 								"api",
-								"saller",
-								"6895e79326e2ee215c5ab6a9"
+								"category",
+								"6896049d0ab716b29d7dab34"
 							]
 						}
 					},
@@ -1262,15 +1262,15 @@
 							"raw": "{\n    \"username\":\"Komol21\",\n    \"hashPassword\":\"123W4\"\n}"
 						},
 						"url": {
-							"raw": "localhost:3030/api/saller/6895e79326e2ee215c5ab6a9",
+							"raw": "localhost:3030/api/category/6896049d0ab716b29d7dab34",
 							"host": [
 								"localhost"
 							],
 							"port": "3030",
 							"path": [
 								"api",
-								"saller",
-								"6895e79326e2ee215c5ab6a9"
+								"category",
+								"6896049d0ab716b29d7dab34"
 							]
 						}
 					},
@@ -1297,29 +1297,23 @@
 						"method": "POST",
 						"header": [],
 						"body": {
-							"mode": "formdata",
-							"formdata": [
-								{
-									"key": "image",
-									"type": "file",
-									"src": "postman-cloud:///1f052b31-e3d4-41c0-a585-9658df4d3301"
-								},
-								{
-									"key": "name",
-									"value": "Smm",
-									"type": "text"
+							"mode": "raw",
+							"raw": "{\n    \"name\":\"Dizayn22\",\n    \"price\":555,\n    \"customerID\":\"6895e75af80c87bfe57a4f6b\",\n    \"categoryID\":\"6895e75af80c87bfe57a4f62\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
 								}
-							]
+							}
 						},
 						"url": {
-							"raw": "localhost:3030/api/category",
+							"raw": "localhost:3030/api/product",
 							"host": [
 								"localhost"
 							],
 							"port": "3030",
 							"path": [
 								"api",
-								"category"
+								"product"
 							]
 						}
 					},
@@ -1341,14 +1335,14 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:3030/api/saller",
+							"raw": "localhost:3030/api/product",
 							"host": [
 								"localhost"
 							],
 							"port": "3030",
 							"path": [
 								"api",
-								"saller"
+								"product"
 							]
 						}
 					},
@@ -1370,15 +1364,15 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:3030/api/saller/6895e79326e2ee215c5ab6a9",
+							"raw": "localhost:3030/api/product/689614ca8c2bcf660bc0634a",
 							"host": [
 								"localhost"
 							],
 							"port": "3030",
 							"path": [
 								"api",
-								"saller",
-								"6895e79326e2ee215c5ab6a9"
+								"product",
+								"689614ca8c2bcf660bc0634a"
 							]
 						}
 					},
@@ -1401,7 +1395,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"fullName\":\"Komol21\"\n}",
+							"raw": "{\n    \"name\":\"Smm\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1409,15 +1403,15 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:3030/api/saller/6895e79326e2ee215c5ab6a9",
+							"raw": "localhost:3030/api/product/689614ca8c2bcf660bc0634a",
 							"host": [
 								"localhost"
 							],
 							"port": "3030",
 							"path": [
 								"api",
-								"saller",
-								"6895e79326e2ee215c5ab6a9"
+								"product",
+								"689614ca8c2bcf660bc0634a"
 							]
 						}
 					},
@@ -1443,15 +1437,15 @@
 							"raw": "{\n    \"username\":\"Komol21\",\n    \"hashPassword\":\"123W4\"\n}"
 						},
 						"url": {
-							"raw": "localhost:3030/api/saller/6895e79326e2ee215c5ab6a9",
+							"raw": "localhost:3030/api/product/689614ca8c2bcf660bc0634a",
 							"host": [
 								"localhost"
 							],
 							"port": "3030",
 							"path": [
 								"api",
-								"saller",
-								"6895e79326e2ee215c5ab6a9"
+								"product",
+								"689614ca8c2bcf660bc0634a"
 							]
 						}
 					},
@@ -1493,14 +1487,14 @@
 							]
 						},
 						"url": {
-							"raw": "localhost:3030/api/category",
+							"raw": "localhost:3030/api/order",
 							"host": [
 								"localhost"
 							],
 							"port": "3030",
 							"path": [
 								"api",
-								"category"
+								"order"
 							]
 						}
 					},
@@ -1522,14 +1516,14 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:3030/api/saller",
+							"raw": "localhost:3030/api/order",
 							"host": [
 								"localhost"
 							],
 							"port": "3030",
 							"path": [
 								"api",
-								"saller"
+								"order"
 							]
 						}
 					},
@@ -1551,14 +1545,14 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:3030/api/saller/6895e79326e2ee215c5ab6a9",
+							"raw": "localhost:3030/api/order/6895e79326e2ee215c5ab6a9",
 							"host": [
 								"localhost"
 							],
 							"port": "3030",
 							"path": [
 								"api",
-								"saller",
+								"order",
 								"6895e79326e2ee215c5ab6a9"
 							]
 						}
@@ -1590,14 +1584,14 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:3030/api/saller/6895e79326e2ee215c5ab6a9",
+							"raw": "localhost:3030/api/order/6895e79326e2ee215c5ab6a9",
 							"host": [
 								"localhost"
 							],
 							"port": "3030",
 							"path": [
 								"api",
-								"saller",
+								"order",
 								"6895e79326e2ee215c5ab6a9"
 							]
 						}
@@ -1624,14 +1618,14 @@
 							"raw": "{\n    \"username\":\"Komol21\",\n    \"hashPassword\":\"123W4\"\n}"
 						},
 						"url": {
-							"raw": "localhost:3030/api/saller/6895e79326e2ee215c5ab6a9",
+							"raw": "localhost:3030/api/order/6895e79326e2ee215c5ab6a9",
 							"host": [
 								"localhost"
 							],
 							"port": "3030",
 							"path": [
 								"api",
-								"saller",
+								"order",
 								"6895e79326e2ee215c5ab6a9"
 							]
 						}
@@ -1659,29 +1653,23 @@
 						"method": "POST",
 						"header": [],
 						"body": {
-							"mode": "formdata",
-							"formdata": [
-								{
-									"key": "image",
-									"type": "file",
-									"src": "postman-cloud:///1f052b31-e3d4-41c0-a585-9658df4d3301"
-								},
-								{
-									"key": "name",
-									"value": "Smm",
-									"type": "text"
+							"mode": "raw",
+							"raw": "{\n    \"address\":\"Toshkent1\",\n    \"orderID\":\"6895e75af80c87bfe57a4f6b\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
 								}
-							]
+							}
 						},
 						"url": {
-							"raw": "localhost:3030/api/category",
+							"raw": "localhost:3030/api/delivery",
 							"host": [
 								"localhost"
 							],
 							"port": "3030",
 							"path": [
 								"api",
-								"category"
+								"delivery"
 							]
 						}
 					},
@@ -1703,14 +1691,14 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:3030/api/saller",
+							"raw": "localhost:3030/api/delivery",
 							"host": [
 								"localhost"
 							],
 							"port": "3030",
 							"path": [
 								"api",
-								"saller"
+								"delivery"
 							]
 						}
 					},
@@ -1732,15 +1720,15 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:3030/api/saller/6895e79326e2ee215c5ab6a9",
+							"raw": "localhost:3030/api/delivery/6896088c7f4bb95c12a1a535",
 							"host": [
 								"localhost"
 							],
 							"port": "3030",
 							"path": [
 								"api",
-								"saller",
-								"6895e79326e2ee215c5ab6a9"
+								"delivery",
+								"6896088c7f4bb95c12a1a535"
 							]
 						}
 					},
@@ -1763,7 +1751,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"fullName\":\"Komol21\"\n}",
+							"raw": "{\n   \"address\":\"Toshkent2\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1771,15 +1759,15 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:3030/api/saller/6895e79326e2ee215c5ab6a9",
+							"raw": "localhost:3030/api/delivery/6896088c7f4bb95c12a1a535",
 							"host": [
 								"localhost"
 							],
 							"port": "3030",
 							"path": [
 								"api",
-								"saller",
-								"6895e79326e2ee215c5ab6a9"
+								"delivery",
+								"6896088c7f4bb95c12a1a535"
 							]
 						}
 					},
@@ -1805,15 +1793,15 @@
 							"raw": "{\n    \"username\":\"Komol21\",\n    \"hashPassword\":\"123W4\"\n}"
 						},
 						"url": {
-							"raw": "localhost:3030/api/saller/6895e79326e2ee215c5ab6a9",
+							"raw": "localhost:3030/api/delivery/6896088c7f4bb95c12a1a535",
 							"host": [
 								"localhost"
 							],
 							"port": "3030",
 							"path": [
 								"api",
-								"saller",
-								"6895e79326e2ee215c5ab6a9"
+								"delivery",
+								"6896088c7f4bb95c12a1a535"
 							]
 						}
 					},
@@ -1855,14 +1843,14 @@
 							]
 						},
 						"url": {
-							"raw": "localhost:3030/api/category",
+							"raw": "localhost:3030/api/payment",
 							"host": [
 								"localhost"
 							],
 							"port": "3030",
 							"path": [
 								"api",
-								"category"
+								"payment"
 							]
 						}
 					},
@@ -1884,14 +1872,14 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:3030/api/saller",
+							"raw": "localhost:3030/api/payment",
 							"host": [
 								"localhost"
 							],
 							"port": "3030",
 							"path": [
 								"api",
-								"saller"
+								"payment"
 							]
 						}
 					},
@@ -1952,14 +1940,14 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:3030/api/saller/6895e79326e2ee215c5ab6a9",
+							"raw": "localhost:3030/api/payment/6895e79326e2ee215c5ab6a9",
 							"host": [
 								"localhost"
 							],
 							"port": "3030",
 							"path": [
 								"api",
-								"saller",
+								"payment",
 								"6895e79326e2ee215c5ab6a9"
 							]
 						}
@@ -1986,14 +1974,14 @@
 							"raw": "{\n    \"username\":\"Komol21\",\n    \"hashPassword\":\"123W4\"\n}"
 						},
 						"url": {
-							"raw": "localhost:3030/api/saller/6895e79326e2ee215c5ab6a9",
+							"raw": "localhost:3030/api/payment/6895e79326e2ee215c5ab6a9",
 							"host": [
 								"localhost"
 							],
 							"port": "3030",
 							"path": [
 								"api",
-								"saller",
+								"payment",
 								"6895e79326e2ee215c5ab6a9"
 							]
 						}
