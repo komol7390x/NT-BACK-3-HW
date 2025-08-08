@@ -14,6 +14,7 @@ export class UserController extends BaseController {
         super(Clients)
         this.Clients=Clients
     }
+
     //=================== UPDATE CLIENTS ===================\\
     updateClients = async (req, res, next) => {
         try {
@@ -51,6 +52,7 @@ export class UserController extends BaseController {
             next(error)
         }
     }
+
     //=================== SIGN IN ===================\\
     signIn = async (req, res, next) => {
         try {
@@ -85,6 +87,7 @@ export class UserController extends BaseController {
             next(error)
         }
     }
+
     //=================== NEW TOKEN ===================\\
     newToken = async (req, res, next) => {
         try {
@@ -98,6 +101,7 @@ export class UserController extends BaseController {
             next(error)
         }
     }
+
     //=================== FORGET PASSWORD ===================\\
     forgetPassword = async (req, res, next) => {
         try {
@@ -117,6 +121,7 @@ export class UserController extends BaseController {
             next(error)
         }
     }
+
     //=================== CONFIRM PASSWORD ===================\\
     confirmOTP = async (req, res, next) => {
         try {
@@ -139,6 +144,7 @@ export class UserController extends BaseController {
             next(error)
         }
     }
+
     //=================== UPDATE PASSWORD ===================\\
     updatePassword = async (req, res, next) => {
         try {
@@ -154,6 +160,7 @@ export class UserController extends BaseController {
             next(error)
         }
     }
+    
     //=================== CHECK REFRESH TOKEN ===================\\
     static checkToken = async (req) => {
         const refresh = req.cookies?.refreshTokenUser

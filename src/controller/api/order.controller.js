@@ -6,6 +6,7 @@ class OrderController extends BaseController {
         super(Order)
     }
     //Method yozmiza
+    //create yozmiza
 }
 
 export default new OrderController()

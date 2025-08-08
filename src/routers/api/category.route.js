@@ -11,7 +11,7 @@ router
     .post('/', 
         AuthGuard,
         RoleGuard(Role.SUPERADMIN,Role.ADMIN),
-        constroller.create)
+        constroller.createCategory)
 
     .get('/', 
         AuthGuard,
@@ -26,7 +26,7 @@ router
     .patch('/:id',
         AuthGuard,
         RoleGuard(Role.SUPERADMIN,Role.ADMIN), 
-        constroller.update)
+        constroller.updateCategory)
 
     .delete('/:id',
         AuthGuard,

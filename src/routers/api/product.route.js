@@ -11,7 +11,7 @@ router
     .post('/',
         AuthGuard,
         RoleGuard(Role.SUPERADMIN, Role.ADMIN, Role.SALLER),
-        constroller.create)
+        constroller.createProduct)
 
     .get('/',
         AuthGuard,
@@ -26,7 +26,7 @@ router
     .patch('/:id',
         AuthGuard,
         RoleGuard(Role.SUPERADMIN, Role.ADMIN, Role.SALLER, 'ID'),
-        constroller.update)
+        constroller.UpdateProduct)
 
     .delete('/:id',
         AuthGuard,

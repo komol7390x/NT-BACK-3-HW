@@ -34,7 +34,7 @@ class AdminController extends UserController {
     updateAdmin = async (req, res, next) => {
         try {
             const id = req.params?.id
-            const admin = await BaseController.checkById(id, Admin)
+            const admin = await UserController.checkById(id, Admin)
             const { email, username, password } = req.body
             if (email) {
                 const existEmail = await Admin.findOne({ email })

@@ -6,6 +6,7 @@ class PaymentController extends BaseController {
         super(Payment)
     }
     // Payment method yozmiza
+    // create qilamiza
 }
 
 export default new PaymentController()
