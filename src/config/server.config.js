@@ -28,6 +28,10 @@ export const configFile = {
         PASSWORD: process.env.GMAIL_PASSWORD
 
     },
+    LIMITER: {
+        LIMIT: process.env.REQUEST_LIMIT,
+        SECONDS: process.env.REQUEST_SECONDS
+    },
 
     CONFIRM_PASSWORD_URL: process.env.CONFIRM_PASSWORD_URL,
     CRYPTO_SECRET_KEY: process.env.CRYPTO_SECRET_KEY,

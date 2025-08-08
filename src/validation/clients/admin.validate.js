@@ -1,9 +1,11 @@
 import Joi from "joi";
 import { Role } from "../../const/Role.js";
+
 const emailReg = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
 const passwordReg = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z\d]).{8,}$/
 
 class AdminValidation {
+
     create = () => {
         return Joi.object({
             username: Joi.string().required().min(3).max(256),

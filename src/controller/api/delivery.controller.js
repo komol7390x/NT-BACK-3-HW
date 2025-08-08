@@ -1,5 +1,5 @@
 import { BaseController } from "../base.controller.js";
-import { Delivery } from '../model/delivery.model.js'
+import { Delivery } from '../../model/api/delivery.model.js'
 
 class DeliveryController extends BaseController {
     constructor() {

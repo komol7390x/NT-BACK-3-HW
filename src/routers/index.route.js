@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { pageError } from "../error/not-found-page.js";
-import Admin from './admin.route.js'
+import Admin from './clients/admin.route.js'
 const router = Router()
 
 router

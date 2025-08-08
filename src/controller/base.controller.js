@@ -80,6 +80,36 @@ export class BaseController {
         }
         return result
     }
+    //=========================== CREATE API ===========================
+    createApi = async (req, res, next) => {
+        try {
+            const { name } = req.body
+            const exists = await this.model.findOne({ name })
+            if (exists) {
+                throw new AppError(`this ${name} already create on ${this.model}`)
+            }
+            const result = await this.model.create(req.body)
+            return successRes(res, result, 201)
+        } catch (error) {
+            next(error)
+        }
+    }
+    //=========================== UPDATE API ===========================
+    updateApi = async (req, res, next) => {
+        try {
+            const id = req.params.id
+            await BaseController.checkById(id, this.model)
+            const { name } = req.body
+            const exists = await this.model.findOne({ name })
+            if (exists) {
+                throw new AppError(`this ${name} already create on ${this.model}`)
+            }
+            const result = await this.model.findByIdAndUpdate(id, req.body, { new: true })
+            return successRes(res, result)
+        } catch (error) {
+            next(error)
+        }
+    }
     //=========================== POPULATE ===========================
     static poplateDate = async (data) => {
         let query = data
