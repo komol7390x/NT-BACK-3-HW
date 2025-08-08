@@ -2,7 +2,7 @@ import { BaseController } from "../base.controller.js";
 import { Category } from '../../model/api/category.model.js'
 import { AppError } from "../../error/AppError.js";
 import { successRes } from "../../utils/successRes.js";
-
+import fs from 'fs'
 class CategoryController extends BaseController {
     constructor() {
         super(Category)
@@ -14,10 +14,17 @@ class CategoryController extends BaseController {
             if(exists){
                 throw new AppError(`this ${name} already create on Category`)
             }            
-            req.body.image='/uploads'+req.file.path.split('uploads')[1]
+            req.body.image='/uploads'+req.file?.path.split('uploads')[1]
             const result=await Category.create(req.body)
             return successRes(res,result,201)
         } catch (error) {
+            if (req.file?.path) {
+                try {
+                    fs.unlinkSync(req.file.path);
+                } catch (unlinkErr) {
+                    console.error("Faylni o'chirishda xato:",unlinkErr.message);
+                }
+            }
             next(error)
         }
     }
