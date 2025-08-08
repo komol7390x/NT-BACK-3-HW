@@ -8,7 +8,6 @@ import { sendOTPToMail } from "../../utils/Email.js";
 import { configFile } from "../../config/server.config.js";
 import { AppError } from "../../error/AppError.js";
 import { successRes } from "../../utils/successRes.js";
-import { json } from "express";
 
 class CustomerController extends UserController {
     constructor() {

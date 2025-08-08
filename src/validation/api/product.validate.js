@@ -6,7 +6,7 @@ class ProductValidate {
             name: Joi.string().required().min(3),
             price:Joi.number().min(0).required(),
             stockQuantity:Joi.number().min(0),
-            image:Joi.string().required(),
+            image:Joi.string(),
             customerID: Joi.string().required(),
             categoryID: Joi.string().required()
         })

@@ -13,6 +13,7 @@ class ProductController extends BaseController {
             const { customerID, categoryID,name } = req.body
 
             const exists=await Category.findOne({name})
+            
             if(exists){
                 throw new AppError(`this ${name} already create on Category`)
             }
