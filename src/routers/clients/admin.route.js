@@ -1,7 +1,7 @@
 import { Router } from "express";
 
 import controller from '../../controller/clients/admin.controller.js'
-import Admin  from "../../validation/clients/admin.validate.js";
+import Validation  from "../../validation/clients/admin.validate.js";
 
 import { validate } from "../../middleware/validate.middle.js";
 import {configFile} from '../../config/server.config.js'
@@ -17,20 +17,20 @@ router
     .post('/',
         AuthGuard,
         RoleGuard(Role.SUPERADMIN),
-        validate(Admin.create),
+        validate(Validation.create),
         controller.createAdmin)
 
     .post('/signin',
         requestLimiter(configFile.LIMITER.SECONDS,configFile.LIMITER.SECONDS),
-        validate(Admin.signIn),
+        validate(Validation.signIn),
         controller.signIn)
 
     .post('/forget-password',
-        validate(Admin.forgetPassword),
+        validate(Validation.forgetPassword),
         controller.forgetPassword)
 
     .post('/confirm-otp',
-        validate(Admin.confirmOTP),
+        validate(Validation.confirmOTP),
         controller.confirmOTP)
 
     .get('/signout', 
@@ -50,13 +50,13 @@ router
         controller.getById)
 
     .patch(`/${configFile.OTP.PASSWORD_URL}`,
-        validate(Admin.updatePassword),
+        validate(Validation.updatePassword),
         controller.updatePassword)
 
     .patch('/:id',
         AuthGuard,
         RoleGuard(Role.SUPERADMIN,'ID'),
-        validate(Admin.update),
+        validate(Validation.update),
         controller.update)
 
     .delete('/:id', 

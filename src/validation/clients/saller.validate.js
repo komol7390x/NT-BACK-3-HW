@@ -8,7 +8,7 @@ const phoneReg = /^\+998\s?(9[0-9])\s?\d{3}\s?\d{2}\s?\d{2}$/
 import { CustomerValidation } from "./customer.validate.js";
 
 class SallerValidation extends CustomerValidation {
-    
+
     createSaller = () => {
         return Joi.object({
             fullName: Joi.string().required().min(3).max(256),
@@ -33,3 +33,5 @@ class SallerValidation extends CustomerValidation {
         })
     };
 }
+
+export default new SallerValidation()
