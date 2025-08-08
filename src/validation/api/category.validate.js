@@ -4,7 +4,7 @@ class CategoryValidate {
     create = () => {
         return Joi.object({
             name: Joi.string().required().min(3),
-            image: Joi.string().required().min(3)
+            image: Joi.string()
         })
     }
     update = () => {

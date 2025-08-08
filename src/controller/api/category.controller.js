@@ -8,12 +8,13 @@ class CategoryController extends BaseController {
         super(Category)
     }
     createCategory=async(req,res,next)=>{
-        try {            
+        try {                                                      
             const {name}=req.body
             const exists=await Category.findOne({name})
             if(exists){
                 throw new AppError(`this ${name} already create on Category`)
-            }
+            }            
+            req.body.image='/uploads'+req.file.path.split('uploads')[1]
             const result=await Category.create(req.body)
             return successRes(res,result,201)
         } catch (error) {
