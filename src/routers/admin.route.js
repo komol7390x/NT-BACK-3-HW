@@ -1,17 +1,65 @@
 import { Router } from "express";
-import controller from '../controller/admin.controller.js'
 
+import controller from '../controller/clients/admin.controller.js'
+import Admin  from "../validation/clients/admin.validate.js";
+
+import { validate } from "../middleware/validate.middle.js";
+import {configFile} from '../config/server.config.js'
+import { AuthGuard } from "../guards/auth.guard.js";
+import { RoleGuard } from "../guards/role.guard.js";
+import { Role } from "../const/Role.js";
 const router = Router()
 
 router
-    .post('/', controller.createAdmin)
-    .post('/signin', controller.signIn)
-    .get('/signout', controller.signOut)
-    .get('/newtoken', controller.newToken)
-    .get('/', controller.getAll)
-    .get('/:id', controller.getById)
-    .patch('/:id', controller.update)
-    .delete('/:id', controller.delete)
+
+    .post('/',
+        AuthGuard,
+        RoleGuard(Role.SUPERADMIN),
+        validate(Admin.create),
+        controller.createAdmin)
+
+    .post('/signin',
+        validate(Admin.signIn),
+        controller.signIn)
+
+    .post('/forget-password',
+        validate(Admin.forgetPassword),
+        controller.forgetPassword)
+
+    .post('/confirm-otp',
+        validate(Admin.confirmOTP),
+        controller.confirmOTP)
+
+    .get('/signout', 
+        controller.signOut)
+
+    .get('/newtoken', 
+        controller.newToken)
+
+    .get('/', 
+        AuthGuard,
+        RoleGuard(Role.SUPERADMIN),
+        controller.getAll)
+
+    .get('/:id', 
+        AuthGuard,
+        RoleGuard(Role.SUPERADMIN,'ID'),
+        controller.getById)
+
+    .patch(`/${configFile.CONFIRM_PASSWORD_URL}`,
+        validate(Admin.updatePassword),
+        controller.updatePassword)
+
+    .patch('/:id',
+        AuthGuard,
+        RoleGuard(Role.SUPERADMIN,'ID'),
+        validate(Admin.update),
+        controller.update)
+
+    .delete('/:id', 
+        AuthGuard,
+        RoleGuard(Role.SUPERADMIN),
+        controller.delete)
 
 
 export default router

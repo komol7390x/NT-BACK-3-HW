@@ -26,7 +26,7 @@ export class Token {
     }
 
     // token verify qilish
-    verifyToken = async (token, secretKey) => {
+    verifyToken =async (token, secretKey) => {
         return jwt.verify(token, secretKey)
     }
 }

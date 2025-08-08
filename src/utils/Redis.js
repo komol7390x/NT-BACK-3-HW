@@ -5,6 +5,13 @@ class Redis {
         return redisDB.set(key, value, {
             EX: time
         })
+    };
+    getDate=async(key)=>{
+        return redisDB.get(key,)
+    }
+
+    deleteDate=async(key)=>{
+        return redisDB.del(key)
     }
 }
 

@@ -1,14 +1,14 @@
-import { BaseController } from "./base.controller.js";
-import { Admin } from '../model/admin.model.js'
-import { AppError } from "../error/AppError.js";
-import Crypt from '../utils/Crypt.js'
-import Token from '../utils/Token.js'
-// import Redis from "../utils/Redis.js";
-// import { generateOTP } from "../utils/generate-number.js";
-// import { sendOTPToMail } from '../utils/Email.js'
-import { successRes } from "../utils/successRes.js";
-import { configFile } from "../config/server.config.js";
-import { Role } from "../const/Role.js";
+import { BaseController } from "../base.controller.js";
+import { Admin } from '../../model/client/admin.model.js'
+import { AppError } from "../../error/AppError.js";
+import Crypt from '../../utils/Crypt.js'
+import Token from '../../utils/Token.js'
+import Redis from "../../utils/Redis.js";
+import { generateOTP } from "../../utils/generate-number.js";
+import { sendOTPToMail } from '../../utils/Email.js'
+import { successRes } from "../../utils/successRes.js";
+import { configFile } from "../../config/server.config.js";
+// import { Role } from "../const/Role.js";
 
 
 class AdminController extends BaseController {
@@ -115,14 +115,69 @@ class AdminController extends BaseController {
             next(error)
         }
     }
+    //=================== FORGET PASSWORD ===================\\
+    forgetPassword = async (req, res, next) => {
+        try {
+            const { email } = req.body
+            const existEmail = await Admin.findOne({ email })
+            if (!existEmail) {
+                throw new AppError('Not found this email :(', 404)
+            }
+            const otp=generateOTP();
+            await sendOTPToMail(email,otp)
+            Redis.setDate(email,otp)
+            return successRes(res,{
+                email,
+                expireDate:'5 minutes expire Date'
+            })
+        } catch (error) {
+            next(error)
+        }
+    }
+    //=================== CONFIRM PASSWORD ===================\\
+    confirmOTP = async (req, res, next) => {
+        try {
+            const {email,otp}=req.body
+            const existEmail = await Admin.findOne({ email })
+            if (!existEmail) {
+                throw new AppError('Not found this email :(', 404)
+            }
+            const resultOTP=await Redis.getDate(email)            
+            if(resultOTP!=otp){
+                throw new AppError('OTP password is incorect',403)
+            }
+            await Redis.deleteDate(email)
+            return successRes(res,{
+                email,
+                url:configFile.CONFIRM_PASSWORD_URL
+            })
 
+        } catch (error) {
+            next(error)
+        }
+    }
+    //=================== UPDATE PASSWORD ===================\\
+    updatePassword = async (req, res, next) => {
+        try {
+            const {email,password}=req.body
+            const admin = await Admin.findOne({ email })
+            if (!admin) {
+                throw new AppError('Not found this email :(', 404)
+            }
+            const hashPassword=await Crypt.encrypt(password)
+            const result=await Admin.findByIdAndUpdate(admin._id,{hashPassword},{new:true})
+            return successRes(res,result)
+        } catch (error) {
+            next(error)
+        }
+    }
     //=================== CHECK REFRESH TOKEN ===================\\
     static checkToken = async (req) => {
         const refresh = req.cookies?.refreshTokenAdmin
         if (!refresh) {
             throw new AppError('Refresh token is not found', 401)
         }
-        const verify = await Token.verifyToken(refresh, configFile.TOKEN.REFRESH_KEY);
+        const verify =await  Token.verifyToken(refresh, configFile.TOKEN.REFRESH_KEY);
 
         if (!verify) {
             throw new AppError('Refresh token is not verify', 401)
@@ -133,9 +188,6 @@ class AdminController extends BaseController {
         }
         return admin
     }
-
-
-
 }
 
 export default new AdminController()

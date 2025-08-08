@@ -1,5 +1,5 @@
 import { Schema, model } from "mongoose";
-import { Role } from '../const/Role.js'
+import { Role } from '../../const/Role.js'
 
 const customerSchema = new Schema({
     fullName: { type: String, required: true, unique: true, min: 3, max: 256 },

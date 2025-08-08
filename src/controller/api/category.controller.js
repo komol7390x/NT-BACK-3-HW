@@ -1,4 +1,4 @@
-import { BaseController } from "./base.controller.js";
+import { BaseController } from "../base.controller.js";
 import { Category } from '../model/category.model.js'
 
 class CategoryController extends BaseController {

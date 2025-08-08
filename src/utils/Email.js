@@ -1,7 +1,7 @@
 import { createTransport } from 'nodemailer'
 import { configFile } from '../config/server.config.js'
 
-export const sendOTPToMail = (mail, otp) => {
+export const sendOTPToMail =async (mail, otp) => {
     const transport = createTransport({
         service: 'gmail',
         auth: {
