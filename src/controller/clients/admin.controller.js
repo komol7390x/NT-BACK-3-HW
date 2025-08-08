@@ -32,7 +32,7 @@ class AdminController extends UserController {
     }
     //=================== UPDATE ADMIN ===================\\
     updateAdmin = async (req, res, next) => {
-        try {
+        try {            
             const id = req.params?.id
             const admin = await UserController.checkById(id, Admin)
             const { email, username, password } = req.body

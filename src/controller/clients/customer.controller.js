@@ -1,11 +1,14 @@
+import Redis from "../../utils/Redis.js";
+import Crypt from '../../utils/Crypt.js'
+
 import { UserController } from "../user.controller.js";
 import { Customers } from '../../model/client/customer.model.js'
-import Redis from "../../utils/Redis.js";
 import { generateOTP } from "../../utils/generate-number.js";
 import { sendOTPToMail } from "../../utils/Email.js";
 import { configFile } from "../../config/server.config.js";
 import { AppError } from "../../error/AppError.js";
 import { successRes } from "../../utils/successRes.js";
+import { json } from "express";
 
 class CustomerController extends UserController {
     constructor() {
@@ -15,21 +18,20 @@ class CustomerController extends UserController {
     //=================== CREATE SALLER ===================\\
 
     registerCustomer = async (req, res, next) => {
-        try {
-
+        try {            
             const { fullName, email, phoneNumber, password } = req.body
-            const existEmail = await Saller.findOne({ email })
+            const existEmail = await Customers.findOne({ email })
 
             if (existEmail) {
                 throw new AppError('Email already added', 409)
             }
 
-            const existFullName = await Saller.findOne({ fullName })
+            const existFullName = await Customers.findOne({ fullName })
             if (existFullName) {
                 throw new AppError('fullName already added', 409)
             }
 
-            const existPhoneNumber = await Saller.findOne({ phoneNumber })
+            const existPhoneNumber = await Customers.findOne({ phoneNumber })
             if (existPhoneNumber) {
                 throw new AppError('phone Number already added', 409)
             }
@@ -40,13 +42,14 @@ class CustomerController extends UserController {
             const otp = generateOTP()
             req.body.otp = otp
 
-            Redis.setDate(email, req.body, 300)
+            Redis.setDate(email, JSON.stringify(req.body), 300)
 
             sendOTPToMail(email, otp)
 
             successRes(res, {
                 url: configFile.OTP.REGISTER_URL,
-                email
+                email,
+                message:'you have 5 minut for register'
             })
         } catch (error) {
             next(error)
@@ -57,12 +60,11 @@ class CustomerController extends UserController {
         try {
             const { otp, email } = req.body
             const exist = await Customers.findOne({ email })
-
-            if (!exist) {
-                throw new AppError(`Not found this ${email} users`, 404)
+            if (exist) {
+                throw new AppError(`already ${email}is added on  users`, 404)
             }
-
-            const customer = Redis.getDate(email)
+            
+            const customer =JSON.parse(await Redis.getDate(email))
             if (otp != customer.otp) {
                 throw new AppError(`This OTP is incorect :(`, 404)
             }

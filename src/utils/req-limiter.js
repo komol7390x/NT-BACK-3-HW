@@ -1,11 +1,11 @@
 import { rateLimit, ipKeyGenerator } from 'express-rate-limit'
 import { Role } from '../const/Role.js'
 
-export const requestLimiter = (seconds, limit) => {
+export const requestLimiter = (seconds, limit,role) => {
     const limiter = rateLimit({
         windowMs: seconds * 1000,
         limit,
-        skip: (req, _) => req.user.role == Role.SUPERADMIN,
+        skip: (req, _) => role == Role.SUPERADMIN,
         skipFailedRequests: true,
         keyGenerator: (req, _) => {
             return ipKeyGenerator(req.ip) || (req.body.email ?? req.body.phonenumber)

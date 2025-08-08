@@ -1,11 +1,11 @@
 import { Router } from "express";
 
 import controller from '../../controller/clients/saller.controller.js'
-import Validation  from "../../validation/clients/saller.validate.js";
+import Validation from "../../validation/clients/saller.validate.js";
 
 import { validate } from "../../middleware/validate.middle.js";
 import { requestLimiter } from "../../utils/req-limiter.js";
-import {configFile} from '../../config/server.config.js'
+import { configFile } from '../../config/server.config.js'
 import { RoleGuard } from "../../guards/role.guard.js";
 import { AuthGuard } from "../../guards/auth.guard.js";
 import { Role } from "../../const/Role.js";
@@ -13,15 +13,16 @@ import { Role } from "../../const/Role.js";
 const router = Router()
 
 router
+    // =============== POST ===============
 
     .post('/',
         AuthGuard,
-        RoleGuard(Role.SUPERADMIN,Role.ADMIN),
+        RoleGuard(Role.SUPERADMIN, Role.ADMIN),
         validate(Validation.create),
         controller.createSaller)
 
     .post('/signin',
-        requestLimiter(configFile.LIMITER.SECONDS,configFile.LIMITER.SECONDS),
+        requestLimiter(configFile.LIMITER.SECONDS, configFile.LIMITER.SECONDS),
         validate(Validation.signIn),
         controller.signIn)
 
@@ -33,21 +34,24 @@ router
         validate(Validation.confirmOTP),
         controller.confirmOTP)
 
-    .get('/signout', 
+    // =============== GET ===============
+
+    .get('/signout',
         controller.signOut)
 
-    .get('/newtoken', 
+    .get('/newtoken/:id',
         controller.newToken)
 
-    .get('/', 
+    .get('/',
         AuthGuard,
-        RoleGuard(Role.SUPERADMIN,Role.ADMIN),
+        RoleGuard(Role.SUPERADMIN, Role.ADMIN),
         controller.getAll)
 
-    .get('/:id', 
+    .get('/:id',
         AuthGuard,
-        RoleGuard(Role.SUPERADMIN,Role.ADMIN,'ID'),
+        RoleGuard(Role.SUPERADMIN, Role.ADMIN, 'ID'),
         controller.getById)
+    // =============== PATCH ===============
 
     .patch(`/${configFile.OTP.PASSWORD_URL}`,
         validate(Validation.updatePassword),
@@ -55,13 +59,14 @@ router
 
     .patch('/:id',
         AuthGuard,
-        RoleGuard(Role.SUPERADMIN,Role.ADMIN,'ID'),
+        RoleGuard(Role.SUPERADMIN, Role.ADMIN, 'ID'),
         validate(Validation.update),
         controller.update)
+    // =============== DELETE ===============
 
-    .delete('/:id', 
+    .delete('/:id',
         AuthGuard,
-        RoleGuard(Role.SUPERADMIN,Role.ADMIN),
+        RoleGuard(Role.SUPERADMIN, Role.ADMIN),
         controller.delete)
 
 

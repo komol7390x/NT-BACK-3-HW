@@ -1,5 +1,9 @@
+import Crypt from "../../utils/Crypt.js";
+
 import { UserController } from "../user.controller.js";
 import { Saller } from '../../model/client/saller.model.js'
+import { successRes } from "../../utils/successRes.js";
+import { AppError } from "../../error/AppError.js";
 
 class SallerController extends UserController {
     constructor() {

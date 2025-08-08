@@ -13,6 +13,7 @@ import { requestLimiter } from "../../utils/req-limiter.js";
 const router = Router()
 
 router
+    // =============== POST ===============
 
     .post('/',
         AuthGuard,
@@ -21,7 +22,7 @@ router
         controller.createAdmin)
 
     .post('/signin',
-        requestLimiter(configFile.LIMITER.SECONDS,configFile.LIMITER.SECONDS),
+        requestLimiter(configFile.LIMITER.SECONDS,configFile.LIMITER.SECONDS,Role.SUPERADMIN),
         validate(Validation.signIn),
         controller.signIn)
 
@@ -32,11 +33,12 @@ router
     .post('/confirm-otp',
         validate(Validation.confirmOTP),
         controller.confirmOTP)
+    // =============== GET ===============
 
     .get('/signout', 
         controller.signOut)
 
-    .get('/newtoken', 
+    .get('/newtoken/:id', 
         controller.newToken)
 
     .get('/', 
@@ -48,6 +50,7 @@ router
         AuthGuard,
         RoleGuard(Role.SUPERADMIN,'ID'),
         controller.getById)
+    // =============== PATCH ===============
 
     .patch(`/${configFile.OTP.PASSWORD_URL}`,
         validate(Validation.updatePassword),
@@ -58,6 +61,7 @@ router
         RoleGuard(Role.SUPERADMIN,'ID'),
         validate(Validation.update),
         controller.update)
+    // =============== DELETE ===============
 
     .delete('/:id', 
         AuthGuard,

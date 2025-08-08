@@ -10,8 +10,8 @@ export class CustomerValidation {
     create = () => {
         return Joi.object({
             fullName: Joi.string().required().min(3).max(256),
-            email: Joi.string().required().pattern(phoneReg),
-            phoneNumber: Joi.string().required().pattern(emailReg),
+            email: Joi.string().required().pattern(emailReg),
+            phoneNumber: Joi.string().required().pattern(phoneReg),
             password: Joi.string().required().pattern(passwordReg),
             isActive: Joi.boolean(),
             role: Joi.string().valid(Role.CUSTOMER),
@@ -23,7 +23,7 @@ export class CustomerValidation {
         return Joi.object({
             fullName: Joi.string().optional().min(3).max(256),
             email: Joi.string().optional().pattern(phoneReg),
-            phoneNumber: Joi.string().required().pattern(emailReg),
+            phoneNumber: Joi.string().optional().pattern(emailReg),
             password: Joi.string().optional().pattern(passwordReg),
             isActive: Joi.boolean(),
             role: Joi.string().valid(Role.CUSTOMER),
