@@ -14,6 +14,72 @@ export class UserController extends BaseController {
         super(Clients)
         this.Clients=Clients
     }
+        //=================== CREATE CLIENTS ===================\\
+    createClients = async (req, res, next) => {
+        try {
+
+            const { fullName, email,phoneNumber, password } = req.body
+            const existEmail = await this.Clients.findOne({ email })
+            if (existEmail) {
+                throw new AppError('Email already added', 409)
+            }
+
+            const existFullName = await this.Clients.findOne({ fullName })
+            if (existFullName) {
+                throw new AppError('fullName already added', 409)
+            }
+
+            const existPhoneNumber = await this.Clients.findOne({ phoneNumber })
+            if (existPhoneNumber) {
+                throw new AppError('phone Number already added', 409)
+            }
+
+            req.body.hashPassword = await Crypt.encrypt(password)
+            delete req.body.password
+            const result = await this.Clients.create(req.body);
+            successRes(res, result, 201)
+
+        } catch (error) {
+            next(error)
+        }
+    }
+    //=================== UPDATE CLIENTS ===================\\
+    updateClients = async (req, res, next) => {
+        try {
+            const id = req.params?.id
+            const client = await UserController.checkById(id, this.Clients)
+            const { email, fullName,phoneNumber, password } = req.body
+            if (email) {
+                const existEmail = await this.Clients.findOne({ email })
+                if (existEmail && existEmail.email != email) {
+                    throw new AppError('Email already added', 409)
+                }
+            }
+            if (fullName) {
+                const existFullName = await this.Clients.findOne({ fullName })
+                if (existFullName && existFullName.fullName != fullName) {
+                    throw new AppError('fullName already added', 409)
+                }
+            }
+            if (phoneNumber) {
+                const existPhoneNumber = await this.Clients.findOne({ phoneNumber })
+                if (existPhoneNumber && existPhoneNumber.phoneNumber != phoneNumber) {
+                    throw new AppError('Phone Number already added', 409)
+                }
+            }
+            if (password) {
+                if (req.user.role !== client.role) {
+                    throw new AppError(`Only ${client.role} is updated`, 403)
+                }
+                req.body.hashPassword = await Crypt.encrypt(password)
+                delete req.body.password
+            }
+            const updateClient = await this.Clients.findByIdAndUpdate(id, req.body, { new: true })
+            successRes(res, updateClient)
+        } catch (error) {
+            next(error)
+        }
+    }
     //=================== SIGN IN ===================\\
     signIn = async (req, res, next) => {
         try {
