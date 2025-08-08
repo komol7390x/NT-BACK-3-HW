@@ -7,7 +7,7 @@ export const validate=(schema)=>{
             const {error}=validSchema.validate(req.body)            
             if(error){
                 throw new AppError(error?.details[0].message ?? 'Error input validation',403)
-            }
+            }            
             next()
         } catch (error) {
             next(error)

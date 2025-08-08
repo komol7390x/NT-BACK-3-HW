@@ -13,7 +13,7 @@ export const AuthGuard = async(req, res, next) => {
         if (bearer != 'Bearer' || !authToken) {
             throw new AppError('Authorization is Error', 403)
         }
-        req.user=await Token.verifyToken(authToken,configFile.TOKEN.ACCESS_KEY)
+        req.user=await Token.verifyToken(authToken,configFile.TOKEN.ACCESS_KEY)        
         next()
     } catch (error) {
         next(error)

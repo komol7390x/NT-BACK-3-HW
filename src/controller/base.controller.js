@@ -62,7 +62,7 @@ export class BaseController {
         try {
             const id = req.params.id
             await BaseController.checkById(id, this.model);
-            await this.model.findByIdAndDelete(id, req.body)
+            await this.model.findByIdAndDelete(id)
             successRes(res, {})
         } catch (error) {
             next(error)
@@ -72,11 +72,11 @@ export class BaseController {
     static checkById = async (id, schema) => {
 
         if (!isValidObjectId(id)) {
-            throw new AppError('Bad Request', 400)
+            throw new AppError('id is invalid', 400)
         }
         const result = await schema.findById(id)
         if (!result) {
-            throw new AppError(`Not found`, 404)
+            throw new AppError(`Not found this ${id}`, 404)
         }
         return result
     }
