@@ -2,7 +2,7 @@ import { AppError } from "../error/AppError.js";
 
 export const validate=(schema)=>{
     return (req,_res,next)=>{
-        try {                        
+        try {                                    
             const validSchema=schema()
             const {error}=validSchema.validate(req.body)            
             if(error){

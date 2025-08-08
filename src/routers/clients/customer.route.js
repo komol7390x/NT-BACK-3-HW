@@ -37,6 +37,8 @@ router
 
     // =============== GET ALL ===============
     .get('/signout',
+        AuthGuard,
+        RoleGuard(Role.SUPERADMIN,Role.ADMIN,Role.CUSTOMER),
         controller.signOut)
 
     .get('/newtoken/:id',

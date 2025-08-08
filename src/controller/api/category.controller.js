@@ -8,7 +8,7 @@ class CategoryController extends BaseController {
         super(Category)
     }
     createCategory=async(req,res,next)=>{
-        try {
+        try {            
             const {name}=req.body
             const exists=await Category.findOne({name})
             if(exists){

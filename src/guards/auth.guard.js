@@ -3,7 +3,7 @@ import { AppError } from "../error/AppError.js";
 import Token from "../utils/Token.js";
 
 export const AuthGuard = async(req, res, next) => {
-    try {        
+    try {                
         const auth = req.headers?.authorization
         if (!auth) {
             throw new AppError('Header authorization is Error', 403)
