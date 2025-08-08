@@ -14,35 +14,6 @@ export class UserController extends BaseController {
         super(Clients)
         this.Clients=Clients
     }
-        //=================== CREATE CLIENTS ===================\\
-    createClients = async (req, res, next) => {
-        try {
-
-            const { fullName, email,phoneNumber, password } = req.body
-            const existEmail = await this.Clients.findOne({ email })
-            if (existEmail) {
-                throw new AppError('Email already added', 409)
-            }
-
-            const existFullName = await this.Clients.findOne({ fullName })
-            if (existFullName) {
-                throw new AppError('fullName already added', 409)
-            }
-
-            const existPhoneNumber = await this.Clients.findOne({ phoneNumber })
-            if (existPhoneNumber) {
-                throw new AppError('phone Number already added', 409)
-            }
-
-            req.body.hashPassword = await Crypt.encrypt(password)
-            delete req.body.password
-            const result = await this.Clients.create(req.body);
-            successRes(res, result, 201)
-
-        } catch (error) {
-            next(error)
-        }
-    }
     //=================== UPDATE CLIENTS ===================\\
     updateClients = async (req, res, next) => {
         try {
@@ -64,7 +35,7 @@ export class UserController extends BaseController {
             if (phoneNumber) {
                 const existPhoneNumber = await this.Clients.findOne({ phoneNumber })
                 if (existPhoneNumber && existPhoneNumber.phoneNumber != phoneNumber) {
-                    throw new AppError('Phone Number already added', 409)
+                    throw new AppError('existPhoneNumber already added', 409)
                 }
             }
             if (password) {
@@ -161,7 +132,7 @@ export class UserController extends BaseController {
             await Redis.deleteDate(email)
             return successRes(res,{
                 email,
-                url:configFile.CONFIRM_PASSWORD_URL
+                url:configFile.OTP.PASSWORD_URL
             })
 
         } catch (error) {

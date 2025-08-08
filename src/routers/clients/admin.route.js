@@ -49,7 +49,7 @@ router
         RoleGuard(Role.SUPERADMIN,'ID'),
         controller.getById)
 
-    .patch(`/${configFile.CONFIRM_PASSWORD_URL}`,
+    .patch(`/${configFile.OTP.PASSWORD_URL}`,
         validate(Admin.updatePassword),
         controller.updatePassword)
 
