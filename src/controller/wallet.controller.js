@@ -49,14 +49,23 @@ export class WalletController extends BaseController {
         try {
             const { customerID, sallerID, cash, cardNumber } = req.body
             const userId = customerID ?? sallerID
-            await BaseController.checkById(userId, this.UserModel)
+            const user = await BaseController.checkById(userId, this.UserModel)
             const cards = await this.UserModel.findById(userId).populate('WalletRef')
             const card = cards.WalletRef.find(val => val.cardNumber == cardNumber)
             const money = + cash
+
             if (card.balance < money) {
                 throw new AppError('not enough money in card', 409)
             }
-            res.send(card)
+            const balanceCard = card.balance - money
+            const balanceUser = user.balance + money
+            const UserWall = await this.UserModel.findByIdAndUpdate(userId, { balance: balanceUser })
+            const Wall = await this.model.findByIdAndUpdate(card._id, { balance: balanceCard })
+
+            successRes(res, {
+                Wallet: Wall,
+                User: UserWall
+            })
         } catch (error) {
             next(error)
         }
