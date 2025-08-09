@@ -11,13 +11,13 @@ import { successRes } from "../../utils/successRes.js";
 
 class CustomerController extends UserController {
     constructor() {
-        super(Customers)
+        super(Customers, ['OrderRef', 'WalletRef', 'ProductRef'])
     }
 
     //=================== CREATE SALLER ===================\\
 
     registerCustomer = async (req, res, next) => {
-        try {            
+        try {
             const { fullName, email, phoneNumber, password } = req.body
             const existEmail = await Customers.findOne({ email })
 
@@ -48,7 +48,7 @@ class CustomerController extends UserController {
             successRes(res, {
                 url: configFile.OTP.REGISTER_URL,
                 email,
-                message:'you have 5 minut for register'
+                message: 'you have 5 minut for register'
             })
         } catch (error) {
             next(error)
@@ -60,19 +60,17 @@ class CustomerController extends UserController {
             const { otp, email } = req.body
             const exist = await Customers.findOne({ email })
             if (exist) {
-                throw new AppError(`already ${email}is added on  users`, 404)
+                throw new AppError(`this ${email} already is added on  users`, 404)
             }
-            
-            const customer =JSON.parse(await Redis.getDate(email))
-            if (otp != customer.otp) {
+            const customer = JSON.parse(await Redis.getDate(email))
+            if (!otp || otp != customer?.otp) {
                 throw new AppError(`This OTP is incorect :(`, 404)
-            }
+            }            
             delete customer.otp
             Redis.deleteDate(email)
-            customer.isActive=true
-            const result=await Customers.create(customer)
-            successRes(res,result,201)
-
+            customer.isActive = true
+            const result = await Customers.create(customer)
+            successRes(res, result, 201)
         } catch (error) {
             next(error)
         }

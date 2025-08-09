@@ -4,9 +4,19 @@ const productSchema = new Schema({
     name: { type: String, required: true, unique: true, min: 3, max: 256 },
     price: { type: Number, required: true, min: 0 },
     stockQuantity: { type: Number, min: 0, default: 0 },
-    image: { type: String},
+    image: { type: String },
     customerID: { type: Schema.Types.ObjectId, ref: 'customers' },
     categoryID: { type: Schema.Types.ObjectId, ref: 'categories' }
-}, { timestamps: true, versionKey: false })
+}, {
+    timestamps: true, versionKey: false, virtuals: true,
+    toObject: { virtuals: true }, toJSON: { virtuals: true }
+})
+
+productSchema.virtual('OrderRef', {
+    ref: 'orders',
+    localField: '_id',
+    foreignField: 'productID'
+});
 
 export const Product = model('products', productSchema)
+

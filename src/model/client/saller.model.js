@@ -9,6 +9,20 @@ const sallerSchema = new Schema({
     isActive: { type: Boolean, default: false },
     role: { type: String, enum: [Role.SALLER], default: Role.SALLER },
     device: { type: Array, default: [] }
-}, { timestamps: true, versionKey: false })
+}, {
+    timestamps: true, versionKey: false,virtuals: true,
+    toObject: { virtuals: true }, toJSON: { virtuals: true } })
+
+sallerSchema.virtual('PaymentRef', {
+    ref: 'payments',
+    localField: '_id',
+    foreignField: 'sallerID'
+});
+
+sallerSchema.virtual('WalletRef', {
+    ref: 'wallets',
+    localField: '_id',
+    foreignField: 'sallerID'
+});
 
 export const Saller = model('sallers', sallerSchema)

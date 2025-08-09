@@ -10,8 +10,8 @@ import { successRes } from "../utils/successRes.js";
 import { configFile } from "../config/server.config.js";
 
 export class UserController extends BaseController {
-    constructor(Clients) {
-        super(Clients)
+    constructor(Clients, populateFields) {
+        super(Clients, populateFields)
         this.Clients = Clients
     }
 

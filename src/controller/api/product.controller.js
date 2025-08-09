@@ -6,15 +6,15 @@ import { Category } from '../../model/api/category.model.js'
 
 class ProductController extends BaseController {
     constructor() {
-        super(Product)
+        super(Product, ['customerID', 'categoryID', 'OrderRef'])
     }
     createProduct = async (req, res, next) => {
         try {
-            const { customerID, categoryID,name } = req.body
+            const { customerID, categoryID, name } = req.body
 
-            const exists=await Category.findOne({name})
-            
-            if(exists){
+            const exists = await Category.findOne({ name })
+
+            if (exists) {
                 throw new AppError(`this ${name} already create on Category`)
             }
 
@@ -33,9 +33,9 @@ class ProductController extends BaseController {
         try {
             const id = req.params.id
 
-            const { customerID, categoryID,name } = req.body
-            const exists=await Category.findOne({name})
-            if(exists){
+            const { customerID, categoryID, name } = req.body
+            const exists = await Category.findOne({ name })
+            if (exists) {
                 throw new AppError(`this ${name} already create on Category`)
             }
 

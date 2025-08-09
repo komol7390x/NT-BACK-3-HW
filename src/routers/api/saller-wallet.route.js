@@ -1,6 +1,6 @@
 import { Router } from "express";
 
-import constroller from '../../controller/api/wallet.controller.js'
+import constroller from '../../controller/api/saller-wallet.controller.js'
 import Validation from '../../validation/api/wallet.validate.js'
 
 import { AuthGuard } from '../../guards/auth.guard.js'
@@ -16,13 +16,13 @@ router
         AuthGuard,
         RoleGuard(Role.SUPERADMIN, Role.SALLER),
         validate(Validation.createSaller),
-        constroller.createWalletSaller)
+        constroller.createWallet)
     // =============== GET ===============
 
     .get('/',
         AuthGuard,
         RoleGuard(Role.SUPERADMIN, Role.ADMIN),
-        constroller.getAll)
+        constroller.getAllWallet)
 
     // =============== GET BY ID ===============
 
@@ -36,7 +36,7 @@ router
         AuthGuard,
         RoleGuard(Role.SUPERADMIN, Role.SALLER),
         validate(Validation.updateSaller),
-        constroller.updateWalletSaller)
+        constroller.updateWallet)
     // =============== DELETE ===============
     .delete('/:id',
         AuthGuard,

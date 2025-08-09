@@ -5,41 +5,41 @@ import { successRes } from "../../utils/successRes.js";
 import fs from 'fs'
 class CategoryController extends BaseController {
     constructor() {
-        super(Category)
+        super(Category, ['ProductRef'])
     }
-    createCategory=async(req,res,next)=>{
-        try {                                                      
-            const {name}=req.body
-            const exists=await Category.findOne({name})
-            if(exists){
+    createCategory = async (req, res, next) => {
+        try {
+            const { name } = req.body
+            const exists = await Category.findOne({ name })
+            if (exists) {
                 throw new AppError(`this ${name} already create on Category`)
-            }            
-            req.body.image='/uploads'+req.file?.path.split('uploads')[1]
-            const result=await Category.create(req.body)
-            return successRes(res,result,201)
+            }
+            req.body.image = '/uploads' + req.file?.path.split('uploads')[1]
+            const result = await Category.create(req.body)
+            return successRes(res, result, 201)
         } catch (error) {
             if (req.file?.path) {
                 try {
                     fs.unlinkSync(req.file.path);
                 } catch (unlinkErr) {
-                    console.error("Faylni o'chirishda xato:",unlinkErr.message);
+                    console.error("Faylni o'chirishda xato:", unlinkErr.message);
                 }
             }
             next(error)
         }
     }
 
-    updateCategory=async(req,res,next)=>{
+    updateCategory = async (req, res, next) => {
         try {
-            const id=req.params.id
-            const {name}=req.body
-            const exists=await Category.findOne({name})
-            if(exists){
+            const id = req.params.id
+            const { name } = req.body
+            const exists = await Category.findOne({ name })
+            if (exists) {
                 throw new AppError(`this ${name} already create on Category`)
             }
-            await BaseController.checkById(id,Category)
-            const result=await Category.findByIdAndUpdate(id,req.body,{new:true})
-            return successRes(res,result)
+            await BaseController.checkById(id, Category)
+            const result = await Category.findByIdAndUpdate(id, req.body, { new: true })
+            return successRes(res, result)
         } catch (error) {
             next(error)
         }
