@@ -374,7 +374,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"fullName\":\"Komol1918\",\n    \"password\":\"@Komol11\",\n    \"email\":\"komol39@gmail.com\",\n    \"phoneNumber\":\"+998977504848\"\n}",
+							"raw": "{\n    \"fullName\":\"Komol123\",\n    \"password\":\"@Komol1111\",\n    \"email\":\"komol7390@gmail.com\",\n    \"phoneNumber\":\"+998977504818\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -403,7 +403,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"email\":\"komol39@gmail.com\",\n    \"otp\":\"844659\"\n}",
+							"raw": "{\n    \"email\":\"komol7390@gmail.com\",\n    \"otp\":\"302662\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -564,7 +564,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"email\":\"komol7390@gmail.com\",\n    \"password\":\"@Komol11\"\n}",
+							"raw": "{\n    \"email\":\"komol7390@gmail.com1\",\n    \"password\":\"@Komol11\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -769,7 +769,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"fullName\":\"Komol11646\",\n    \"password\":\"@Komol11\",\n    \"email\":\"komol73902@gmail.com\",\n    \"phoneNumber\":\"+998927507216\"\n}",
+							"raw": "{\n    \"fullName\":\"Komol562461\",\n    \"password\":\"@Komo21111\",\n    \"email\":\"komol189@gmail.com\",\n    \"phoneNumber\":\"+998927503017\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -827,7 +827,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4OTU4MzRmZTdlMjIwMWQ4OGU0ZmQwZSIsInJvbGUiOiJTVVBFUkFETUlOIiwiaXNBY3RpdmUiOnRydWUsImlhdCI6MTc1NDY1MTkwOSwiZXhwIjoxNzU0NzM4MzA5fQ.ej_QmHP92qyBmLN_rLeuxKTV6neYEtz-6WjI6D8aEaw",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4OTcxNDc3NTQ1NTNjZDRlNjU2NmMzZSIsInJvbGUiOiJTVVBFUkFETUlOIiwiaXNBY3RpdmUiOnRydWUsImlhdCI6MTc1NDczOTU3MCwiZXhwIjoxNzU1MzQ0MzcwfQ.llk5KADQdx4GL3nG_xNBhDjwr5Q7Ktmv-oMZ9ID1oOc",
 									"type": "string"
 								}
 							]
@@ -835,7 +835,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:3030/api/saller/6895e79326e2ee215c5ab6a9",
+							"raw": "localhost:3030/api/saller/6897914c8bc86eb828a51e61",
 							"host": [
 								"localhost"
 							],
@@ -843,7 +843,7 @@
 							"path": [
 								"api",
 								"saller",
-								"6895e79326e2ee215c5ab6a9"
+								"6897914c8bc86eb828a51e61"
 							]
 						}
 					},
@@ -1125,7 +1125,7 @@
 								},
 								{
 									"key": "name",
-									"value": "smmp",
+									"value": "Dizayn",
 									"type": "text"
 								}
 							]
@@ -1298,7 +1298,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"name\":\"smm\",\n    \"price\":500,\n    \"customerID\":\"6896eedbad774d5695c8ede5\",\n    \"categoryID\":\"6896ee2aad774d5695c8eddb\"\n}",
+							"raw": "{\n    \"name\":\"Smm\",\n    \"price\":500,\n    \"sallerID\":\"689790058bc86eb828a51e3e\",\n    \"categoryID\":\"689787b6d5027b24d6427097\",\n    \"stockQuantity\":100\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1364,7 +1364,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:3030/api/product/6896ef24ad774d5695c8edeb",
+							"raw": "localhost:3030/api/product/689787c1d5027b24d642709c",
 							"host": [
 								"localhost"
 							],
@@ -1372,7 +1372,7 @@
 							"path": [
 								"api",
 								"product",
-								"6896ef24ad774d5695c8edeb"
+								"689787c1d5027b24d642709c"
 							]
 						}
 					},
@@ -1473,7 +1473,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"orderQuantity\":5,\n}",
+							"raw": "{\n    \"orderQuantity\":5,\n    \"customerID\":\"\",\n    \n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1985,7 +1985,7 @@
 			]
 		},
 		{
-			"name": "Saller Wallet",
+			"name": "Create Saller Wallet",
 			"item": [
 				{
 					"name": "create",
@@ -2160,7 +2160,7 @@
 			]
 		},
 		{
-			"name": "Customer Wallet",
+			"name": "Create Customer Wallet",
 			"item": [
 				{
 					"name": "create",
