@@ -35,7 +35,7 @@ router
         validate(Validation.confirmOTP),
         controller.confirmOTP)
 
-    // =============== GET ALL ===============
+    // =============== GET ===============
     .get('/signout',
         AuthGuard,
         RoleGuard(Role.SUPERADMIN,Role.ADMIN,Role.CUSTOMER),

@@ -72,11 +72,11 @@ export class BaseController {
     static checkById = async (id, schema) => {
 
         if (!isValidObjectId(id)) {
-            throw new AppError('id is invalid', 400)
+            throw new AppError(`this ${id} is invalid`, 400)
         }
         const result = await schema.findById(id)
         if (!result) {
-            throw new AppError(`Not found this ${id}`, 404)
+            throw new AppError(`this ${id} user not found`, 404)
         }
         return result
     }
