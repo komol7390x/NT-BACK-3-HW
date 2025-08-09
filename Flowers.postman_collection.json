@@ -462,7 +462,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4OTZlZWRiYWQ3NzRkNTY5NWM4ZWRlNSIsInJvbGUiOiJDVVNUT01FUiIsImlzQWN0aXZlIjp0cnVlLCJpYXQiOjE3NTQ3MzgzODUsImV4cCI6MTc1NDgyNDc4NX0.aE7CtqwRcV9vOlcJrRs_SKKaFIlVrS1EyUrkLJNphL4",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4OTc4NWIzZmM3NWQ3MGNkODMxNTdmMyIsInJvbGUiOiJDVVNUT01FUiIsImlzQWN0aXZlIjp0cnVlLCJpYXQiOjE3NTQ3NjUzMzMsImV4cCI6MTc1NTM3MDEzM30.I2pTBwE6D6IxvhYvI_bl9B8NOrBlOId0MjprS_X5gCg",
 									"type": "string"
 								}
 							]
@@ -470,7 +470,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:3030/api/customer/6896eedbad774d5695c8ede5",
+							"raw": "localhost:3030/api/customer/689785b3fc75d70cd83157f3",
 							"host": [
 								"localhost"
 							],
@@ -478,7 +478,7 @@
 							"path": [
 								"api",
 								"customer",
-								"6896eedbad774d5695c8ede5"
+								"689785b3fc75d70cd83157f3"
 							]
 						}
 					},
@@ -560,11 +560,14 @@
 				{
 					"name": "signin",
 					"request": {
+						"auth": {
+							"type": "noauth"
+						},
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"email\":\"komol7390@gmail.com1\",\n    \"password\":\"@Komol11\"\n}",
+							"raw": "{\n    \"email\":\"komol7390@gmail.com\",\n    \"password\":\"@Komol1111\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1464,7 +1467,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4OTU3NWUyMDZlMmIzNTI0YzA1Y2M1ZCIsInJvbGUiOiJBRE1JTiIsImlzQWN0aXZlIjp0cnVlLCJpYXQiOjE3NTQ2Mjg1MjksImV4cCI6MTc1NDcxNDkyOX0.fAM2a-_AN0thusYvgUhV9xR0BJJ2tJaziFdHaBoXO7E",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4OTc4NWIzZmM3NWQ3MGNkODMxNTdmMyIsInJvbGUiOiJDVVNUT01FUiIsImlzQWN0aXZlIjp0cnVlLCJpYXQiOjE3NTQ3NjU3MTUsImV4cCI6MTc1NTM3MDUxNX0.Kg6e1k37YOpZDK2ZNIOE5YRaXq6epcIbQbcx3085asA",
 									"type": "string"
 								}
 							]
@@ -1473,7 +1476,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"orderQuantity\":5,\n    \"customerID\":\"\",\n    \n}",
+							"raw": "{\n    \"orderQuantity\":5,\n    \"customerID\":\"689785b3fc75d70cd83157f3\",\n    \"productID\":\"689787c1d5027b24d642709c\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1502,7 +1505,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4OTU4MzRmZTdlMjIwMWQ4OGU0ZmQwZSIsInJvbGUiOiJTVVBFUkFETUlOIiwiaXNBY3RpdmUiOnRydWUsImlhdCI6MTc1NDY1MTkwOSwiZXhwIjoxNzU0NzM4MzA5fQ.ej_QmHP92qyBmLN_rLeuxKTV6neYEtz-6WjI6D8aEaw",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4OTcxNDc3NTQ1NTNjZDRlNjU2NmMzZSIsInJvbGUiOiJTVVBFUkFETUlOIiwiaXNBY3RpdmUiOnRydWUsImlhdCI6MTc1NDczOTU3MCwiZXhwIjoxNzU1MzQ0MzcwfQ.llk5KADQdx4GL3nG_xNBhDjwr5Q7Ktmv-oMZ9ID1oOc",
 									"type": "string"
 								}
 							]
@@ -1814,7 +1817,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4OTU3NWUyMDZlMmIzNTI0YzA1Y2M1ZCIsInJvbGUiOiJBRE1JTiIsImlzQWN0aXZlIjp0cnVlLCJpYXQiOjE3NTQ2Mjg1MjksImV4cCI6MTc1NDcxNDkyOX0.fAM2a-_AN0thusYvgUhV9xR0BJJ2tJaziFdHaBoXO7E",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4OTcxNDc3NTQ1NTNjZDRlNjU2NmMzZSIsInJvbGUiOiJTVVBFUkFETUlOIiwiaXNBY3RpdmUiOnRydWUsImlhdCI6MTc1NDczOTU3MCwiZXhwIjoxNzU1MzQ0MzcwfQ.llk5KADQdx4GL3nG_xNBhDjwr5Q7Ktmv-oMZ9ID1oOc",
 									"type": "string"
 								}
 							]
@@ -1822,29 +1825,24 @@
 						"method": "POST",
 						"header": [],
 						"body": {
-							"mode": "formdata",
-							"formdata": [
-								{
-									"key": "image",
-									"type": "file",
-									"src": "postman-cloud:///1f052b31-e3d4-41c0-a585-9658df4d3301"
-								},
-								{
-									"key": "name",
-									"value": "Smm",
-									"type": "text"
+							"mode": "raw",
+							"raw": "{\n    \"secretKey\":\"1754770391374123456789\",\n    \"access\":\"true\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
 								}
-							]
+							}
 						},
 						"url": {
-							"raw": "localhost:3030/api/payment",
+							"raw": "localhost:3030/api/payment/payment-url",
 							"host": [
 								"localhost"
 							],
 							"port": "3030",
 							"path": [
 								"api",
-								"payment"
+								"payment",
+								"payment-url"
 							]
 						}
 					},
@@ -1985,7 +1983,7 @@
 			]
 		},
 		{
-			"name": "Create Saller Wallet",
+			"name": "Saller Wallet",
 			"item": [
 				{
 					"name": "create",
@@ -2004,7 +2002,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"cardNumber\":\"1111222233334493\",\n    \"balance\":200000,\n    \"sallerID\":\"68970b0aaf70bac114477d35\"\n}",
+							"raw": "{\n    \"cardNumber\":\"1111222233334494\",\n    \"balance\":20000000000,\n    \"sallerID\":\"689790058bc86eb828a51e3e\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -2020,6 +2018,45 @@
 							"path": [
 								"api",
 								"saller-wallet"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "wallet to saller",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4OTcwYjBhYWY3MGJhYzExNDQ3N2QzNSIsInJvbGUiOiJTQUxMRVIiLCJpc0FjdGl2ZSI6ZmFsc2UsImlhdCI6MTc1NDcyOTMyNiwiZXhwIjoxNzU0ODE1NzI2fQ.iBdPWHVRTcydeYUacu5LAuU2OvjLw_EN3fNou51pB8Y",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"sallerID\":\"689790058bc86eb828a51e3e\",\n    \"cardNumber\":\"1111222233334494\",\n    \"cash\":\"1000000011\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3030/api/saller-wallet/pay-to-saller",
+							"host": [
+								"localhost"
+							],
+							"port": "3030",
+							"path": [
+								"api",
+								"saller-wallet",
+								"pay-to-saller"
 							]
 						}
 					},
@@ -2160,7 +2197,7 @@
 			]
 		},
 		{
-			"name": "Create Customer Wallet",
+			"name": "Customer Wallet",
 			"item": [
 				{
 					"name": "create",
@@ -2179,7 +2216,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"cardNumber\":\"1111222233338444\",\n    \"balance\":200000,\n    \"customerID\":\"6896eedbad774d5695c8ede5\"\n}",
+							"raw": "{\n    \"cardNumber\":\"1111222233318443\",\n    \"balance\":20000000000,\n    \"customerID\":\"689785b3fc75d70cd83157f3\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -2195,6 +2232,45 @@
 							"path": [
 								"api",
 								"customer-wallet"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "wallet to customer",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4OTcxNDc3NTQ1NTNjZDRlNjU2NmMzZSIsInJvbGUiOiJTVVBFUkFETUlOIiwiaXNBY3RpdmUiOnRydWUsImlhdCI6MTc1NDczOTU3MCwiZXhwIjoxNzU1MzQ0MzcwfQ.llk5KADQdx4GL3nG_xNBhDjwr5Q7Ktmv-oMZ9ID1oOc",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"customerID\":\"689785b3fc75d70cd83157f3\",\n    \"cardNumber\":\"1111222233318443\",\n    \"cash\":\"1000011110\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3030/api/customer-wallet/pay-to-customer",
+							"host": [
+								"localhost"
+							],
+							"port": "3030",
+							"path": [
+								"api",
+								"customer-wallet",
+								"pay-to-customer"
 							]
 						}
 					},
