@@ -33,6 +33,22 @@ class Wallet {
             sallerID: Joi.string().optional()
         })
     }
+
+    cardSaller = () => {
+        return Joi.object({
+            sallerID: Joi.string().required(),
+            cardNumber: Joi.string().required(),
+            cash: Joi.string().required().min(0)
+        })
+    }
+
+    cardCustomer = () => {
+        return Joi.object({
+            customerID: Joi.string().required(),
+            cardNumber: Joi.string().required(),
+            cash: Joi.string().required().min(0)
+        })
+    }
 }
 
 export default new Wallet()

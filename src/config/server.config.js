@@ -36,6 +36,12 @@ export const configFile = {
         PASSWORD_URL: process.env.CONFIRM_PASSWORD_URL,
         REGISTER_URL: process.env.CONFIRM_REGISTER_URL,
     },
+
     CRYPTO_SECRET_KEY: process.env.CRYPTO_SECRET_KEY,
-    DEVICE_NUMBER: +process.env.DEVICE_NUMBER
+    DEVICE_NUMBER: +process.env.DEVICE_NUMBER,
+    PAYMENT: {
+        CONFIRM_URL: process.env.CONFIRM_PAYMENT_URL,
+        CONFIRM_PASSWORD: process.env.CONFIRM_PAYMENT_PASSWORD
+
+    },
 }

@@ -32,26 +32,42 @@ export class WalletController extends BaseController {
             const id = req.params.id
             await BaseController.checkById(id)
             const { customerID, sallerID, cardNumber } = req.body
-            const Userid = customerID ?? sallerID
+            const userId = customerID ?? sallerID
             const exist = await this.model.findOne({ cardNumber })
             if (exist) {
                 throw new AppError(`this ${cardNumber} already added :(`)
             }
-            await BaseController.checkById(Userid, this.UserModel)
+            await BaseController.checkById(userId, this.UserModel)
             const result = await this.model.findByIdAndUpdate(id, req.body);
             successRes(res, result, 201)
         } catch (error) {
             next(error)
         }
     }
+    // ================================ WALLET TO USER BALANCE ================================
+    WalletToUser = async (req, res, next) => {
+        try {
+            const { customerID, sallerID, cash, cardNumber } = req.body
+            const userId = customerID ?? sallerID
+            await BaseController.checkById(userId, this.UserModel)
+            const cards = await this.UserModel.findById(userId).populate('WalletRef')
+            const card = cards.WalletRef.find(val => val.cardNumber == cardNumber)
+            const money = + cash
+            if (card.balance < money) {
+                throw new AppError('not enough money in card', 409)
+            }
+            res.send(card)
+        } catch (error) {
+            next(error)
+        }
+    }
     // ================================ GET ALL WALLET ================================
-
     getAllWallet = async (_req, res, next) => {
         try {
             const result = await this.model.
                 find({ [this.populateFields]: { $exists: true } }).
                 populate(this.populateFields);
-            
+
             successRes(res, result);
         } catch (error) {
             next(error)
