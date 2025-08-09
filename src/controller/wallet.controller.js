@@ -49,9 +49,14 @@ export class WalletController extends BaseController {
         try {
             const { customerID, sallerID, cash, cardNumber } = req.body
             const userId = customerID ?? sallerID
+
             const user = await BaseController.checkById(userId, this.UserModel)
             const cards = await this.UserModel.findById(userId).populate('WalletRef')
+
             const card = cards.WalletRef.find(val => val.cardNumber == cardNumber)
+            if (!card) {
+                throw new AppError(`not found this card ${cardNumber}`)
+            }
             const money = + cash
 
             if (card.balance < money) {

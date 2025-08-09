@@ -17,6 +17,13 @@ router
         RoleGuard(Role.SUPERADMIN, Role.CUSTOMER),
         validate(Validation.createCustomer),
         constroller.createWallet)
+    // =============== WALLET TO USER ===============
+    .post('/pay-to-customer',
+        AuthGuard,
+        RoleGuard(Role.SUPERADMIN, Role.SALLER),
+        validate(Validation.cardCustomer),
+        constroller.WalletToUser
+    )
     // =============== GET ===============
 
     .get('/',

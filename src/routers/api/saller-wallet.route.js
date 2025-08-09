@@ -18,7 +18,7 @@ router
         validate(Validation.createSaller),
         constroller.createWallet)
     // =============== WALLET TO USER ===============
-    .post('/pay-to-user',
+    .post('/pay-to-saller',
         AuthGuard,
         RoleGuard(Role.SUPERADMIN, Role.SALLER),
         validate(Validation.cardSaller),
