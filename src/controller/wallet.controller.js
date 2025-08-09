@@ -3,11 +3,11 @@ import { AppError } from "../error/AppError.js";
 import { successRes } from "../utils/successRes.js";
 
 export class WalletController extends BaseController {
-    constructor(model, Usermodel, populateFields) {
+    constructor(model, UserModel, populateFields) {
         super(model, populateFields)
         this.populateFields = populateFields
         this.model = model
-        this.Usermodel = Usermodel
+        this.UserModel = UserModel
     }
     // ================================ CREATE ================================
     createWallet = async (req, res, next) => {
@@ -18,7 +18,7 @@ export class WalletController extends BaseController {
             if (exist) {
                 throw new AppError(`this ${cardNumber} already added :(`)
             }
-            await BaseController.checkById(Userid, this.Usermodel)
+            await BaseController.checkById(Userid, this.UserModel)
             const result = await this.model.create(req.body);
             successRes(res, result, 201)
         } catch (error) {
@@ -37,7 +37,7 @@ export class WalletController extends BaseController {
             if (exist) {
                 throw new AppError(`this ${cardNumber} already added :(`)
             }
-            await BaseController.checkById(Userid, this.Usermodel)
+            await BaseController.checkById(Userid, this.UserModel)
             const result = await this.model.findByIdAndUpdate(id, req.body);
             successRes(res, result, 201)
         } catch (error) {
