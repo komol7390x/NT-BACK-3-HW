@@ -7,11 +7,13 @@ const sallerSchema = new Schema({
     phoneNumber: { type: Number, required: true, unique: true, length: 12 },
     hashPassword: { type: String, required: true, min: 3 },
     isActive: { type: Boolean, default: false },
+    balance: { type: Number, default: 0, min: 0 },
     role: { type: String, enum: [Role.SALLER], default: Role.SALLER },
     device: { type: Array, default: [] }
 }, {
-    timestamps: true, versionKey: false,virtuals: true,
-    toObject: { virtuals: true }, toJSON: { virtuals: true } })
+    timestamps: true, versionKey: false, virtuals: true,
+    toObject: { virtuals: true }, toJSON: { virtuals: true }
+})
 
 sallerSchema.virtual('PaymentRef', {
     ref: 'payments',

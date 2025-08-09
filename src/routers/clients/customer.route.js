@@ -18,12 +18,17 @@ router
         validate(Validation.create),
         controller.registerCustomer)
 
+    .post('/confirm-otp',
+        validate(Validation.confirmOTP),
+        controller.confirmOTP)
+
     .post(`/${configFile.OTP.REGISTER_URL}`,
+        requestLimiter(configFile.LIMITER.SECONDS, configFile.LIMITER.LIMIT),
         validate(Validation.confirmOTP),
         controller.confirmRegisterMail)
 
     .post('/signin',
-        requestLimiter(configFile.LIMITER.SECONDS, configFile.LIMITER.SECONDS),
+        requestLimiter(configFile.LIMITER.SECONDS, configFile.LIMITER.LIMIT),
         validate(Validation.signIn),
         controller.signIn)
 
@@ -31,14 +36,10 @@ router
         validate(Validation.forgetPassword),
         controller.forgetPassword)
 
-    .post('/confirm-otp',
-        validate(Validation.confirmOTP),
-        controller.confirmOTP)
-
     // =============== GET ===============
     .get('/signout',
         AuthGuard,
-        RoleGuard(Role.SUPERADMIN,Role.ADMIN,Role.CUSTOMER),
+        RoleGuard(Role.SUPERADMIN, Role.ADMIN, Role.CUSTOMER),
         controller.signOut)
 
     .get('/newtoken/:id',
@@ -56,6 +57,7 @@ router
     // =============== PATCH ===============
 
     .patch(`/${configFile.OTP.PASSWORD_URL}`,
+        requestLimiter(configFile.LIMITER.SECONDS, configFile.LIMITER.LIMIT),
         validate(Validation.updatePassword),
         controller.updatePassword)
 

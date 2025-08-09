@@ -22,7 +22,7 @@ router
         controller.createSaller)
 
     .post('/signin',
-        requestLimiter(configFile.LIMITER.SECONDS, configFile.LIMITER.SECONDS),
+        requestLimiter(configFile.LIMITER.SECONDS, configFile.LIMITER.LIMIT),
         validate(Validation.signIn),
         controller.signIn)
 
@@ -31,6 +31,7 @@ router
         controller.forgetPassword)
 
     .post('/confirm-otp',
+        requestLimiter(configFile.LIMITER.SECONDS, configFile.LIMITER.LIMIT),
         validate(Validation.confirmOTP),
         controller.confirmOTP)
 
@@ -38,7 +39,7 @@ router
 
     .get('/signout',
         AuthGuard,
-        RoleGuard(Role.SUPERADMIN,Role.ADMIN,Role.SALLER),
+        RoleGuard(Role.SUPERADMIN, Role.ADMIN, Role.SALLER),
         controller.signOut)
 
     .get('/newtoken/:id',

@@ -1,22 +1,21 @@
 import { rateLimit, ipKeyGenerator } from 'express-rate-limit'
 import { Role } from '../const/Role.js'
 
-export const requestLimiter = (seconds, limit,role) => {
-    const limiter = rateLimit({
+export const requestLimiter = (seconds, limit, role) => {
+    return rateLimit({
         windowMs: seconds * 1000,
-        limit,
-        skip: (req, _) => role == Role.SUPERADMIN,
-        skipFailedRequests: true,
-        keyGenerator: (req, _) => {
-            return ipKeyGenerator(req.ip) || (req.body.email ?? req.body.phonenumber)
+        max: limit,
+        skip: (_req) => role === Role.SUPERADMIN,
+        keyGenerator: (req) => {
+            return ipKeyGenerator(req.ip) || req.body?.username || req.body?.phoneNumber;
         },
         message: {
             status: 429,
-            message: 'Too many request'
+            message: 'Too many requests'
         },
         legacyHeaders: true,
-        standardHeaders: 'draft-6'
-    })
+        standardHeaders: true
+    });
+};
 
-    return limiter
-}
+

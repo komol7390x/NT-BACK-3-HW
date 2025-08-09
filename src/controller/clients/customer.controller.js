@@ -63,9 +63,11 @@ class CustomerController extends UserController {
                 throw new AppError(`this ${email} already is added on  users`, 404)
             }
             const customer = JSON.parse(await Redis.getDate(email))
+            console.log(customer);
             if (!otp || otp != customer?.otp) {
                 throw new AppError(`This OTP is incorect :(`, 404)
-            }            
+            }
+
             delete customer.otp
             Redis.deleteDate(email)
             customer.isActive = true

@@ -15,7 +15,6 @@ class SallerValidation extends CustomerValidation {
             email: Joi.string().required().pattern(phoneReg),
             phoneNumber: Joi.string().required().pattern(emailReg),
             password: Joi.string().required().pattern(passwordReg),
-            isActive: Joi.boolean(),
             role: Joi.string().valid(Role.SALLER),
             device: Joi.array()
         })

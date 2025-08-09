@@ -13,7 +13,6 @@ export class CustomerValidation {
             email: Joi.string().required().pattern(emailReg),
             phoneNumber: Joi.string().required().pattern(phoneReg),
             password: Joi.string().required().pattern(passwordReg),
-            isActive: Joi.boolean(),
             role: Joi.string().valid(Role.CUSTOMER),
             device: Joi.array()
         })
