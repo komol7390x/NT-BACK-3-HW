@@ -92,7 +92,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:3030/api/admin/6895f3ed073ba34fa5c5d249",
+							"raw": "localhost:3030/api/admin/6895032f2c72369832d30dcf",
 							"host": [
 								"localhost"
 							],
@@ -100,7 +100,7 @@
 							"path": [
 								"api",
 								"admin",
-								"6895f3ed073ba34fa5c5d249"
+								"6895032f2c72369832d30dcf"
 							]
 						}
 					},
@@ -186,7 +186,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"password\":\"12@AAA#3ee53d34\",\n    \"email\":\"komol7353333930@gmail.com\"\n}",
+							"raw": "{\n    \"email\":\"www.komol@gmail.com\",\n    \"password\":\"Komol7390x!@\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -403,7 +403,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"email\":\"komol7390@gmail.com\",\n    \"otp\":\"472136\"\n}",
+							"raw": "{\n    \"email\":\"komol7390@gmail.com\",\n    \"otp\":\"169378\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -564,7 +564,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"password\":\"@Komol7390x\",\n    \"email\":\"komol7390@gmail.com\"\n}",
+							"raw": "{\n    \"email\":\"komol7390@gmail.com\",\n    \"password\":\"@Komol11\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -572,14 +572,14 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:3030/api/admin/signin",
+							"raw": "localhost:3030/api/customer/signin",
 							"host": [
 								"localhost"
 							],
 							"port": "3030",
 							"path": [
 								"api",
-								"admin",
+								"customer",
 								"signin"
 							]
 						}
@@ -602,14 +602,14 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:3030/api/admin/newtoken/689575e206e2b3524c05cc5d",
+							"raw": "localhost:3030/api/customer/newtoken/689575e206e2b3524c05cc5d",
 							"host": [
 								"localhost"
 							],
 							"port": "3030",
 							"path": [
 								"api",
-								"admin",
+								"customer",
 								"newtoken",
 								"689575e206e2b3524c05cc5d"
 							]
@@ -633,14 +633,14 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:3030/api/admin/signout",
+							"raw": "localhost:3030/api/customer/signout",
 							"host": [
 								"localhost"
 							],
 							"port": "3030",
 							"path": [
 								"api",
-								"admin",
+								"customer",
 								"signout"
 							]
 						}
@@ -665,14 +665,14 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:3030/api/admin/forget-password",
+							"raw": "localhost:3030/api/customer/forget-password",
 							"host": [
 								"localhost"
 							],
 							"port": "3030",
 							"path": [
 								"api",
-								"admin",
+								"customer",
 								"forget-password"
 							]
 						}
@@ -694,14 +694,14 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:3030/api/admin/confirm-otp",
+							"raw": "localhost:3030/api/customer/confirm-otp",
 							"host": [
 								"localhost"
 							],
 							"port": "3030",
 							"path": [
 								"api",
-								"admin",
+								"customer",
 								"confirm-otp"
 							]
 						}
@@ -733,14 +733,14 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:3030/api/admin/confirm-password-url",
+							"raw": "localhost:3030/api/customer/confirm-password-url",
 							"host": [
 								"localhost"
 							],
 							"port": "3030",
 							"path": [
 								"api",
-								"admin",
+								"customer",
 								"confirm-password-url"
 							]
 						}
@@ -760,7 +760,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4OTU3NWUyMDZlMmIzNTI0YzA1Y2M1ZCIsInJvbGUiOiJBRE1JTiIsImlzQWN0aXZlIjp0cnVlLCJpYXQiOjE3NTQ2Mjg1MjksImV4cCI6MTc1NDcxNDkyOX0.fAM2a-_AN0thusYvgUhV9xR0BJJ2tJaziFdHaBoXO7E",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4OTZlZDRjYWQ3NzRkNTY5NWM4ZWRkMiIsInJvbGUiOiJBRE1JTiIsImlzQWN0aXZlIjp0cnVlLCJpYXQiOjE3NTQ3MjkyMTMsImV4cCI6MTc1NDgxNTYxM30.MZi0icyfVyvg145LQmbsY5UBgEUzZaGaCUYhK8XeffQ",
 									"type": "string"
 								}
 							]
@@ -1108,7 +1108,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4OTU3NWUyMDZlMmIzNTI0YzA1Y2M1ZCIsInJvbGUiOiJBRE1JTiIsImlzQWN0aXZlIjp0cnVlLCJpYXQiOjE3NTQ2Mjg1MjksImV4cCI6MTc1NDcxNDkyOX0.fAM2a-_AN0thusYvgUhV9xR0BJJ2tJaziFdHaBoXO7E",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4OTZlZDRjYWQ3NzRkNTY5NWM4ZWRkMiIsInJvbGUiOiJBRE1JTiIsImlzQWN0aXZlIjp0cnVlLCJpYXQiOjE3NTQ3MjE4MTEsImV4cCI6MTc1NDgwODIxMX0.KH8K6lFBaNMiJyA2oMmHBAcxUeTsmnSmi0gKnIlhQS0",
 									"type": "string"
 								}
 							]
@@ -1152,7 +1152,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4OTU4MzRmZTdlMjIwMWQ4OGU0ZmQwZSIsInJvbGUiOiJTVVBFUkFETUlOIiwiaXNBY3RpdmUiOnRydWUsImlhdCI6MTc1NDY1MTkwOSwiZXhwIjoxNzU0NzM4MzA5fQ.ej_QmHP92qyBmLN_rLeuxKTV6neYEtz-6WjI6D8aEaw",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4OTZlZDRjYWQ3NzRkNTY5NWM4ZWRkMiIsInJvbGUiOiJBRE1JTiIsImlzQWN0aXZlIjp0cnVlLCJpYXQiOjE3NTQ3MjE4MTEsImV4cCI6MTc1NDgwODIxMX0.KH8K6lFBaNMiJyA2oMmHBAcxUeTsmnSmi0gKnIlhQS0",
 									"type": "string"
 								}
 							]
@@ -1189,7 +1189,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:3030/api/category/6896049d0ab716b29d7dab34",
+							"raw": "localhost:3030/api/category/6896ee2aad774d5695c8eddb",
 							"host": [
 								"localhost"
 							],
@@ -1197,7 +1197,7 @@
 							"path": [
 								"api",
 								"category",
-								"6896049d0ab716b29d7dab34"
+								"6896ee2aad774d5695c8eddb"
 							]
 						}
 					},
@@ -1289,7 +1289,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4OTU3NWUyMDZlMmIzNTI0YzA1Y2M1ZCIsInJvbGUiOiJBRE1JTiIsImlzQWN0aXZlIjp0cnVlLCJpYXQiOjE3NTQ2Mjg1MjksImV4cCI6MTc1NDcxNDkyOX0.fAM2a-_AN0thusYvgUhV9xR0BJJ2tJaziFdHaBoXO7E",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4OTZlZDRjYWQ3NzRkNTY5NWM4ZWRkMiIsInJvbGUiOiJBRE1JTiIsImlzQWN0aXZlIjp0cnVlLCJpYXQiOjE3NTQ3MjE4MTEsImV4cCI6MTc1NDgwODIxMX0.KH8K6lFBaNMiJyA2oMmHBAcxUeTsmnSmi0gKnIlhQS0",
 									"type": "string"
 								}
 							]
@@ -1298,7 +1298,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"name\":\"Dizayn22\",\n    \"price\":555,\n    \"customerID\":\"6895e75af80c87bfe57a4f6b\",\n    \"categoryID\":\"6895e75af80c87bfe57a4f62\"\n}",
+							"raw": "{\n    \"name\":\"smm\",\n    \"price\":500,\n    \"customerID\":\"6896eedbad774d5695c8ede5\",\n    \"categoryID\":\"6896ee2aad774d5695c8eddb\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1472,19 +1472,13 @@
 						"method": "POST",
 						"header": [],
 						"body": {
-							"mode": "formdata",
-							"formdata": [
-								{
-									"key": "image",
-									"type": "file",
-									"src": "postman-cloud:///1f052b31-e3d4-41c0-a585-9658df4d3301"
-								},
-								{
-									"key": "name",
-									"value": "Smm",
-									"type": "text"
+							"mode": "raw",
+							"raw": "{\n    \"orderQuantity\":5,\n}",
+							"options": {
+								"raw": {
+									"language": "json"
 								}
-							]
+							}
 						},
 						"url": {
 							"raw": "localhost:3030/api/order",
@@ -1983,6 +1977,353 @@
 								"api",
 								"payment",
 								"6895e79326e2ee215c5ab6a9"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Saller Wallet",
+			"item": [
+				{
+					"name": "create",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4OTcwYjBhYWY3MGJhYzExNDQ3N2QzNSIsInJvbGUiOiJTQUxMRVIiLCJpc0FjdGl2ZSI6ZmFsc2UsImlhdCI6MTc1NDcyOTMyNiwiZXhwIjoxNzU0ODE1NzI2fQ.iBdPWHVRTcydeYUacu5LAuU2OvjLw_EN3fNou51pB8Y",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"cardNumber\":\"1111222233334443\",\n    \"balance\":200000,\n    \"sallerID\":\"68970b0aaf70bac114477d45\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3030/api/saller-wallet",
+							"host": [
+								"localhost"
+							],
+							"port": "3030",
+							"path": [
+								"api",
+								"saller-wallet"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAll",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4OTU4MzRmZTdlMjIwMWQ4OGU0ZmQwZSIsInJvbGUiOiJTVVBFUkFETUlOIiwiaXNBY3RpdmUiOnRydWUsImlhdCI6MTc1NDY1MTkwOSwiZXhwIjoxNzU0NzM4MzA5fQ.ej_QmHP92qyBmLN_rLeuxKTV6neYEtz-6WjI6D8aEaw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3030/api/saller-wallet",
+							"host": [
+								"localhost"
+							],
+							"port": "3030",
+							"path": [
+								"api",
+								"saller-wallet"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getById",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4OTU4MzRmZTdlMjIwMWQ4OGU0ZmQwZSIsInJvbGUiOiJTVVBFUkFETUlOIiwiaXNBY3RpdmUiOnRydWUsImlhdCI6MTc1NDY1MTkwOSwiZXhwIjoxNzU0NzM4MzA5fQ.ej_QmHP92qyBmLN_rLeuxKTV6neYEtz-6WjI6D8aEaw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3030/api/saller-wallet/68970da62238699f2385937a",
+							"host": [
+								"localhost"
+							],
+							"port": "3030",
+							"path": [
+								"api",
+								"saller-wallet",
+								"68970da62238699f2385937a"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4OTU4MzRmZTdlMjIwMWQ4OGU0ZmQwZSIsInJvbGUiOiJTVVBFUkFETUlOIiwiaXNBY3RpdmUiOnRydWUsImlhdCI6MTc1NDY1MTkwOSwiZXhwIjoxNzU0NzM4MzA5fQ.ej_QmHP92qyBmLN_rLeuxKTV6neYEtz-6WjI6D8aEaw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"cardNumber\":\"1111222233334441\",\n    \"balance\":2000010,\n    \"sallerID\":\"68970b0aaf70bac114477d35\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3030/api/saller-wallet/68970da62238699f2385937a",
+							"host": [
+								"localhost"
+							],
+							"port": "3030",
+							"path": [
+								"api",
+								"saller-wallet",
+								"68970da62238699f2385937a"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4OTU4MzRmZTdlMjIwMWQ4OGU0ZmQwZSIsInJvbGUiOiJTVVBFUkFETUlOIiwiaXNBY3RpdmUiOnRydWUsImlhdCI6MTc1NDY1MTkwOSwiZXhwIjoxNzU0NzM4MzA5fQ.ej_QmHP92qyBmLN_rLeuxKTV6neYEtz-6WjI6D8aEaw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\":\"Komol21\",\n    \"hashPassword\":\"123W4\"\n}"
+						},
+						"url": {
+							"raw": "localhost:3030/api/saller-wallet/68970da62238699f2385937a",
+							"host": [
+								"localhost"
+							],
+							"port": "3030",
+							"path": [
+								"api",
+								"saller-wallet",
+								"68970da62238699f2385937a"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Customer Wallet",
+			"item": [
+				{
+					"name": "create",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4OTcxNDc3NTQ1NTNjZDRlNjU2NmMzZSIsInJvbGUiOiJTVVBFUkFETUlOIiwiaXNBY3RpdmUiOnRydWUsImlhdCI6MTc1NDczMTcyMiwiZXhwIjoxNzU0ODE4MTIyfQ.R-efdPphItWyzuWDmKH3KlX6OFqMLxY-yR-4M7NJwIg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"cardNumber\":\"1111222233334440\",\n    \"balance\":200000,\n    \"customerID\":\"6896eedbad774d5695c8ede5\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3030/api/customer-wallet",
+							"host": [
+								"localhost"
+							],
+							"port": "3030",
+							"path": [
+								"api",
+								"customer-wallet"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAll",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4OTU4MzRmZTdlMjIwMWQ4OGU0ZmQwZSIsInJvbGUiOiJTVVBFUkFETUlOIiwiaXNBY3RpdmUiOnRydWUsImlhdCI6MTc1NDY1MTkwOSwiZXhwIjoxNzU0NzM4MzA5fQ.ej_QmHP92qyBmLN_rLeuxKTV6neYEtz-6WjI6D8aEaw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3030/api/customer-wallet",
+							"host": [
+								"localhost"
+							],
+							"port": "3030",
+							"path": [
+								"api",
+								"customer-wallet"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getById",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4OTU4MzRmZTdlMjIwMWQ4OGU0ZmQwZSIsInJvbGUiOiJTVVBFUkFETUlOIiwiaXNBY3RpdmUiOnRydWUsImlhdCI6MTc1NDY1MTkwOSwiZXhwIjoxNzU0NzM4MzA5fQ.ej_QmHP92qyBmLN_rLeuxKTV6neYEtz-6WjI6D8aEaw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3030/api/customer-wallet",
+							"host": [
+								"localhost"
+							],
+							"port": "3030",
+							"path": [
+								"api",
+								"customer-wallet"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4OTU4MzRmZTdlMjIwMWQ4OGU0ZmQwZSIsInJvbGUiOiJTVVBFUkFETUlOIiwiaXNBY3RpdmUiOnRydWUsImlhdCI6MTc1NDY1MTkwOSwiZXhwIjoxNzU0NzM4MzA5fQ.ej_QmHP92qyBmLN_rLeuxKTV6neYEtz-6WjI6D8aEaw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"cardNumber\":\"1111222233334441\",\n    \"balance\":2000010,\n    \"sallerID\":\"68970b0aaf70bac114477d35\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3030/api/customer-wallet",
+							"host": [
+								"localhost"
+							],
+							"port": "3030",
+							"path": [
+								"api",
+								"customer-wallet"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4OTU4MzRmZTdlMjIwMWQ4OGU0ZmQwZSIsInJvbGUiOiJTVVBFUkFETUlOIiwiaXNBY3RpdmUiOnRydWUsImlhdCI6MTc1NDY1MTkwOSwiZXhwIjoxNzU0NzM4MzA5fQ.ej_QmHP92qyBmLN_rLeuxKTV6neYEtz-6WjI6D8aEaw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\":\"Komol21\",\n    \"hashPassword\":\"123W4\"\n}"
+						},
+						"url": {
+							"raw": "localhost:3030/api/customer-wallet",
+							"host": [
+								"localhost"
+							],
+							"port": "3030",
+							"path": [
+								"api",
+								"customer-wallet"
 							]
 						}
 					},
