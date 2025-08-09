@@ -10,6 +10,8 @@ import Saller_Wallet from './api/saller-wallet.route.js'
 import Product from './api/product.route.js'
 import Category from './api/category.route.js'
 import Delivery from './api/delivery.route.js'
+import Payment from './api/payment.route.js'
+import Order from './api/order.route.js'
 
 const router = Router()
 
@@ -24,8 +26,8 @@ router
     .use('/saller-wallet', Saller_Wallet)
     .use('/customer-wallet', Customer_Wallet)
 
-    // .use('/payment',Payment)
-    // .use('/order',Order)
+    .use('/payment',Payment)
+    .use('/order',Order)
 
     .use(pageError)
 
