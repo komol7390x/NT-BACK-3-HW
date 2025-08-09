@@ -7,7 +7,7 @@ import { AppError } from "../../error/AppError.js";
 
 class SallerController extends UserController {
     constructor() {
-        super(Saller, ['WalletRef'])
+        super(Saller, ['WalletRef', 'ProductRef'])
     }
     //=================== CREATE SALLER ===================\\
 

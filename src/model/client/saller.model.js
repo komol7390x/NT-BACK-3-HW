@@ -27,4 +27,10 @@ sallerSchema.virtual('WalletRef', {
     foreignField: 'sallerID'
 });
 
+sallerSchema.virtual('ProductRef', {
+    ref: 'products',
+    localField: '_id',
+    foreignField: 'sallerID'
+});
+
 export const Saller = model('sallers', sallerSchema)

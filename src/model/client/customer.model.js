@@ -8,6 +8,7 @@ const customerSchema = new Schema({
     hashPassword: { type: String, required: true, min: 3 },
     balance: { type: Number, default: 0, min: 0 },
     isActive: { type: Boolean, default: false },
+    ordersHistory: { type: Array, default: [] },
     role: { type: String, enum: [Role.CUSTOMER], default: Role.CUSTOMER },
     device: { type: Array, default: [] }
 }, {
@@ -27,11 +28,6 @@ customerSchema.virtual('WalletRef', {
     foreignField: 'customerID'
 });
 
-customerSchema.virtual('ProductRef', {
-    ref: 'products',
-    localField: '_id',
-    foreignField: 'customerID'
-});
 
 export const Customers = model('customers', customerSchema)
 

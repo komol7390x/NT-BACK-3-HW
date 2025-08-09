@@ -7,7 +7,7 @@ class ProductValidate {
             price:Joi.number().min(0).required(),
             stockQuantity:Joi.number().min(0),
             image:Joi.string(),
-            customerID: Joi.string().required(),
+            sallerID: Joi.string().required(),
             categoryID: Joi.string().required()
         })
     }
@@ -18,7 +18,7 @@ class ProductValidate {
             price:Joi.number().min(0).optional(),
             stockQuantity:Joi.number().min(0),
             image:Joi.string().optional(),
-            customerID: Joi.string().optional(),
+            sallerID: Joi.string().optional(),
             categoryID: Joi.string().optional()
         })
     }

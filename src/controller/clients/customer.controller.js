@@ -11,7 +11,7 @@ import { successRes } from "../../utils/successRes.js";
 
 class CustomerController extends UserController {
     constructor() {
-        super(Customers, ['OrderRef', 'WalletRef', 'ProductRef'])
+        super(Customers, ['OrderRef', 'WalletRef'])
     }
 
     //=================== CREATE SALLER ===================\\

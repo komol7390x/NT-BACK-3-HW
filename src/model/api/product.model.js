@@ -5,7 +5,7 @@ const productSchema = new Schema({
     price: { type: Number, required: true, min: 0 },
     stockQuantity: { type: Number, min: 0, default: 0 },
     image: { type: String },
-    customerID: { type: Schema.Types.ObjectId, ref: 'customers' },
+    sallerID: { type: Schema.Types.ObjectId, ref: 'sallers' },
     categoryID: { type: Schema.Types.ObjectId, ref: 'categories' }
 }, {
     timestamps: true, versionKey: false, virtuals: true,
