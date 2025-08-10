@@ -1642,7 +1642,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4OTU3NWUyMDZlMmIzNTI0YzA1Y2M1ZCIsInJvbGUiOiJBRE1JTiIsImlzQWN0aXZlIjp0cnVlLCJpYXQiOjE3NTQ2Mjg1MjksImV4cCI6MTc1NDcxNDkyOX0.fAM2a-_AN0thusYvgUhV9xR0BJJ2tJaziFdHaBoXO7E",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4OTg1ODA1NmY1YjhkNDM4ZWIzMWY0ZSIsInJvbGUiOiJTVVBFUkFETUlOIiwiaXNBY3RpdmUiOnRydWUsImlhdCI6MTc1NDgzMDI1NywiZXhwIjoxNzU1NDM1MDU3fQ.6jrhbQApL4tWj_HjD3MgakEU9QKl_Re7UXpYDqkFn54",
 									"type": "string"
 								}
 							]
@@ -1651,7 +1651,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"address\":\"Toshkent1\",\n    \"orderID\":\"6895e75af80c87bfe57a4f6b\"\n}",
+							"raw": "{\n    \"address\":\"Toshkent1\",\n    \"orderID\":\"6898b5e89fc4018537a11aa1\",\n    \"access\":true\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1680,7 +1680,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4OTU4MzRmZTdlMjIwMWQ4OGU0ZmQwZSIsInJvbGUiOiJTVVBFUkFETUlOIiwiaXNBY3RpdmUiOnRydWUsImlhdCI6MTc1NDY1MTkwOSwiZXhwIjoxNzU0NzM4MzA5fQ.ej_QmHP92qyBmLN_rLeuxKTV6neYEtz-6WjI6D8aEaw",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4OTg1ODA1NmY1YjhkNDM4ZWIzMWY0ZSIsInJvbGUiOiJTVVBFUkFETUlOIiwiaXNBY3RpdmUiOnRydWUsImlhdCI6MTc1NDgzMDI1NywiZXhwIjoxNzU1NDM1MDU3fQ.6jrhbQApL4tWj_HjD3MgakEU9QKl_Re7UXpYDqkFn54",
 									"type": "string"
 								}
 							]
@@ -1817,7 +1817,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4OTcxNDc3NTQ1NTNjZDRlNjU2NmMzZSIsInJvbGUiOiJTVVBFUkFETUlOIiwiaXNBY3RpdmUiOnRydWUsImlhdCI6MTc1NDczOTU3MCwiZXhwIjoxNzU1MzQ0MzcwfQ.llk5KADQdx4GL3nG_xNBhDjwr5Q7Ktmv-oMZ9ID1oOc",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4OTg1ODA1NmY1YjhkNDM4ZWIzMWY0ZSIsInJvbGUiOiJTVVBFUkFETUlOIiwiaXNBY3RpdmUiOnRydWUsImlhdCI6MTc1NDgzMDI1NywiZXhwIjoxNzU1NDM1MDU3fQ.6jrhbQApL4tWj_HjD3MgakEU9QKl_Re7UXpYDqkFn54",
 									"type": "string"
 								}
 							]
@@ -1826,7 +1826,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"secretKey\":\"1754816761807123456789\",\n    \"access\":true\n}",
+							"raw": "{\n    \"secretKey\":\"1754838493652123456789\",\n    \"access\":true\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1856,7 +1856,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4OTU4MzRmZTdlMjIwMWQ4OGU0ZmQwZSIsInJvbGUiOiJTVVBFUkFETUlOIiwiaXNBY3RpdmUiOnRydWUsImlhdCI6MTc1NDY1MTkwOSwiZXhwIjoxNzU0NzM4MzA5fQ.ej_QmHP92qyBmLN_rLeuxKTV6neYEtz-6WjI6D8aEaw",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4OTg1ODA1NmY1YjhkNDM4ZWIzMWY0ZSIsInJvbGUiOiJTVVBFUkFETUlOIiwiaXNBY3RpdmUiOnRydWUsImlhdCI6MTc1NDgzMDI1NywiZXhwIjoxNzU1NDM1MDU3fQ.6jrhbQApL4tWj_HjD3MgakEU9QKl_Re7UXpYDqkFn54",
 									"type": "string"
 								}
 							]
@@ -2025,6 +2025,45 @@
 				},
 				{
 					"name": "wallet to saller",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4OTg0NzVkYWVmY2MxOWE0NDkxZDEzNCIsInJvbGUiOiJTVVBFUkFETUlOIiwiaXNBY3RpdmUiOnRydWUsImlhdCI6MTc1NDgxMTE4MywiZXhwIjoxNzU1NDE1OTgzfQ.YBkSuImVoTuGGh87DcAtKiOmsLon61jtxpPX0l7XqbQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"cardNumber\":\"1111222233334493\",\n    \"sallerID\":\"689858be70a40fa10ebcbc37\",\n    \"cash\":\"100011\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3030/api/saller-wallet/send-from-saller",
+							"host": [
+								"localhost"
+							],
+							"port": "3030",
+							"path": [
+								"api",
+								"saller-wallet",
+								"send-from-saller"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "saller to wallet",
 					"request": {
 						"auth": {
 							"type": "bearer",
@@ -2271,6 +2310,45 @@
 								"api",
 								"customer-wallet",
 								"pay-to-customer"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "customer to wallet",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4OTcxNDc3NTQ1NTNjZDRlNjU2NmMzZSIsInJvbGUiOiJTVVBFUkFETUlOIiwiaXNBY3RpdmUiOnRydWUsImlhdCI6MTc1NDczOTU3MCwiZXhwIjoxNzU1MzQ0MzcwfQ.llk5KADQdx4GL3nG_xNBhDjwr5Q7Ktmv-oMZ9ID1oOc",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"customerID\":\"6898587622da9415f0ac8401\",\n    \"cardNumber\":\"1111222233318444\",\n    \"cash\":\"1000011110\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3030/api/customer-wallet/send-from-customer",
+							"host": [
+								"localhost"
+							],
+							"port": "3030",
+							"path": [
+								"api",
+								"customer-wallet",
+								"send-from-customer"
 							]
 						}
 					},
