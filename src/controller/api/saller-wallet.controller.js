@@ -4,7 +4,7 @@ import { Saller } from '../../model/client/saller.model.js'
 
 class SallerWalletController extends WalletController {
     constructor() {
-        super(Wallet, Saller, 'sallerID')
+        super(Wallet, Saller, ['sallerID'])
     }
 }
 

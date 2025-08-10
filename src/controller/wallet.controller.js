@@ -1,6 +1,7 @@
 import { BaseController } from "./base.controller.js";
 import { AppError } from "../error/AppError.js";
 import { successRes } from "../utils/successRes.js";
+import Transaction from "../utils/Transaction.js";
 
 export class WalletController extends BaseController {
     constructor(model, UserModel, populateFields) {
@@ -54,6 +55,7 @@ export class WalletController extends BaseController {
             const cards = await this.UserModel.findById(userId).populate('WalletRef')
 
             const card = cards.WalletRef.find(val => val.cardNumber == cardNumber)
+
             if (!card) {
                 throw new AppError(`not found this card ${cardNumber}`)
             }
@@ -64,6 +66,7 @@ export class WalletController extends BaseController {
             }
             const balanceCard = card.balance - money
             const balanceUser = user.balance + money
+
             const UserWall = await this.UserModel.findByIdAndUpdate(userId, { balance: balanceUser })
             const Wall = await this.model.findByIdAndUpdate(card._id, { balance: balanceCard })
 
