@@ -24,6 +24,12 @@ router
         validate(Validation.cardCustomer),
         constroller.WalletToUser
     )
+    .post('/send-from-customer',
+        AuthGuard,
+        RoleGuard(Role.SUPERADMIN, Role.SALLER),
+        validate(Validation.cardCustomer),
+        constroller.userToWallet
+    )
     // =============== GET ===============
 
     .get('/',

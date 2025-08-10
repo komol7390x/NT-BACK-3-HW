@@ -70,6 +70,31 @@ export class WalletController extends BaseController {
             next(error)
         }
     }
+    // ================================ USER BALANCE TO WALLET ================================
+    userToWallet = async (req, res, next) => {
+        try {
+            const { customerID, sallerID, cash, cardNumber } = req.body
+            const userId = customerID ?? sallerID
+
+            const user = await BaseController.checkById(userId, this.UserModel)
+
+            const cards = await this.UserModel.findById(user._id).populate('WalletRef')
+            const card = cards.WalletRef.find(val => val.cardNumber == cardNumber)
+
+            if (!card) {
+                throw new AppError(`not found this card ${cardNumber}`)
+            }
+
+            const money = + cash
+            const result = await Transaction.transferMoney(next, userId, this.UserModel, card._id, this.walletModel, money)
+            if (!result) {
+                throw new AppError('Transfer error', 409)
+            }
+            successRes(res, result)
+        } catch (error) {
+            next(error)
+        }
+    }
     // ================================ GET ALL WALLET ================================
     getAllWallet = async (_req, res, next) => {
         try {
