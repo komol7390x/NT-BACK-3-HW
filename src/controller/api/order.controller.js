@@ -30,8 +30,9 @@ class OrderController extends BaseController {
             const secretKey = `${date}${configFile.PAYMENT.CONFIRM_PASSWORD}`
             req.body.totalPrice = totalPrice
             await Redis.setDate(secretKey, JSON.stringify(req.body), 600)
+
             successRes(res, {
-                url: configFile.PAYMENT_URL,
+                url: configFile.PAYMENT.CONFIRM_URL,
                 message: 'you have 10 minut for payment to order',
                 secretKey
             })

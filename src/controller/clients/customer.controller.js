@@ -67,7 +67,6 @@ class CustomerController extends UserController {
             if (!otp || otp != customer?.otp) {
                 throw new AppError(`This OTP is incorect :(`, 404)
             }
-
             delete customer.otp
             Redis.deleteDate(email)
             customer.isActive = true

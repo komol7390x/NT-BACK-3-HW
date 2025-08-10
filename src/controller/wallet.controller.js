@@ -4,10 +4,10 @@ import { successRes } from "../utils/successRes.js";
 import Transaction from "../utils/Transaction.js";
 
 export class WalletController extends BaseController {
-    constructor(model, UserModel, populateFields) {
-        super(model, populateFields)
+    constructor(walletModel, UserModel, populateFields) {
+        super(walletModel, populateFields)
         this.populateFields = populateFields
-        this.model = model
+        this.walletModel = walletModel
         this.UserModel = UserModel
     }
     // ================================ CREATE ================================
@@ -15,12 +15,12 @@ export class WalletController extends BaseController {
         try {
             const { customerID, sallerID, cardNumber } = req.body
             const Userid = customerID ?? sallerID
-            const exist = await this.model.findOne({ cardNumber })
+            const exist = await this.walletModel.findOne({ cardNumber })
             if (exist) {
                 throw new AppError(`this ${cardNumber} already added :(`)
             }
             await BaseController.checkById(Userid, this.UserModel)
-            const result = await this.model.create(req.body);
+            const result = await this.walletModel.create(req.body);
             successRes(res, result, 201)
         } catch (error) {
             next(error)
@@ -34,12 +34,12 @@ export class WalletController extends BaseController {
             await BaseController.checkById(id)
             const { customerID, sallerID, cardNumber } = req.body
             const userId = customerID ?? sallerID
-            const exist = await this.model.findOne({ cardNumber })
+            const exist = await this.walletModel.findOne({ cardNumber })
             if (exist) {
                 throw new AppError(`this ${cardNumber} already added :(`)
             }
             await BaseController.checkById(userId, this.UserModel)
-            const result = await this.model.findByIdAndUpdate(id, req.body);
+            const result = await this.walletModel.findByIdAndUpdate(id, req.body);
             successRes(res, result, 201)
         } catch (error) {
             next(error)
@@ -52,28 +52,20 @@ export class WalletController extends BaseController {
             const userId = customerID ?? sallerID
 
             const user = await BaseController.checkById(userId, this.UserModel)
-            const cards = await this.UserModel.findById(userId).populate('WalletRef')
 
+            const cards = await this.UserModel.findById(user._id).populate('WalletRef')
             const card = cards.WalletRef.find(val => val.cardNumber == cardNumber)
 
             if (!card) {
                 throw new AppError(`not found this card ${cardNumber}`)
             }
+
             const money = + cash
-
-            if (card.balance < money) {
-                throw new AppError('not enough money in card', 409)
+            const result = await Transaction.transferMoney(next, card._id, this.walletModel, userId, this.UserModel, money)
+            if (!result) {
+                throw new AppError('Transfer error', 409)
             }
-            const balanceCard = card.balance - money
-            const balanceUser = user.balance + money
-
-            const UserWall = await this.UserModel.findByIdAndUpdate(userId, { balance: balanceUser })
-            const Wall = await this.model.findByIdAndUpdate(card._id, { balance: balanceCard })
-
-            successRes(res, {
-                Wallet: Wall,
-                User: UserWall
-            })
+            successRes(res, result)
         } catch (error) {
             next(error)
         }
@@ -81,7 +73,7 @@ export class WalletController extends BaseController {
     // ================================ GET ALL WALLET ================================
     getAllWallet = async (_req, res, next) => {
         try {
-            const result = await this.model.
+            const result = await this.walletModel.
                 find({ [this.populateFields]: { $exists: true } }).
                 populate(this.populateFields);
 

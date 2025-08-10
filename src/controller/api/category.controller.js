@@ -22,7 +22,7 @@ class CategoryController extends BaseController {
                 try {
                     fs.unlinkSync(req.file.path);
                 } catch (unlinkErr) {
-                    console.error("Faylni o'chirishda xato:", unlinkErr.message);
+                    console.error("error to delete file :( ", unlinkErr.message);
                 }
             }
             next(error)
