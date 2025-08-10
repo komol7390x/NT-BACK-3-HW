@@ -1,5 +1,6 @@
 import { Schema, model } from "mongoose";
 import { Role } from '../../const/Role.js'
+import { modelConfig } from "../../config/model.config.js";
 
 const customerSchema = new Schema({
     fullName: { type: String, required: true, unique: true, min: 3, max: 256 },
@@ -16,20 +17,20 @@ const customerSchema = new Schema({
     toObject: { virtuals: true }, toJSON: { virtuals: true }
 })
 
-customerSchema.virtual('OrderRef', {
-    ref: 'orders',
-    localField: '_id',
-    foreignField: 'customerID'
+customerSchema.virtual(modelConfig.REFERENS.ORDER, {
+    ref: modelConfig.TABLES.ORDERS,
+    localField: modelConfig.TABLES._ID,
+    foreignField: modelConfig.VIRTUAL.CUSTOMER
 });
 
-customerSchema.virtual('WalletRef', {
-    ref: 'wallets',
-    localField: '_id',
-    foreignField: 'customerID'
+customerSchema.virtual(modelConfig.REFERENS.WALLET, {
+    ref: modelConfig.TABLES.WALLETS,
+    localField: modelConfig.TABLES._ID,
+    foreignField: modelConfig.VIRTUAL.CUSTOMER
 });
 
 
-export const Customers = model('customers', customerSchema)
+export const Customers = model(modelConfig.TABLES.CUSTOMERS, customerSchema)
 
 
 

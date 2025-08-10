@@ -3,13 +3,14 @@ import Transaction from '../../utils/Transaction.js'
 
 import { BaseController } from "../base.controller.js";
 import { AppError } from "../../error/AppError.js";
+import { successRes } from "../../utils/successRes.js";
+import { modelConfig } from "../../config/model.config.js";
 
 import { Customers } from "../../model/client/customer.model.js";
 import { Saller } from '../../model/client/saller.model.js'
 import { Product } from "../../model/api/product.model.js";
 import { Payment } from '../../model/api/payment.model.js'
 import { Order } from "../../model/api/order.model.js";
-import { successRes } from "../../utils/successRes.js";
 
 class PaymentController extends BaseController {
     constructor() {
@@ -31,7 +32,7 @@ class PaymentController extends BaseController {
             if (!order) {
                 throw new AppError('sorry not found order for product', 409)
             }
-            const product = await Product.findById(order?.productID).populate('sallerID')
+            const product = await Product.findById(order?.productID).populate(modelConfig.VIRTUAL.SALLER)
 
             const sallerId = product?.sallerID?._id
             if (!sallerId) {

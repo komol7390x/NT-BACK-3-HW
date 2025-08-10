@@ -1,7 +1,10 @@
 import { BaseController } from "../base.controller.js";
-import { Delivery } from '../../model/api/delivery.model.js'
-import {Order} from '../../model/api/order.model.js'
+
 import { successRes } from "../../utils/successRes.js";
+import { modelConfig } from "../../config/model.config.js";
+
+import { Order } from '../../model/api/order.model.js'
+import { Delivery } from '../../model/api/delivery.model.js'
 
 class DeliveryController extends BaseController {
     constructor() {
@@ -11,8 +14,8 @@ class DeliveryController extends BaseController {
     createDelivery = async (req, res, next) => {
         try {
             const { orderID } = req.body
-            await BaseController.checkById(orderID, Order)                        
-            const result = await Delivery.create(req.body)                     
+            await BaseController.checkById(orderID, Order)
+            const result = await Delivery.create(req.body)
             return successRes(res, result, 201)
         } catch (error) {
             next(error)

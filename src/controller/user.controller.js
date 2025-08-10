@@ -3,10 +3,12 @@ import Token from '../utils/Token.js'
 import Redis from "../utils/Redis.js";
 
 import { BaseController } from "./base.controller.js";
+
 import { AppError } from "../error/AppError.js";
+import { successRes } from "../utils/successRes.js";
+
 import { generateOTP } from "../utils/generate-number.js";
 import { sendOTPToMail } from '../utils/Email.js'
-import { successRes } from "../utils/successRes.js";
 import { configFile } from "../config/server.config.js";
 
 export class UserController extends BaseController {

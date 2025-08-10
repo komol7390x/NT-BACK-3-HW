@@ -1,11 +1,16 @@
+import fs from 'fs'
+
 import { BaseController } from "../base.controller.js";
-import { Category } from '../../model/api/category.model.js'
+
 import { AppError } from "../../error/AppError.js";
 import { successRes } from "../../utils/successRes.js";
-import fs from 'fs'
+import { modelConfig } from '../../config/model.config.js';
+
+import { Category } from '../../model/api/category.model.js'
+
 class CategoryController extends BaseController {
     constructor() {
-        super(Category, ['ProductRef'])
+        super(Category, [modelConfig.REFERENS.PRODUCT])
     }
     createCategory = async (req, res, next) => {
         try {

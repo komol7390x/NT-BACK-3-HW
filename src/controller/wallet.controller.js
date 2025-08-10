@@ -1,7 +1,9 @@
+import Transaction from "../utils/Transaction.js";
+
 import { BaseController } from "./base.controller.js";
 import { AppError } from "../error/AppError.js";
 import { successRes } from "../utils/successRes.js";
-import Transaction from "../utils/Transaction.js";
+import { modelConfig } from "../config/model.config.js";
 
 export class WalletController extends BaseController {
     constructor(walletModel, UserModel, populateFields) {
@@ -53,7 +55,7 @@ export class WalletController extends BaseController {
 
             const user = await BaseController.checkById(userId, this.UserModel)
 
-            const cards = await this.UserModel.findById(user._id).populate('WalletRef')
+            const cards = await this.UserModel.findById(user._id).populate(modelConfig.REFERENS.WALLET)
             const card = cards.WalletRef.find(val => val.cardNumber == cardNumber)
 
             if (!card) {
@@ -78,7 +80,7 @@ export class WalletController extends BaseController {
 
             const user = await BaseController.checkById(userId, this.UserModel)
 
-            const cards = await this.UserModel.findById(user._id).populate('WalletRef')
+            const cards = await this.UserModel.findById(user._id).populate(modelConfig.REFERENS.WALLET)
             const card = cards.WalletRef.find(val => val.cardNumber == cardNumber)
 
             if (!card) {

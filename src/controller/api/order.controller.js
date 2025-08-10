@@ -1,11 +1,14 @@
+import Redis from '../../utils/Redis.js'
+
 import { BaseController } from "../base.controller.js";
+
+import { AppError } from "../../error/AppError.js";
+import { successRes } from "../../utils/successRes.js";
+import { configFile } from '../../config/server.config.js'
+
 import { Order } from '../../model/api/order.model.js'
 import { Product } from '../../model/api/product.model.js'
 import { Customers } from "../../model/client/customer.model.js";
-import { AppError } from "../../error/AppError.js";
-import Redis from '../../utils/Redis.js'
-import { successRes } from "../../utils/successRes.js";
-import { configFile } from '../../config/server.config.js'
 
 class OrderController extends BaseController {
     constructor() {

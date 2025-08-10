@@ -1,13 +1,16 @@
 import { BaseController } from "../base.controller.js";
-import { Product } from '../../model/api/product.model.js'
-import { successRes } from "../../utils/successRes.js";
-import { Saller } from '../../model/client/saller.model.js'
-import { Category } from '../../model/api/category.model.js'
+
 import { AppError } from "../../error/AppError.js";
+import { successRes } from "../../utils/successRes.js";
+import { modelConfig } from "../../config/model.config.js";
+
+import { Saller } from '../../model/client/saller.model.js'
+import { Product } from '../../model/api/product.model.js'
+import { Category } from '../../model/api/category.model.js'
 
 class ProductController extends BaseController {
     constructor() {
-        super(Product, ['sallerID', 'categoryID', 'OrderRef'])
+        super(Product, [modelConfig.VIRTUAL.SALLER, modelConfig.VIRTUAL.CATEGORY, modelConfig.REFERENS.ORDER])
     }
     createProduct = async (req, res, next) => {
         try {

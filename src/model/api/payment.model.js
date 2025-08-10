@@ -1,4 +1,5 @@
 import { Schema, model } from "mongoose";
+import { modelConfig } from "../../config/model.config.js";
 
 const paymentSchema = new Schema({
     productName: { type: String, required: true },
@@ -8,4 +9,4 @@ const paymentSchema = new Schema({
     access: { type: Boolean, default: false }
 }, { timestamps: true, versionKey: false })
 
-export const Payment = model('payments', paymentSchema)
+export const Payment = model(modelConfig.TABLES.PAYMENTS, paymentSchema)

@@ -1,5 +1,6 @@
 import { Schema, model } from "mongoose";
 import { Role } from '../../const/Role.js'
+import { modelConfig } from "../../config/model.config.js";
 
 const sallerSchema = new Schema({
     fullName: { type: String, required: true, unique: true, min: 3, max: 256 },
@@ -15,22 +16,22 @@ const sallerSchema = new Schema({
     toObject: { virtuals: true }, toJSON: { virtuals: true }
 })
 
-sallerSchema.virtual('PaymentRef', {
-    ref: 'payments',
-    localField: '_id',
-    foreignField: 'sallerID'
+sallerSchema.virtual(modelConfig.REFERENS.PAYMENT, {
+    ref: modelConfig.TABLES.PAYMENTS,
+    localField: modelConfig.TABLES._ID,
+    foreignField: modelConfig.VIRTUAL.SALLER,
 });
 
-sallerSchema.virtual('WalletRef', {
-    ref: 'wallets',
-    localField: '_id',
-    foreignField: 'sallerID'
+sallerSchema.virtual(modelConfig.REFERENS.WALLET, {
+    ref: modelConfig.TABLES.WALLETS,
+    localField: modelConfig.TABLES._ID,
+    foreignField: modelConfig.VIRTUAL.SALLER,
 });
 
-sallerSchema.virtual('ProductRef', {
-    ref: 'products',
-    localField: '_id',
-    foreignField: 'sallerID'
+sallerSchema.virtual(modelConfig.REFERENS.PRODUCT, {
+    ref: modelConfig.TABLES.PRODUCTS,
+    localField: modelConfig.TABLES._ID,
+    foreignField: modelConfig.VIRTUAL.SALLER,
 });
 
-export const Saller = model('sallers', sallerSchema)
+export const Saller = model(modelConfig.TABLES.SALLERS, sallerSchema)

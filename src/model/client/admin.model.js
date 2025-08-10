@@ -1,5 +1,6 @@
 import { Schema, model } from "mongoose";
 import { Role } from '../../const/Role.js'
+import { modelConfig } from "../../config/model.config.js";
 
 const adminSchema = new Schema({
     username: { type: String, required: true, unique: true, min: 3, max: 256 },
@@ -10,4 +11,4 @@ const adminSchema = new Schema({
     device: { type: Array, default: [] }
 }, { timestamps: true, versionKey: false })
 
-export const Admin = model('admins', adminSchema)
+export const Admin = model(modelConfig.TABLES.ADMINS, adminSchema)
