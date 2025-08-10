@@ -5,7 +5,6 @@ class Wallet {
     createCustomer = () => {
         return Joi.object({
             cardNumber: Joi.string().required().length(16),
-            balance: Joi.number().min(0),
             customerID: Joi.string()
         })
     }
@@ -13,7 +12,6 @@ class Wallet {
     updateCustomer = () => {
         return Joi.object({
             cardNumber: Joi.string().optional().length(16),
-            balance: Joi.number().min(0),
             customerID: Joi.string().optional()
         })
     }
@@ -21,7 +19,6 @@ class Wallet {
     createSaller = () => {
         return Joi.object({
             cardNumber: Joi.string().required().length(16),
-            balance: Joi.number().min(0),
             sallerID: Joi.string()
         })
     }
@@ -29,7 +26,6 @@ class Wallet {
     updateSaller = () => {
         return Joi.object({
             cardNumber: Joi.string().optional().length(16),
-            balance: Joi.number().min(0),
             sallerID: Joi.string().optional()
         })
     }

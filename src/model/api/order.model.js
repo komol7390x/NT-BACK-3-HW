@@ -4,6 +4,7 @@ import { modelConfig } from "../../config/model.config.js";
 const orderSchema = new Schema({
     orderQuantity: { type: Number, required: true, min: 0 },
     totalPrice: { type: Number, min: 0, default: 0 },
+    status: { type: Boolean, default: false },
     customerID: { type: Schema.Types.ObjectId, ref: modelConfig.TABLES.CUSTOMERS },
     productID: { type: Schema.Types.ObjectId, ref: modelConfig.TABLES.PRODUCTS }
 }, { timestamps: true, versionKey: false })

@@ -4,14 +4,15 @@ class PaymentValidate {
     create = () => {
         return Joi.object({
             status: Joi.boolean(),
-            secretKey: string().required(),
+            secretKey: Joi.string().required(),
             access: Joi.boolean().required()
         })
     }
 
     update = () => {
         return Joi.object({
-            access: Joi.boolean().required()
+            access: Joi.boolean().required(),
+            secretKey: Joi.string(),
         })
     }
 }

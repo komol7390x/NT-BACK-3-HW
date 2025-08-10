@@ -51,7 +51,8 @@ class PaymentController extends BaseController {
                 orderQuantity: order.orderQuantity,
                 totalPrice: order.totalPrice,
                 customerID: order.customerID,
-                productID: order.productID
+                productID: order.productID,
+                status: true
             }
 
             const orderResult = await Order.create(orderDate)

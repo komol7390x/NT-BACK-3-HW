@@ -5,7 +5,8 @@ class DeliveryValidate {
         return Joi.object({
             address: Joi.string().required().min(3),
             deliveryTime: Joi.date(),
-            orderID:Joi.string().required()
+            orderID: Joi.string().required(),
+            access: Joi.boolean().required()
         })
     }
 
@@ -13,7 +14,8 @@ class DeliveryValidate {
         return Joi.object({
             address: Joi.string().optional().min(3),
             deliveryTime: Joi.date(),
-            orderID:Joi.string().optional()
+            access: Joi.boolean().required(),
+            orderID: Joi.string().optional()
         })
     }
 }

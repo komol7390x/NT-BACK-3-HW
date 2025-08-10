@@ -41,19 +41,19 @@ router
 
     .get('/:id',
         AuthGuard,
-        RoleGuard(Role.SUPERADMIN, Role.ADMIN, Role.CUSTOMER),
+        RoleGuard(Role.SUPERADMIN, Role.ADMIN, 'ID'),
         constroller.getById)
     // =============== PATCH ===============
 
     .patch('/:id',
         AuthGuard,
-        RoleGuard(Role.SUPERADMIN, Role.CUSTOMER),
+        RoleGuard(Role.SUPERADMIN, 'ID'),
         validate(Validation.updateCustomer),
         constroller.updateWallet)
     // =============== DELETE ===============
     .delete('/:id',
         AuthGuard,
-        RoleGuard(Role.SUPERADMIN, Role.CUSTOMER),
+        RoleGuard(Role.SUPERADMIN, 'ID'),
         constroller.delete)
 
 export default router

@@ -15,7 +15,7 @@ router
     .post(`/${configFile.PAYMENT.CONFIRM_URL}`,
         AuthGuard,
         RoleGuard(Role.SUPERADMIN, Role.CUSTOMER),
-        // validate(Validation.create),
+        validate(Validation.create),
         constroller.createPayment)
     // =================== GET ALL ===================
     .get('/',
