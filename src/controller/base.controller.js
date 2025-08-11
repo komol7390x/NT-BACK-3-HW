@@ -20,12 +20,14 @@ export class BaseController {
     //=========================== GET ALL ===========================
     getAll = async (_req, res, next) => {
         try {
-            const data = await this.model.find();
-            if (this.populateFields.length == 0) {
-                return successRes(res, data)
+            let query = this.model.find();
+            if (this.populateFields.length > 0) {
+                this.populateFields.forEach(field => {
+                    query = query.populate(field);
+                });
             }
-            const result = await BaseController.poplateDate(data)
-            successRes(res, result)
+            const result = await query.exec();
+            successRes(res, result);
         } catch (error) {
             next(error)
         }
@@ -34,11 +36,15 @@ export class BaseController {
     //=========================== GET BY ID ===========================
     getById = async (req, res, next) => {
         try {
-            const data = await BaseController.checkById(req.params.id, this.model);
-            if (this.populateFields.length == 0) {
-                return successRes(res, data)
+            const id = req.params.id
+            await BaseController.checkById(id, this.model);
+            let query = this.model.findById(id);
+            if (this.populateFields.length > 0) {
+                this.populateFields.forEach(field => {
+                    query = query.populate(field);
+                });
             }
-            const result = await BaseController.poplateDate(data)
+            const result = await query.exec();
             successRes(res, result)
         } catch (error) {
             next(error)
@@ -50,7 +56,7 @@ export class BaseController {
         try {
             const id = req.params.id
             await BaseController.checkById(id, this.model);
-            const result = await this.model.findByIdAndUpdate(id, req.body)
+            const result = await this.model.findByIdAndUpdate(id, req.body, { new: true })
             successRes(res, result)
         } catch (error) {
             next(error)
@@ -62,7 +68,7 @@ export class BaseController {
         try {
             const id = req.params.id
             await BaseController.checkById(id, this.model);
-            await this.model.findByIdAndDelete(id, req.body)
+            await this.model.findByIdAndDelete(id)
             successRes(res, {})
         } catch (error) {
             next(error)
@@ -72,22 +78,12 @@ export class BaseController {
     static checkById = async (id, schema) => {
 
         if (!isValidObjectId(id)) {
-            throw new AppError('Bad Request', 400)
+            throw new AppError(`this ${id} is invalid`, 400)
         }
         const result = await schema.findById(id)
         if (!result) {
-            throw new AppError(`Not found`, 404)
+            throw new AppError(`this ${id} user not found`, 404)
         }
-        return result
-    }
-    //=========================== POPULATE ===========================
-    static poplateDate = async (data) => {
-        let query = data
-        const fields = this.populateFields
-        if (fields?.length) {
-            fields.forEach(field => query.populate(field));
-        }
-        const result = await query.exec()
         return result
     }
 }

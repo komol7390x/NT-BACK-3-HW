@@ -9,3 +9,4 @@ await allFunction(server)
 const PORT = configFile.PORT
 
 server.listen(PORT, () => console.log('Server is runing PORT:', PORT))
+

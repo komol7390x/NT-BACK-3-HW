@@ -1,4 +1,4 @@
-import { Admin } from "../model/admin.model.js";
+import { Admin } from "../model/client/admin.model.js";
 import { configFile } from '../config/server.config.js'
 import { Role } from "../const/Role.js";
 import { connectDB } from '../database/database.mongodb.js'
