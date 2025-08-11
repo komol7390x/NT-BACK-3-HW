@@ -5,6 +5,7 @@ class Wallet {
     createCustomer = () => {
         return Joi.object({
             cardNumber: Joi.string().required().length(16),
+            balance: Joi.number().required(),
             customerID: Joi.string()
         })
     }
@@ -12,6 +13,7 @@ class Wallet {
     updateCustomer = () => {
         return Joi.object({
             cardNumber: Joi.string().optional().length(16),
+            balance: Joi.number().required(),
             customerID: Joi.string().optional()
         })
     }
