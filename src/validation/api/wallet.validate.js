@@ -19,6 +19,7 @@ class Wallet {
     createSaller = () => {
         return Joi.object({
             cardNumber: Joi.string().required().length(16),
+            balance: Joi.number().required(),
             sallerID: Joi.string()
         })
     }
@@ -26,6 +27,7 @@ class Wallet {
     updateSaller = () => {
         return Joi.object({
             cardNumber: Joi.string().optional().length(16),
+            balance: Joi.number().required(),
             sallerID: Joi.string().optional()
         })
     }
