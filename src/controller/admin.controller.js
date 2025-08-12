@@ -13,6 +13,14 @@ class AdminController extends BaseController {
             phone
         })
     }
+
+    updateAdmin = async (ctx) => {
+        const {email,phone}=ctx.request.body
+        await this.update(ctx, {
+            email,
+            phone
+        })
+    }
 }
 
 export default new AdminController()

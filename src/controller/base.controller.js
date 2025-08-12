@@ -1,5 +1,5 @@
 import Model from "../service/psql.service.js";
-import { table } from '../const/table-name.js'
+// import { table } from '../const/table-name.js'
 
 export class BaseController {
     constructor(tabelModel) {
@@ -21,33 +21,19 @@ export class BaseController {
     }
 
     findById = async (ctx) => {
-        const admin = await Model.findById(ctx.params.id, this.tabelModel);
-        if (!admin) {
-            ctx.throw(404, 'not found user')
-        }
+        const admin = await this.checkId(ctx.params.id)
         ctx.status = 200;
         ctx.body = admin
     }
 
-    update = async (ctx) => {
+    update = async (ctx, exists) => {
         const id = ctx.params.id
-        const { email, phone } = ctx.request.body;
+        await this.checkId(id)
 
-        const existsId = await Model.findOne('id', id, this.tabelModel)
-
-        if (!existsId) {
-            ctx.throw(404, 'not found user')
+        if (exists) {
+            await this.checkExist(ctx, exists)
         }
 
-        const existsEmail = await Model.findOne('email', email, this.tabelModel);
-        if (existsEmail) {
-            ctx.throw(409, 'Email address already exists')
-        }
-
-        const existsPhone = await Model.findOne('phone', phone, this.tabelModel);
-        if (existsPhone) {
-            ctx.throw(409, 'This phone number already exists')
-        }
         const result = await Model.update(id, ctx.request.body, this.tabelModel)
         ctx.status = 200;
         ctx.body = result
@@ -55,22 +41,28 @@ export class BaseController {
 
     delete = async (ctx) => {
         const id = ctx.params.id
-        const admin = await Model.findById(id, this.tabelModel);
-        if (!admin) {
-            ctx.throw(404, 'not found user')
-        }
+        await this.checkId(id)
         await Model.delete(id, this.tabelModel)
         ctx.status = 200;
         ctx.body = {}
     }
 
     checkExist = async (ctx, exists) => {
-        let c = 0
         for (let [key, value] of Object.entries(exists)) {
-            const existKey = await Model.findOne(key, value, this.tabelModel);
-            if (existKey) {
-                ctx.throw(409, `${key} already exist`)
+            if (key && value) {
+                const existKey = await Model.findOne(key, value, this.tabelModel);
+                if (existKey) {
+                    ctx.throw(409, `${key} already exist`)
+                }
             }
         }
+    }
+
+    checkId = async (id) => {
+        const existsId = await Model.findOne('id', id, this.tabelModel)
+        if (!existsId) {
+            ctx.throw(404, 'not found user')
+        }
+        return existsId
     }
 }

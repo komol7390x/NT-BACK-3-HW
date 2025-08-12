@@ -3,25 +3,19 @@ import Model from '../service/psql.service.js'
 import { table } from "../const/table-name.js";
 
 class CategoryController extends BaseController {
-
+    constructor(){
+        super(table.CATEGORY)
+    }
     createCategory = async (ctx) => {
         const { name_category } = ctx.request.body
-        const existName = await Model.findOne('name_category', name_category, table.CATEGORY)
-        if (existName) {
-            ctx.throw(409, `already added this ${name_category}`)
-        }
-        const result = await Model.create(ctx.request.body, table.CATEGORY)
-        ctx.status = 201;
-        ctx.body = result
+        const result=await this.create(ctx,{name_category})
+        ctx.result=201,
+        ctx.body=result
     }
 
     updateCategory = async (ctx) => {
         const { name_category } = ctx.request.body
-        const existName = await Model.findOne('name_category', name_category, table.CATEGORY)
-        if (existName) {
-            ctx.throw(409, `already added this ${name_category}`)
-        }
-        const result = await Model.update(ctx.request.body, table.CATEGORY)
+        const result=await this.update(ctx,{name_category})
         ctx.status = 200;
         ctx.body = result
     }
