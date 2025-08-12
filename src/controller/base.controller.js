@@ -2,8 +2,9 @@ import Model from "../service/psql.service.js";
 import { table } from '../const/table-name.js'
 
 export class BaseController {
-    constructor(tabelModel, Role) {
+    constructor(tabelModel, modelRole) {
         this.tabelModel = tabelModel
+        this.modelRole = modelRole
     }
     create = async (ctx) => {
 
@@ -16,8 +17,8 @@ export class BaseController {
         if (existsPhone) {
             ctx.throw(409, 'This phone number already exists')
         }
-        if (Role) {
-            ctx.request.body.Role = Role
+        if (this.modelRole) {
+            ctx.request.body.Role = this.modelRole
         }
         const admin = await Model.create(ctx.request.body, this.tabelModel);
         ctx.status = 201;
