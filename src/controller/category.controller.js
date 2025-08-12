@@ -1,22 +1,19 @@
 import { BaseController } from "./base.controller.js";
 import { table } from "../const/table-name.js";
+import Model from '../service/psql.service.js'
 
 class CategoryController extends BaseController {
-    constructor(){
+    constructor() {
         super(table.CATEGORY)
     }
     createCategory = async (ctx) => {
-        const { name_category } = ctx.request.body
-        const result=await this.create(ctx,{name_category})
-        ctx.result=201,
-        ctx.body=result
+        const { name_category} = ctx.request.body
+        await this.create(ctx, { name_category })
     }
 
     updateCategory = async (ctx) => {
         const { name_category } = ctx.request.body
-        const result=await this.update(ctx,{name_category})
-        ctx.status = 200;
-        ctx.body = result
+        await this.update(ctx, { name_category })
     }
 }
 

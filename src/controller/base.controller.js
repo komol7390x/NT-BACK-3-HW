@@ -1,5 +1,5 @@
+import { table } from "../const/table-name.js";
 import Model from "../service/psql.service.js";
-// import { table } from '../const/table-name.js'
 
 export class BaseController {
     constructor(tabelModel) {
@@ -21,7 +21,7 @@ export class BaseController {
     }
 
     findById = async (ctx) => {
-        const admin = await this.checkId(ctx.params.id)
+        const admin = await this.checkId(ctx.params.id,ctx,table)
         ctx.status = 200;
         ctx.body = admin
     }
@@ -29,20 +29,20 @@ export class BaseController {
     update = async (ctx, exists) => {
         
         const id = ctx.params.id
-        await this.checkId(id)
-
+        await this.checkId(id,ctx)
+        
         if (exists) {
             await this.checkExist(ctx, exists)
         }
-
         const result = await Model.update(id, ctx.request.body, this.tabelModel)
+        
         ctx.status = 200;
         ctx.body = result
     }
 
     delete = async (ctx) => {
         const id = ctx.params.id
-        await this.checkId(id)
+        await this.checkId(id,ctx)
         await Model.delete(id, this.tabelModel)
         ctx.status = 200;
         ctx.body = {}
@@ -59,10 +59,11 @@ export class BaseController {
         }
     }
 
-    checkId = async (id) => {
-        const existsId = await Model.findOne('id', id, this.tabelModel)
+    checkId = async (id,ctx) => {       
+                        
+        const existsId = await Model.findOne('id', id,this.tabelModel)                        
         if (!existsId) {
-            ctx.throw(404, 'not found user')
+            ctx.throw(404, (check+' id is not found'))
         }
         return existsId
     }
