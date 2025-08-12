@@ -1,6 +1,5 @@
 import { BaseController } from "./base.controller.js";
 import { table } from "../const/table-name.js";
-import { Role } from "../const/Role.js";
 
 class AdminController extends BaseController {
     constructor() {

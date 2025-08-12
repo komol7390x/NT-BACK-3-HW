@@ -1,5 +1,4 @@
 import { BaseController } from "./base.controller.js";
-import Model from '../service/psql.service.js'
 import { table } from "../const/table-name.js";
 
 class CategoryController extends BaseController {
