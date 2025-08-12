@@ -7,9 +7,10 @@ class AdminController extends BaseController {
         super(table.ADMIN)
     };
     createAdmin = async (ctx) => {
+        const {email,phone}=ctx.request.body
         await this.create(ctx, {
-            email: ctx.request.body.email,
-            phone: ctx.request.body.phone
+            email,
+            phone
         })
     }
 }
