@@ -2,23 +2,12 @@ import Model from "../service/psql.service.js";
 import { table } from '../const/table-name.js'
 
 export class BaseController {
-    constructor(tabelModel, modelRole) {
-        this.tabelModel = tabelModel
-        this.modelRole = modelRole
+    constructor(tabelModel) {
+        this.tabelModel = tabelModel;
     }
-    create = async (ctx) => {
-
-        const existsEmail = await Model.findOne('email', ctx.request.body.email, this.tabelModel);
-        if (existsEmail) {
-            ctx.throw(409, 'Email address already exists')
-        }
-        const existsPhone = await Model.findOne('phone', ctx.request.body.phone, this.tabelModel);
-
-        if (existsPhone) {
-            ctx.throw(409, 'This phone number already exists')
-        }
-        if (this.modelRole) {
-            ctx.request.body.Role = this.modelRole
+    create = async (ctx, exists) => {
+        if (exists) {
+            await this.checkExist(ctx, exists)
         }
         const admin = await Model.create(ctx.request.body, this.tabelModel);
         ctx.status = 201;
@@ -73,5 +62,15 @@ export class BaseController {
         await Model.delete(id, this.tabelModel)
         ctx.status = 200;
         ctx.body = {}
+    }
+
+    checkExist = async (ctx, exists) => {
+        let c = 0
+        for (let [key, value] of Object.entries(exists)) {
+            const existKey = await Model.findOne(key, value, this.tabelModel);
+            if (existKey) {
+                ctx.throw(409, `${key} already exist`)
+            }
+        }
     }
 }
