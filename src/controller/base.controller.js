@@ -27,6 +27,7 @@ export class BaseController {
     }
 
     update = async (ctx, exists) => {
+        
         const id = ctx.params.id
         await this.checkId(id)
 
