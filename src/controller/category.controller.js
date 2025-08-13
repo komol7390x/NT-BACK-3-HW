@@ -6,14 +6,14 @@ class CategoryController extends BaseController {
     constructor() {
         super(table.CATEGORY)
     }
-    createCategory = async (ctx) => {
-        const { name_category} = ctx.request.body
-        await this.create(ctx, { name_category })
+    createCategory = async (request, reply) => {
+        const { name_category} = request.body
+        await this.create(request, reply, { name_category })
     }
 
-    updateCategory = async (ctx) => {
-        const { name_category } = ctx.request.body
-        await this.update(ctx, { name_category })
+    updateCategory = async (request, reply) => {
+        const { name_category } = request.body
+        await this.update(request, reply, { name_category })
     }
 }
 

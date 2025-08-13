@@ -1,14 +1,14 @@
-import Router from "@koa/router";
 import controller from "../controller/admin.controller.js";
 
-const router = new Router({ prefix: '/admin' })
+class AdminRouter {
+    router(fastify, _option) {
+        fastify
+            .post('/', controller.createAdmin)
+            .get('/', controller.findAll)
+            .get('/:id', controller.findById)
+            .patch('/:id', controller.updateAdmin)
+            .delete('/:id', controller.delete)
+    }
+}
 
-router
-    .post('/', controller.createAdmin)
-    .get('/', controller.findAll)
-    .get('/:id', controller.findById)
-    .patch('/:id', controller.updateAdmin)
-    .delete('/:id', controller.delete)
-
-
-export default router
+export default new AdminRouter()
