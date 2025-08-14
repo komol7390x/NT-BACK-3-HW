@@ -1,21 +1,31 @@
-import Fastify from "fastify";
-import Router from './router/index.route.js'
-import { configFile } from "./config/server.config.js";
+import express from 'express'
+import sequelize from './database/databasa.js'
+import { envConfig } from './config/env.config.js'
 
-const fastify = new Fastify({
-    logger: false
-});
+const server=express();
+const PORT=+envConfig.PORT
 
-fastify.register(Router.router, { prefix: '/market' })
-
-export class Application {
-    static async start() {
+export class Application{
+    
+    static connectDB=async()=>{
         try {
-            await fastify.listen({ port: configFile.PORT });
-            console.log('Server is runing ', +configFile.PORT);
+            await sequelize.authenticate();
+            console.log('Server is connected Database :)');
+
+            await sequelize.sync({alter:true})
+            console.log('Tabled sync...');
         } catch (error) {
-            fastify.log.error(error)
+            console.log('error server is connect to database :(');
             process.exit(1)
         }
+    }
+
+    static startApp=async()=>{
+        await this.connectDB()
+
+        server.use(express.json());
+
+
+        server.listen(PORT,()=>console.log('Server is running PORT:',PORT))
     }
 }

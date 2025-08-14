@@ -1,0 +1,22 @@
+import sequelize from '../../database/databasa.js'
+import { DataTypes } from 'sequelize'
+import {Tables} from '../../const/Table.js'
+
+const ProductModel=sequelize.define(Tables.API.PRODUCT,{
+    
+    name:{type:DataTypes.STRING,allowNull:false,unique:true,validate:{
+        len:[3,128]
+    }},
+    price:{type:DataTypes.NUMBER,allowNull:false,validate:{
+        min:0
+    }},
+
+    price:{type:DataTypes.NUMBER,defaultValue:0,validate:{
+        min:0
+    }},
+
+    is_active:{type:DataTypes.BOOLEAN,defaultValue:false},
+
+})
+
+export default ProductModel
