@@ -18,7 +18,9 @@ class CategoryController extends BaseController {
     updateCategory = async (req, res, next) => {
         try {
             const { title } = req.body
-            await BaseController.checkExist(Category, { title })
+            if (title) {
+                await BaseController.checkExist(Category, { title })
+            }
             await this.update(req, res, next)
         } catch (error) {
             next(error)

@@ -39,7 +39,10 @@ export class BaseController {
             const id = req.params.id
             await BaseController.checkById(id, this.Model)
             const data = await this.Model.update(req.body, { where: { id }, returning: true })
-            successRes(res, data[1][0])
+            if (data[0]) {
+                return successRes(res, data[1][0])
+            }
+            throw new AppError(`not update ${JSON.stringify(req.body)}`)
         } catch (error) {
             next(error)
         }
@@ -57,10 +60,11 @@ export class BaseController {
     }
 
     static checkById = async (id, model) => {
+        const nameModel = model.getTableName().toString()
         let result = await model.findByPk(id)
-            if (!result) {
-                throw new AppError(`not found this id: ${id}`, 404)
-            }
+        if (!result) {
+            throw new AppError(`this id: '${id}' not found on ${nameModel} table`, 404)
+        }
         return result
     }
 

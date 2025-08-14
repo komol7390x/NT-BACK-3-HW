@@ -8,7 +8,7 @@ class ProductController extends BaseController {
     createProduct = async (req, res, next) => {
         try {
             const { name } = req.body
-            await BaseController.checkExist(Product, { name })
+            await BaseController.checkExist(Customer, { name })
             await this.create(req, res, next)
         } catch (error) {
             next(error)

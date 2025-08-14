@@ -18,7 +18,12 @@ class CustomerController extends BaseController {
     updateCustomer = async (req, res, next) => {
         try {
             const { email, phone_number } = req.body
-            await BaseController.checkExist(Customer, { email, phone_number })
+            if (email) {
+                await BaseController.checkExist(Customer, { email })
+            }
+            if (phone_number) {
+                await BaseController.checkExist(Customer, { phone_number })
+            }
             await this.update(req, res, next)
         } catch (error) {
             next(error)
