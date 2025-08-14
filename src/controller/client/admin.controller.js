@@ -18,7 +18,9 @@ class AdminController extends BaseController {
     updateAdmin = async (req, res, next) => {
         try {
             const { email } = req.body
-            await BaseController.checkExist(Admin, { email })
+            if (email) {
+                await BaseController.checkExist(Admin, { email })
+            }
             await this.update(req, res, next)
         } catch (error) {
             next(error)

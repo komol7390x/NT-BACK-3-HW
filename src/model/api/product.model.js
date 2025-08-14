@@ -7,11 +7,11 @@ const ProductModel=sequelize.define(Tables.API.PRODUCT,{
     name:{type:DataTypes.STRING,allowNull:false,unique:true,validate:{
         len:[3,128]
     }},
-    price:{type:DataTypes.NUMBER,allowNull:false,validate:{
+    price:{type:DataTypes.INTEGER,allowNull:false,validate:{
         min:0
     }},
 
-    price:{type:DataTypes.NUMBER,defaultValue:0,validate:{
+    price:{type:DataTypes.INTEGER,defaultValue:0,validate:{
         min:0
     }},
 

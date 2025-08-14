@@ -57,10 +57,10 @@ export class BaseController {
     }
 
     static checkById = async (id, model) => {
-        const result = await model.findByPk(id)
-        if (!result) {
-            throw new AppError(`not found this id: ${id}`, 404)
-        }
+        let result = await model.findByPk(id)
+            if (!result) {
+                throw new AppError(`not found this id: ${id}`, 404)
+            }
         return result
     }
 
