@@ -2,37 +2,38 @@ import express from 'express'
 import sequelize from './database/databasa.js'
 
 import { envConfig } from './config/env.config.js'
-import {globalErrorHandle} from './error/global-error-handle.js'
+import { globalErrorHandle } from './error/global-error-handle.js'
 
 import Router from './routers/index.route.js'
 
-const server=express();
-const PORT=+envConfig.PORT
+const server = express();
+const PORT = +envConfig.PORT
 
-export class Application{
-    
-    static connectDB=async()=>{
+export class Application {
+
+    static connectDB = async () => {
         try {
             await sequelize.authenticate();
             console.log('Server is connected Database :)');
 
-            await sequelize.sync({alter:true})
+            await sequelize.sync({ alter: true })
             console.log('Tabled sync...');
         } catch (error) {
-            console.log('error server is connect to database :(');
+            console.log('error server is connect to database :(', error.message);
             process.exit(1)
         }
     }
 
-    static startApp=async()=>{
+    static startApp = async () => {
+
         await this.connectDB()
 
         server.use(express.json());
-        
-        server.use('/api',Router)
+
+        server.use('/api', Router)
 
         server.use(globalErrorHandle)
 
-        server.listen(PORT,()=>console.log('Server is running PORT:',PORT))
+        server.listen(PORT, () => console.log('Server is running PORT:', PORT))
     }
 }

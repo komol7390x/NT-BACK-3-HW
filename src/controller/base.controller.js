@@ -1,4 +1,3 @@
-import { where } from 'sequelize'
 import { AppError } from '../error/AppError.js'
 import { successRes } from '../utils/successRes.js'
 
@@ -18,7 +17,7 @@ export class BaseController {
 
     getAll = async (_req, res, next) => {
         try {
-            const data = await this.Model.create.findAll({ order: [['createdAt', 'DESC']], include: { all: true } })
+            const data = await this.Model.findAll({ order: [['createdAt', 'DESC']], include: { all: true, nested: true } })
             successRes(res, data)
         } catch (error) {
             next(error)
@@ -27,7 +26,8 @@ export class BaseController {
 
     getById = async (req, res, next) => {
         try {
-            const data = await this.Model.findByPk(req.params.id)
+            const id = req.params.id
+            const data = await BaseController.checkById(id, this.Model)
             successRes(res, data)
         } catch (error) {
             next(error)
@@ -36,7 +36,9 @@ export class BaseController {
 
     update = async (req, res, next) => {
         try {
-            const data = await this.Model.update(req.body, { where: { id: req.params.id }, returning: true })
+            const id = req.params.id
+            await BaseController.checkById(id, this.Model)
+            const data = await this.Model.update(req.body, { where: { id }, returning: true })
             successRes(res, data[1][0])
         } catch (error) {
             next(error)
@@ -45,10 +47,29 @@ export class BaseController {
 
     delete = async (req, res, next) => {
         try {
-            await this.Model.destroy({ where: { id: req.params.id } })
+            const id = req.params.id
+            await BaseController.checkById(id, this.Model)
+            await this.Model.destroy({ where: { id } })
             successRes(res, {})
         } catch (error) {
             next(error)
+        }
+    }
+
+    static checkById = async (id, model) => {
+        const result = await model.findByPk(id)
+        if (!result) {
+            throw new AppError(`not found this id: ${id}`, 404)
+        }
+        return result
+    }
+
+    static checkExist = async (model, obj) => {
+        for (let [key, value] of Object.entries(obj)) {
+            const result = await model.findOne({ where: { [key]: value } })
+            if (!result) {
+                throw new AppError(`${key} not found`)
+            }
         }
     }
 }
