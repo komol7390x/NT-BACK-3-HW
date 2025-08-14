@@ -1,6 +1,10 @@
 import express from 'express'
 import sequelize from './database/databasa.js'
+
 import { envConfig } from './config/env.config.js'
+import {globalErrorHandle} from './error/global-error-handle.js'
+
+import Router from './routers/index.route.js'
 
 const server=express();
 const PORT=+envConfig.PORT
@@ -24,7 +28,10 @@ export class Application{
         await this.connectDB()
 
         server.use(express.json());
+        
+        server.use('/api',Router)
 
+        server.use(globalErrorHandle)
 
         server.listen(PORT,()=>console.log('Server is running PORT:',PORT))
     }
