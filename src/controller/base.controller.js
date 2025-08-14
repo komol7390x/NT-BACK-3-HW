@@ -5,65 +5,80 @@ export class BaseController {
     constructor(tabelModel) {
         this.tabelModel = tabelModel;
     }
-    create = async (ctx, exists) => {
+    create = async (request, reply, exists) => {
         if (exists) {
-            await this.checkExist(ctx, exists)
+            await this.checkExist(reply, exists)
         }
-        const admin = await Model.create(ctx.request.body, this.tabelModel);
-        ctx.status = 201;
-        ctx.body = admin
+        const data = await Model.create(request.body, this.tabelModel);
+        return reply.status(201).send({
+            statusCode: 201,
+            message: 'success',
+            data
+        })
     }
 
-    findAll = async (ctx) => {
-        const admin = await Model.findAll(this.tabelModel);
-        ctx.status = 200;
-        ctx.body = admin
+    findAll = async (_request, reply) => {
+        const data = await Model.findAll(this.tabelModel);
+        return reply.status(200).send({
+            statusCode: 200,
+            message: 'success',
+            data
+        })
     }
 
-    findById = async (ctx) => {
-        const admin = await this.checkId(ctx.params.id,ctx,table)
-        ctx.status = 200;
-        ctx.body = admin
+    findById = async (request, reply) => {
+        const data = await this.checkId(request.params.id, reply)
+        return reply.status(200).send({
+            statusCode: 200,
+            message: 'success',
+            data
+        })
     }
 
-    update = async (ctx, exists) => {
-        
-        const id = ctx.params.id
-        await this.checkId(id,ctx)
-        
+    update = async (request, reply, exists) => {
+        const id = request.params.id
+        await this.checkId(id, reply)
         if (exists) {
-            await this.checkExist(ctx, exists)
+            await this.checkExist(reply, exists)
         }
-        const result = await Model.update(id, ctx.request.body, this.tabelModel)
-        
-        ctx.status = 200;
-        ctx.body = result
+        const data = await Model.update(id, request.body, this.tabelModel)
+        return reply.status(200).send({
+            statusCode: 200,
+            message: 'success',
+            data
+        })
     }
 
-    delete = async (ctx) => {
-        const id = ctx.params.id
-        await this.checkId(id,ctx)
+    delete = async (request, reply) => {
+        const id = request.params.id
+        await this.checkId(id, reply)
         await Model.delete(id, this.tabelModel)
-        ctx.status = 200;
-        ctx.body = {}
+        return reply.status(200).send({
+            statusCode: 200,
+            message: 'success',
+            data: {}
+        })
     }
 
-    checkExist = async (ctx, exists) => {
+    checkExist = async (reply, exists) => {
         for (let [key, value] of Object.entries(exists)) {
             if (key && value) {
                 const existKey = await Model.findOne(key, value, this.tabelModel);
                 if (existKey) {
-                    ctx.throw(409, `${key} already exist`)
+                    reply.code(404).send({
+                        error: `${key} already added`
+                    })
                 }
             }
         }
     }
 
-    checkId = async (id,ctx) => {       
-                        
-        const existsId = await Model.findOne('id', id,this.tabelModel)                        
+    checkId = async (id, reply) => {
+        const existsId = await Model.findOne('id', id, this.tabelModel)
         if (!existsId) {
-            ctx.throw(404, (check+' id is not found'))
+            reply.code(404).send({
+                error: `this ${id} not found`
+            })
         }
         return existsId
     }

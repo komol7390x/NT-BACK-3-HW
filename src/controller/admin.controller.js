@@ -5,17 +5,17 @@ class AdminController extends BaseController {
     constructor() {
         super(table.ADMIN)
     };
-    createAdmin = async (ctx) => {
-        const {email,phone}=ctx.request.body
-        await this.create(ctx, {
+    createAdmin = async (request, reply) => {
+        const { email, phone } = request.body
+        await this.create(request, reply, {
             email,
             phone
         })
     }
 
-    updateAdmin = async (ctx) => {
-        const {email,phone}=ctx.request.body
-        await this.update(ctx, {
+    updateAdmin = async (request, reply) => {
+        const { email, phone } = request.body
+        await this.update(request, reply, {
             email,
             phone
         })

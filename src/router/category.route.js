@@ -1,14 +1,14 @@
-import Router from "@koa/router";
 import controller from "../controller/category.controller.js";
 
-const router = new Router({ prefix: '/category' })
+class CategoryRouter {
+    router(fastify, _option) {
+        fastify
+            .post('/', controller.createCategory)
+            .get('/', controller.findAll)
+            .get('/:id', controller.findById)
+            .patch('/:id', controller.updateCategory)
+            .delete('/:id', controller.delete)
+    }
+}
 
-router
-    .post('/', controller.createCategory)
-    .get('/', controller.findAll)
-    .get('/:id', controller.findById)
-    .patch('/:id', controller.updateCategory)
-    .delete('/:id', controller.delete)
-
-
-export default router
+export default new CategoryRouter()

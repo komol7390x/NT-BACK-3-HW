@@ -5,17 +5,17 @@ class SallerController extends BaseController {
     constructor() {
         super(table.SELLER)
     }
-    createSaller = async (ctx) => {
-        const {email,phone}=ctx.request.body
-        await this.create(ctx, {
+    createSaller = async (request, reply) => {
+        const { email, phone } = request.body
+        await this.create(request, reply, {
             email,
             phone
         })
     }
 
-    updateSaller = async (ctx) => {
-        const {email,phone}=ctx.request.body
-        await this.update(ctx, {
+    updateSaller = async (request, reply) => {
+        const { email, phone } = request.body
+        await this.update(request, reply, {
             email,
             phone
         })

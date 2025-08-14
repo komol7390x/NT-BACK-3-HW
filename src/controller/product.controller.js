@@ -7,28 +7,30 @@ class CategoryController extends BaseController {
         super(table.PRODUCT)
     }
 
-    createProduct = async (ctx) => {
-        const { name_product, seller_id, category_id } = ctx.request.body;
+    createProduct = async (request, reply) => {
+        const { name_product, seller_id, category_id } = request.body;
 
-        await this.checkUserId(ctx, seller_id, table.SELLER)
-        await this.checkUserId(ctx, category_id, table.CATEGORY)
+        await this.checkUserId(reply, seller_id, table.SELLER)
+        await this.checkUserId(reply, category_id, table.CATEGORY)
 
-        await this.create(ctx, { name_product })
+        await this.create(request, reply, { name_product })
     }
 
-    updateProduct = async (ctx) => {
-        const { name_product, seller_id, category_id } = ctx.request.body
+    updateProduct = async (request, reply) => {
+        const { name_product, seller_id, category_id } = request.body
 
-        await this.checkUserId(ctx, seller_id, table.SELLER)
-        await this.checkUserId(ctx, category_id, table.CATEGORY)
+        await this.checkUserId(reply, seller_id, table.SELLER)
+        await this.checkUserId(reply, category_id, table.CATEGORY)
 
-        await this.update(ctx, { name_product })
+        await this.update(request, reply, { name_product })
     }
 
-    checkUserId = async (ctx,id,table) => {
+    checkUserId = async (reply, id, table) => {
         const existsId = await Model.findOne('id', id, table)
         if (!existsId) {
-            ctx.throw(404, (table + ' id is not found'))
+            reply.code(404).send({
+                error: `this ${id} not found`
+            })
         }
         return existsId
     }

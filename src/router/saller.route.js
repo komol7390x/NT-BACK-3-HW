@@ -1,14 +1,14 @@
-import Router from "@koa/router";
 import controller from "../controller/saller.controller.js";
 
-const router = new Router({ prefix: '/saller' })
+class SallerRouter {
+    router(fastify, _option) {
+        fastify
+            .post('/', controller.createSaller)
+            .get('/', controller.findAll)
+            .get('/:id', controller.findById)
+            .patch('/:id', controller.updateSaller)
+            .delete('/:id', controller.delete)
+    }
+}
 
-router
-    .post('/', controller.createSaller)
-    .get('/', controller.findAll)
-    .get('/:id', controller.findById)
-    .patch('/:id', controller.updateSaller)
-    .delete('/:id', controller.delete)
-
-
-export default router
+export default new SallerRouter()
