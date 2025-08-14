@@ -17,7 +17,7 @@ const SallerModel = sequelize.define(Tables.USER.SALLER, {
     phone_number: { type: DataTypes.STRING(12), unique: true, allowNull: false },
 
     balance: {
-        type: DataTypes.NUMBER, defaultValue: 0, validate: {
+        type: DataTypes.INTEGER, defaultValue: 0, validate: {
             min: 0
         }
     },

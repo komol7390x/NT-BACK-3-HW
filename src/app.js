@@ -1,3 +1,7 @@
+import './model/client/admin.model.js';
+import './model/client/customer.model.js';
+import './model/client/saller.model.js';
+
 import express from 'express'
 import sequelize from './database/databasa.js'
 
@@ -14,10 +18,10 @@ export class Application {
     static connectDB = async () => {
         try {
             await sequelize.authenticate();
-            console.log('Server is connected Database :)');
+            console.log('Server is connected Database ✅');
 
             await sequelize.sync({ alter: true })
-            console.log('Tabled sync...');
+            console.log('Tabled sync ✅');
         } catch (error) {
             console.log('error server is connect to database :(', error.message);
             process.exit(1)

@@ -1,3 +1,3 @@
-import {Application} from './app.js'
+import { Application } from './app.js'
 
 Application.startApp()

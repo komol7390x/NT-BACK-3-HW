@@ -67,8 +67,8 @@ export class BaseController {
     static checkExist = async (model, obj) => {
         for (let [key, value] of Object.entries(obj)) {
             const result = await model.findOne({ where: { [key]: value } })
-            if (!result) {
-                throw new AppError(`${key} not found`)
+            if (result) {
+                throw new AppError(`${key} already added`, 409)
             }
         }
     }
